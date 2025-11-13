@@ -14,6 +14,9 @@
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png" />
 
+  <!-- Bootstrap CSS -->
+  <link href="../bootstrap.min.css" rel="stylesheet">
+
   <!-- Custom CSS -->
   <link href="../custom.css" rel="stylesheet">
 
@@ -28,7 +31,8 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="../index.html">
-        <img src="../assets/images/favicon/favicon.svg" alt="Sam Chin" width="32" height="32" class="d-inline-block align-text-top me-2">
+        <img src="../assets/images/favicon/favicon.svg" alt="Sam Chin" width="32" height="32"
+          class="d-inline-block align-text-top me-2">
         Sam Chin
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -60,8 +64,10 @@
       <!-- Back Link -->
       <div class="mb-4">
         <a href="../index.html#projects" class="text-decoration-none">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
           </svg>
           Back to Projects
         </a>
@@ -77,7 +83,9 @@
       <div class="row mb-5">
         <div class="col-lg-8 offset-lg-2">
           <div class="project-description">
-            <p class="lead">Most piano staircases are made with speakers that play when the user steps on a stair. Stairpeggio is the first piano staircase to use real <a href="https://en.wikipedia.org/wiki/Glockenspiel" target="_blank">glockenspiel</a> keys to produce sound.</p>
+            <p class="lead">Most piano staircases are made with speakers that play when the user steps on a stair.
+              Stairpeggio is the first piano staircase to use real <a href="https://en.wikipedia.org/wiki/Glockenspiel"
+                target="_blank">glockenspiel</a> keys to produce sound.</p>
           </div>
         </div>
       </div>
@@ -86,11 +94,9 @@
       <div class="row mb-5">
         <div class="col-lg-8 offset-lg-2">
           <div class="ratio ratio-16x9 shadow rounded">
-            <iframe src="https://www.youtube-nocookie.com/embed/oa6rItm0OgQ"
-                    title="Stairpeggio Demo"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/oa6rItm0OgQ" title="Stairpeggio Demo" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -99,47 +105,50 @@
       <div class="row mb-5">
         <div class="col-lg-8 offset-lg-2">
           <h3 class="h4 fw-bold mb-3">How it works:</h3>
-          <p>IR sensor in each box reads the distance to the wall of the staircase. If someone steps on the stair, their foot steps between the box and the wall, and the IR sensor detects a change in the distance. The code then turns on the lights and solenoid in the box, and the solenoid's magnet strikes the glockenspiel key.</p>
+          <p>IR sensor in each box reads the distance to the wall of the staircase. If someone steps on the stair, their
+            foot steps between the box and the wall, and the IR sensor detects a change in the distance. The code then
+            turns on the lights and solenoid in the box, and the solenoid's magnet strikes the glockenspiel key.</p>
 
           <h3 class="h4 fw-bold mt-5 mb-3">The Mechanical Design:</h3>
-          <p>Our mechanical design was built to highlight the glockenspiel keys - the key clearly visible on the top of the box with the electronics and solenoid hidden inside.</p>
+          <p>Our mechanical design was built to highlight the glockenspiel keys - the key clearly visible on the top of
+            the box with the electronics and solenoid hidden inside.</p>
 
           <h3 class="h4 fw-bold mt-5 mb-3">The Electronics Design:</h3>
-          <p>We needed to create a circuit for an Arduino to drive the relay since it is unable to provide sufficient current.</p>
-          <p>We designed our switch with a set of two transistors. By giving our first transistor a signal, we were able to pass current to the second transistor which powered the solenoid.</p>
+          <p>We needed to create a circuit for an Arduino to drive the relay since it is unable to provide sufficient
+            current.</p>
+          <p>We designed our switch with a set of two transistors. By giving our first transistor a signal, we were able
+            to pass current to the second transistor which powered the solenoid.</p>
 
           <h3 class="h4 fw-bold mt-5 mb-3">The Relay Design:</h3>
-          <p>In addition to fabricating the box and internal circuitry, we also designed the solenoid striking mechanism to save money.</p>
-          <p>As the electrical engineering lead, I prototyped multiple relays (with different windings, tube lengths and wire thicknesses). For the note to be resonant, the striking mechanism needs to hit with the correct timing and force.</p>
+          <p>In addition to fabricating the box and internal circuitry, we also designed the solenoid striking mechanism
+            to save money.</p>
+          <p>As the electrical engineering lead, I prototyped multiple relays (with different windings, tube lengths and
+            wire thicknesses). For the note to be resonant, the striking mechanism needs to hit with the correct timing
+            and force.</p>
         </div>
       </div>
 
       <!-- Images Gallery -->
       <div class="row g-4 mb-5">
         <div class="col-md-6">
-          <img src="../assets/images/projects/piano-staircase/download.png"
-               alt="Stairpeggio piano staircase"
-               class="img-fluid rounded shadow">
+          <img src="../assets/images/projects/piano-staircase/download.png" alt="Stairpeggio piano staircase"
+            class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
-          <img src="../assets/images/projects/piano-staircase/3solenoids.png"
-               alt="Stairpeggio solenoid mechanism"
-               class="img-fluid rounded shadow">
+          <img src="../assets/images/projects/piano-staircase/3solenoids.png" alt="Stairpeggio solenoid mechanism"
+            class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
-          <img src="../assets/images/projects/piano-staircase/circuit_diagram_new.jpg"
-               alt="Stairpeggio circuit diagram"
-               class="img-fluid rounded shadow">
+          <img src="../assets/images/projects/piano-staircase/circuit_diagram_new.jpg" alt="Stairpeggio circuit diagram"
+            class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
-          <img src="../assets/images/projects/piano-staircase/perfboard.jpg"
-               alt="Stairpeggio electronics"
-               class="img-fluid rounded shadow">
+          <img src="../assets/images/projects/piano-staircase/perfboard.jpg" alt="Stairpeggio electronics"
+            class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
-          <img src="../assets/images/projects/piano-staircase/tutorial-anim.gif"
-               alt="Stairpeggio in use"
-               class="img-fluid rounded shadow">
+          <img src="../assets/images/projects/piano-staircase/tutorial-anim.gif" alt="Stairpeggio in use"
+            class="img-fluid rounded shadow">
         </div>
       </div>
 
@@ -155,7 +164,8 @@
                 <li><strong>Solenoids:</strong> Electromechanical actuators that strike the glockenspiel keys</li>
                 <li><strong>Glockenspiel Keys:</strong> Real musical instrument keys for authentic sound</li>
                 <li><strong>LED Lighting:</strong> Visual feedback synchronized with sound</li>
-                <li><strong>Custom Electronics:</strong> Arduino-based control system for sensor reading and actuation</li>
+                <li><strong>Custom Electronics:</strong> Arduino-based control system for sensor reading and actuation
+                </li>
               </ul>
             </div>
           </div>
@@ -182,9 +192,12 @@
                 <dd class="col-sm-9">
                   <a href="https://youtu.be/oa6rItm0OgQ" target="_blank">
                     Watch on YouTube
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-box-arrow-up-right ms-1" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
-                      <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                      class="bi bi-box-arrow-up-right ms-1" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                      <path fill-rule="evenodd"
+                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
                     </svg>
                   </a>
                 </dd>
@@ -215,4 +228,3 @@
 </body>
 
 </html>
-

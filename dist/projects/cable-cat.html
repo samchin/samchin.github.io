@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cable Cat - A playful cable management solution">
+  <meta name="description" content="Cable Cat - A versatile multi-protocol cable for hardware development">
   <meta name="author" content="Sam Chin">
   <title>Cable Cat - Sam Chin</title>
 
@@ -13,6 +13,9 @@
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon/favicon.svg" />
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png" />
+
+  <!-- Bootstrap CSS -->
+  <link href="../bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom CSS -->
   <link href="../custom.css" rel="stylesheet">
@@ -28,7 +31,8 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="../index.html">
-        <img src="../assets/images/favicon/favicon.svg" alt="Sam Chin" width="32" height="32" class="d-inline-block align-text-top me-2">
+        <img src="../assets/images/favicon/favicon.svg" alt="Sam Chin" width="32" height="32"
+          class="d-inline-block align-text-top me-2">
         Sam Chin
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -60,8 +64,10 @@
       <!-- Back Link -->
       <div class="mb-4">
         <a href="../index.html#projects" class="text-decoration-none">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
           </svg>
           Back to Projects
         </a>
@@ -70,15 +76,13 @@
       <!-- Project Header -->
       <header class="mb-5">
         <h1 class="display-4 fw-bold mb-3">Cable Cat</h1>
-        <p class="lead text-muted">A playful cable management solution | 2025</p>
+        <p class="lead text-muted">A versatile multi-protocol cable for hardware development | 2025</p>
       </header>
 
       <!-- Hero Images -->
       <div class="row g-4 mb-5">
         <div class="col-md-12">
-          <img src="../assets/images/projects/cable-cat.jpg"
-               alt="Cable Cat"
-               class="img-fluid rounded shadow">
+          <img src="../assets/images/projects/cable-cat.jpg" alt="Cable Cat" class="img-fluid rounded shadow">
         </div>
       </div>
 
@@ -87,16 +91,51 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="project-description">
             <h3 class="h4 fw-bold mt-5 mb-3">About</h3>
-            <p>Cable Cat is a playful and functional solution for managing cables and cords. Combining whimsical design with practical utility, this project transforms the mundane task of cable organization into something delightful.</p>
+            <p>Cable Cat is a Swiss Army knife for hardware interfaces, integrating UART, SPI, and I2C protocols into a
+              single cable. Built on a custom BaoChip microcontroller, it delivers the multi-protocol functionality of
+              tools like Bus Pirate and Tigard but in a simple, portable cable form factor—no breakout boards required.
+            </p>
 
             <h3 class="h4 fw-bold mt-5 mb-3">Design Concept</h3>
-            <p>The design takes inspiration from the playful nature of cats and their tendency to interact with cables. Rather than hiding cables away, Cable Cat embraces them as part of the design, creating an interactive and charming desktop accessory.</p>
+            <p>Rather than juggling multiple adapters and breakout boards, Cable Cat provides direct device connections
+              with broader protocol support than traditional FTDI cables. The design embraces simplicity: plug it in,
+              and an interactive REPL welcomes you to configure it for whatever your project needs.</p>
 
             <h3 class="h4 fw-bold mt-5 mb-3">Features</h3>
-            <p>Cable Cat provides a fun way to organize and route cables while adding personality to your workspace. The design allows for easy cable insertion and removal while keeping everything tidy and accessible.</p>
+            <p>Cable Cat transforms hardware prototyping and debugging with:</p>
+            <ul>
+              <li><strong>Multi-protocol support:</strong> UART, SPI, and I2C in one cable</li>
+              <li><strong>Interactive configuration:</strong> Built-in REPL for easy device programming and testing</li>
+              <li><strong>Visual feedback:</strong> Integrated TX (green), Power (red), and Mode LEDs</li>
+              <li><strong>Cross-platform support:</strong> Rust library with Python bindings for Mac, Linux, and Windows
+              </li>
+              <li><strong>Portable form factor:</strong> 1-meter USB-C cable with 8 Dupont connectors</li>
+            </ul>
+            <p>Connect an I2C temperature sensor to your Mac and read from it interactively. Emulate a slave flash
+              memory device. Program microcontrollers. Cable Cat adapts to your workflow.</p>
 
-            <h3 class="h4 fw-bold mt-5 mb-3">Materials & Construction</h3>
-            <p>Built with attention to both form and function, Cable Cat combines durable materials with thoughtful design details that make cable management both effective and enjoyable.</p>
+            <h3 class="h4 fw-bold mt-5 mb-3">Technical Specifications</h3>
+            <p><strong>Hardware:</strong></p>
+            <ul>
+              <li>USB-C host connector with 1m cable</li>
+              <li>8 Dupont connectors for device interfacing</li>
+              <li>3.3V operation (with planned 1.8V and 5V support)</li>
+              <li>Integrated status LEDs in cable housing</li>
+            </ul>
+
+            <p><strong>Protocols:</strong></p>
+            <ul>
+              <li>UART with configurable baud rates, framing, and hardware flow control</li>
+              <li>SPI with master/slave modes and chip select control</li>
+              <li>I2C with master/slave operation at standard speeds</li>
+            </ul>
+
+            <p><strong>Software:</strong></p>
+            <ul>
+              <li>Cross-platform Rust library built on libusb</li>
+              <li>Python bindings for scripting</li>
+              <li>Command-line REPL similar to i2cdetect and bus sniffers</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -115,4 +154,3 @@
 </body>
 
 </html>
-

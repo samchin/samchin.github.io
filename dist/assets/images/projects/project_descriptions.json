@@ -127,10 +127,10 @@
         {
             "id": "cable-cat",
             "name": "Cable Cat",
-            "category": "art",
+            "category": "electronics",
             "year": 2025,
             "image": "images/projects/cable-cat.jpg",
-            "shortDescription": "A playful cable management solution.",
+            "shortDescription": "A versatile multi-protocol cable for hardware development integrating UART, SPI, and I2C protocols.",
             "links": [
                 {
                     "type": "detail",
@@ -241,6 +241,59 @@
                     "label": "Details",
                     "icon": "link",
                     "url": "projects/piano-staircase.html"
+                }
+            ]
+        }
+    ],
+    "talks": [
+        {
+            "id": "everyday-augmentation-workshop",
+            "name": "Everyday Augmentation Workshop (UIST'25)",
+            "date": "2025",
+            "role": "Organizer",
+            "description": "A workshop exploring how augmentation technologies can be seamlessly integrated into everyday life, focusing on practical applications and user-centered design approaches.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "Visit Workshop Site",
+                    "icon": "link",
+                    "url": "https://everyday-augmentation.github.io/"
+                }
+            ]
+        },
+        {
+            "id": "speech-in-noise-workshop-2025",
+            "name": "Speech in Noise Workshop 2025",
+            "date": "2025",
+            "role": "Invited Speaker",
+            "description": "A primer on building wearable vibrotactile devices for improved speech in noise perception",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "View Programme",
+                    "icon": "link",
+                    "url": "https://2025.speech-in-noise.eu/?p=programme"
+                }
+            ]
+        },
+        {
+            "id": "mit-media-lab-smart-living-lab",
+            "name": "MIT Media Lab x Smart Living Lab",
+            "date": "2024",
+            "role": "Organizer",
+            "description": "A MISTI-funded workshop on sensing, interactions, and augmentation bringing together students and researchers from MIT Media Lab, University of Fribourg, and EPFL.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "Workshop Recap",
+                    "icon": "link",
+                    "url": "https://www.media.mit.edu/posts/mit-media-lab-x-smart-living-lab/"
+                },
+                {
+                    "type": "external",
+                    "label": "Event Link",
+                    "icon": "link",
+                    "url": "https://events.human-ist.ch/swisti_2024"
                 }
             ]
         }
