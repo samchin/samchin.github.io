@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sam Chin - Electronics, Perceptual Augmentation, and Ceramics">
+  <meta name="author" content="Sam Chin">
+  <title>Sam Chin</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
+
+  <!-- Custom CSS -->
+  <link href="custom.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">
+        <img src="assets/images/favicon/favicon.svg" alt="Sam Chin" width="32" height="32"
+          class="d-inline-block align-text-top me-2">
+        Sam Chin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#talks">Talks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero/About Section -->
+  <section id="home" class="hero-about-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Side: Photo, Name, Links -->
+        <div class="col-lg-4 text-center mb-5 mb-lg-0">
+          <div class="profile-photo-wrapper">
+            <img src="assets/images/profile-photo.jpg" alt="Sam Chin"
+              class="profile-photo img-fluid rounded-circle shadow">
+          </div>
+          <h1 class="display-4 fw-bold mt-4 mb-2">Sam Chin</h1>
+          <p class="lead text-muted mb-4">Creating at the intersection of electronics, perception, and craft</p>
+
+          <!-- Social Links -->
+          <div class="social-links d-flex justify-content-center gap-3 mb-3">
+            <a href="mailto:your.email@example.com" class="btn btn-outline-dark btn-sm" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope"
+                viewBox="0 0 16 16">
+                <path
+                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+              </svg>
+              Email
+            </a>
+            <a href="https://github.com/samchin" class="btn btn-outline-dark btn-sm" aria-label="GitHub"
+              target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+              </svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/sm-chn/" class="btn btn-outline-dark btn-sm" aria-label="LinkedIn"
+              target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
+                viewBox="0 0 16 16">
+                <path
+                  d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side: Bio -->
+        <div class="col-lg-8">
+          <div class="bio-content">
+            <h2 class="h3 fw-bold mb-4">About</h2>
+            <p class="lead">
+              I'm a researcher and maker exploring how technology can augment human perception and capabilities.
+              My work spans electronics, perceptual augmentation systems, and ceramic art.
+            </p>
+            <p>
+              Currently, I focus on developing assistive technologies that enhance sensory experiences, particularly
+              for individuals with hearing loss. Through projects like HapticHearing, I investigate how haptic feedback
+              can complement or substitute for auditory information, creating more inclusive and accessible interfaces.
+            </p>
+            <p>
+              Beyond research, I enjoy creating interactive electronic art and exploring the intersection of traditional
+              craft (like ceramics) with modern technology. Each project is an opportunity to question how we interact
+              with the world around us and imagine new possibilities.
+            </p>
+
+            <h3 class="h5 fw-bold mt-5 mb-3">Research Interests</h3>
+            <ul class="research-interests">
+              <li>Perceptual augmentation and sensory substitution</li>
+              <li>Haptic interfaces for accessibility</li>
+              <li>Tangible and embodied interaction</li>
+              <li>Creative electronics and interactive art</li>
+              <li>Material exploration in HCI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator text-center mt-5">
+        <a href="#projects" class="text-decoration-none">
+          <div class="scroll-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+              class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+            </svg>
+          </div>
+          <small class="text-muted d-block mt-2">Explore Projects</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Projects</h2>
+
+      <!-- Filter Buttons -->
+      <div class="filter-buttons text-center mb-5">
+        <button class="btn btn-filter active" data-filter="all">All</button>
+        <button class="btn btn-filter" data-filter="electronics">Electronics</button>
+        <button class="btn btn-filter" data-filter="perceptual">Perceptual Augmentation</button>
+        <button class="btn btn-filter" data-filter="art">Art</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="row g-4 projects-grid">
+
+        <!-- 2025 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="art">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/rock-lamp.jpg" class="card-img-top" alt="Rock Lamp">
+            <div class="card-body">
+              <h3 class="card-title h5">Rock Lamp</h3>
+              <p class="card-text">Sculptural lighting piece combining natural forms with integrated illumination.</p>
+              <div class="mt-3 project-links">
+                <!-- No links available for this project -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2024 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/haptichearing.jpg" class="card-img-top" alt="HapticHearing">
+            <div class="card-body">
+              <h3 class="card-title h5">HapticHearing</h3>
+              <p class="card-text">A wearable multi-actuator haptic system that complements residual hearing with
+                personalized tactile feedback for speech perception in hearing loss.</p>
+              <div class="mt-3 project-links">
+                <a href="https://dl.acm.org/doi/10.1145/3663547.3759754" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  ASSETS 2024
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/sound2haptic.jpg" class="card-img-top" alt="Haptic Hearing Toolkit">
+            <div class="card-body">
+              <h3 class="card-title h5">Haptic Hearing Toolkit</h3>
+              <p class="card-text">An open-source toolkit for researchers to build haptic feedback systems for auditory
+                augmentation.</p>
+              <div class="mt-3 project-links">
+                <a href="https://dl.acm.org/doi/10.1145/3746058.3758993" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  UIST 2024
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2023 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/purrfect-pitch.jpg" class="card-img-top" alt="Purrfect Pitch">
+            <div class="card-body">
+              <h3 class="card-title h5">Purrfect Pitch</h3>
+              <p class="card-text">A wearable haptic device and learning interface for musical ear training that helps
+                novice learners identify pitch intervals more accurately through multisensory feedback.</p>
+              <div class="mt-3 project-links">
+                <a href="https://dl.acm.org/doi/10.1145/3745900.3746079" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  Augmented Humans 2025
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/soundspindle.jpg" class="card-img-top" alt="SoundSpindle">
+            <div class="card-body">
+              <h3 class="card-title h5">SoundSpindle</h3>
+              <p class="card-text">A system exploring EEG sonification to improve sleep staging performance for novice
+                practitioners through auditory representation of brainwaves.</p>
+              <div class="mt-3 project-links">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/40934291/" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  PLoS One 2025
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 project-card" data-category="art">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/conductive-ceramics.jpg" class="card-img-top" alt="Conductive Ceramics">
+            <div class="card-body">
+              <h3 class="card-title h5">Conductive Ceramics</h3>
+              <p class="card-text">A method for integrating conductive traces into ceramic objects using silver-based
+                glaze compatible with traditional firing processes.</p>
+              <div class="mt-3 project-links">
+                <a href="https://dl.acm.org/doi/abs/10.1145/3706599.3720267" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  CHI 2025 Extended Abstracts
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2022 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/hfes.jpg" class="card-img-top" alt="Head-Mounted Visual-Haptic Displays">
+            <div class="card-body">
+              <h3 class="card-title h5">Head-Mounted Visual-Haptic Displays</h3>
+              <p class="card-text">Evaluating head-mounted displays for recovery from unusual flight attitudes under
+                normal and visually-degraded conditions.</p>
+              <div class="mt-3 project-links">
+                <a href="https://doi.org/10.1177/10711813241262981" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  HFES 2024
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2020 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/tulip.jpg" class="card-img-top" alt="Tulip Hardware">
+            <div class="card-body">
+              <h3 class="card-title h5">Tulip Edge Device</h3>
+              <p class="card-text">Second generation gateway for Tulip's manufacturing platform, integrating analog,
+                digital, and communications interfaces.</p>
+              <div class="mt-3 project-links">
+                <a href="projects/tulip-hardware.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Project Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2019 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/word-clock.gif" class="card-img-top" alt="Word Clock Gizmo">
+            <div class="card-body">
+              <h3 class="card-title h5">Gizmo Word Clock</h3>
+              <p class="card-text">Interactive demo for Tulip combining smart work instructions, device integrations,
+                IoT connectivity and analytics.</p>
+              <div class="mt-3 project-links">
+                <a href="https://github.com/tulip/gizmo" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                  </svg>
+                  GitHub Repository
+                </a>
+                <span class="link-separator">|</span>
+                <a href="https://tulip.co/blog/manufacturing-apps/word-clock-demo/" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Tulip Blog
+                </a>
+                <span class="link-separator">|</span>
+                <a href="projects/word-clock-gizmo.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Project Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2017 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/laser-audio/image-asset.jpg" class="card-img-top" alt="Laser Audio System">
+            <div class="card-body">
+              <h3 class="card-title h5">Laser Audio System</h3>
+              <p class="card-text">A system to send and control music over a laser, featuring audio transmission and
+                volume control via modulated laser light.</p>
+              <div class="mt-3 project-links">
+                <a href="projects/laser-audio.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Project Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2016 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="art">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/inflated-appetite/Inflated Appetite.jpg" class="card-img-top"
+              alt="Inflated Appetite">
+            <div class="card-body">
+              <h3 class="card-title h5">Inflated Appetite</h3>
+              <p class="card-text">Explorations in food interaction design through inflated foods and flavored air
+                captured in sugar bubbles.</p>
+              <div class="mt-3 project-links">
+                <a href="https://tangible.media.mit.edu/project/inflated-appetite/" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  MIT Media Lab
+                </a>
+                <span class="link-separator">|</span>
+                <a href="projects/inflated-appetite.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Project Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2014 Projects -->
+        <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/piano-staircase.jpg" class="card-img-top"
+              alt="Stairpeggio (Piano Staircase)">
+            <div class="card-body">
+              <h3 class="card-title h5">Stairpeggio (Piano Staircase)</h3>
+              <p class="card-text">An electro-mechanical piano staircase using real glockenspiel keys to produce sound
+                when users step on each stair.</p>
+              <div class="mt-3 project-links">
+                <a href="https://youtu.be/oa6rItm0OgQ" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                  </svg>
+                  YouTube Demo
+                </a>
+                <span class="link-separator">|</span>
+                <a href="projects/piano-staircase.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Project Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Talks & Workshops Section -->
+  <section id="talks" class="talks-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Talks & Workshops</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h3 class="card-title h5 mb-0">Everyday Augmentation Workshop</h3>
+                <span class="badge bg-primary">Organizer</span>
+              </div>
+              <p class="text-muted small mb-3">UIST 2024</p>
+              <p class="card-text">
+                A workshop exploring how augmentation technologies can be seamlessly integrated into everyday life,
+                focusing on practical applications and user-centered design approaches.
+              </p>
+              <a href="https://everyday-augmentation.github.io/" class="btn btn-outline-primary btn-sm" target="_blank">
+                Visit Workshop Site
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                  class="bi bi-box-arrow-up-right ms-1" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                  <path fill-rule="evenodd"
+                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h3 class="card-title h5 mb-0">Speech in Noise Workshop 2025</h3>
+                <span class="badge bg-success">Invited Speaker</span>
+              </div>
+              <p class="text-muted small mb-3">January 2025</p>
+              <p class="card-text">
+                Presenting research on haptic augmentation for speech perception in noisy environments,
+                with implications for hearing accessibility and assistive technology design.
+              </p>
+              <a href="https://2025.speech-in-noise.eu/?p=programme" class="btn btn-outline-primary btn-sm"
+                target="_blank">
+                View Programme
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                  class="bi bi-box-arrow-up-right ms-1" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                  <path fill-rule="evenodd"
+                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container text-center">
+      <h2 class="section-title mb-4">Get in Touch</h2>
+      <p class="lead mb-4">Interested in collaboration or want to learn more about my work?</p>
+
+      <div class="contact-links d-flex justify-content-center gap-3 mb-4">
+        <a href="mailto:your.email@example.com" class="btn btn-dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope me-2"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+          </svg>
+          Email Me
+        </a>
+        <a href="https://github.com/samchin" class="btn btn-outline-dark" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github me-2"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/sm-chn/" class="btn btn-outline-dark" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin me-2"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="mb-0 text-muted small">&copy; 2025 Sam Chin. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#home" class="text-muted text-decoration-none small">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS for filtering and smooth scroll -->
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const navbarHeight = document.querySelector('.navbar').offsetHeight;
+          const targetPosition = target.offsetTop - navbarHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+
+          // Close mobile menu if open
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+          }
+        }
+      });
+    });
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Project filtering
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        // Filter projects
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+            // Fade in animation
+            card.style.animation = 'fadeIn 0.5s';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add fade-in animation on scroll (optional)
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all project cards
+    projectCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
+</body>
+
+</html>

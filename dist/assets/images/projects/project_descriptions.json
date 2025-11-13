@@ -1,0 +1,222 @@
+{
+    "projects": [
+        {
+            "id": "soundspindle",
+            "name": "SoundSpindle",
+            "category": "perceptual-augmentation",
+            "year": 2025,
+            "image": "images/projects/soundspindle.jpg",
+            "shortDescription": "A system exploring EEG sonification to improve sleep staging performance for novice practitioners through auditory representation of brainwaves.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "PLoS One 2025",
+                    "icon": "paper",
+                    "url": "https://pubmed.ncbi.nlm.nih.gov/40934291/"
+                }
+            ]
+        },
+        {
+            "id": "haptic-hearing",
+            "name": "HapticHearing",
+            "category": "perceptual-augmentation",
+            "year": 2024,
+            "image": "images/projects/haptic-hearing.jpg",
+            "shortDescription": "A wearable multi-actuator haptic system that complements residual hearing with personalized tactile feedback for speech perception in hearing loss.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "ASSETS 2024",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3663547.3759754"
+                }
+            ]
+        },
+        {
+            "id": "haptic-hearing-toolkit",
+            "name": "Haptic Hearing Toolkit",
+            "category": "perceptual-augmentation",
+            "year": 2024,
+            "image": "images/projects/haptic-hearing-toolkit.jpg",
+            "shortDescription": "An open-source toolkit for researchers to build haptic feedback systems for auditory augmentation.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "UIST 2024",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3746058.3758993"
+                }
+            ]
+        },
+        {
+            "id": "hfes-visual-haptic",
+            "name": "Head-Mounted Visual-Haptic Displays",
+            "category": "perceptual-augmentation",
+            "year": 2022,
+            "image": "images/projects/hfes-visual-haptic.jpg",
+            "shortDescription": "Evaluating head-mounted displays for recovery from unusual flight attitudes under normal and visually-degraded conditions.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "HFES 2024",
+                    "icon": "paper",
+                    "url": "https://doi.org/10.1177/10711813241262981"
+                }
+            ]
+        },
+        {
+            "id": "purrfect-pitch",
+            "name": "Purrfect Pitch",
+            "category": "perceptual-augmentation",
+            "year": 2023,
+            "image": "images/projects/purrfect-pitch.jpg",
+            "shortDescription": "A wearable haptic device and learning interface for musical ear training that helps novice learners identify pitch intervals more accurately through multisensory feedback.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "Augmented Humans 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3745900.3746079"
+                }
+            ]
+        },
+        {
+            "id": "conductive-ceramics",
+            "name": "Conductive Ceramics",
+            "category": "art",
+            "year": 2023,
+            "image": "images/projects/conductive-ceramics.jpg",
+            "shortDescription": "A method for integrating conductive traces into ceramic objects using silver-based glaze compatible with traditional firing processes.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "CHI 2025 Extended Abstracts",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/abs/10.1145/3706599.3720267"
+                }
+            ]
+        },
+        {
+            "id": "rock-lamp",
+            "name": "Rock Lamp",
+            "category": "art",
+            "year": 2025,
+            "image": "images/projects/rock-lamp.jpg",
+            "shortDescription": "[Add description for Rock Lamp]",
+            "links": []
+        },
+        {
+            "id": "inflated-appetite",
+            "name": "Inflated Appetite",
+            "category": "art",
+            "year": 2016,
+            "image": "images/projects/inflated-appetite.jpg",
+            "shortDescription": "Explorations in food interaction design through inflated foods and flavored air captured in sugar bubbles.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "MIT Media Lab",
+                    "icon": "link",
+                    "url": "https://tangible.media.mit.edu/project/inflated-appetite/"
+                },
+                {
+                    "type": "detail",
+                    "label": "Project Details",
+                    "icon": "link",
+                    "url": "projects/inflated-appetite.html"
+                }
+            ]
+        },
+        {
+            "id": "tulip-hardware",
+            "name": "Tulip Edge Device",
+            "category": "electronics",
+            "year": 2020,
+            "image": "images/projects/tulip-hardware.jpg",
+            "shortDescription": "Second generation gateway for Tulip's manufacturing platform, integrating analog, digital, and communications interfaces.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Project Details",
+                    "icon": "link",
+                    "url": "projects/tulip-hardware.html"
+                }
+            ]
+        },
+        {
+            "id": "word-clock-gizmo",
+            "name": "Gizmo Word Clock",
+            "category": "electronics",
+            "year": 2019,
+            "image": "images/projects/word-clock-gizmo.jpg",
+            "shortDescription": "Interactive demo for Tulip combining smart work instructions, device integrations, IoT connectivity and analytics.",
+            "links": [
+                {
+                    "type": "github",
+                    "label": "GitHub Repository",
+                    "icon": "github",
+                    "url": "https://github.com/tulip/gizmo"
+                },
+                {
+                    "type": "blog",
+                    "label": "Tulip Blog",
+                    "icon": "link",
+                    "url": "https://tulip.co/blog/manufacturing-apps/word-clock-demo/"
+                },
+                {
+                    "type": "detail",
+                    "label": "Project Details",
+                    "icon": "link",
+                    "url": "projects/word-clock-gizmo.html"
+                }
+            ]
+        },
+        {
+            "id": "how-to-make",
+            "name": "How to Make",
+            "category": "electronics",
+            "year": 2018,
+            "image": "images/projects/how-to-make.jpg",
+            "shortDescription": "[Add description for How to Make]",
+            "links": []
+        },
+        {
+            "id": "laser-audio",
+            "name": "Laser Audio System",
+            "category": "electronics",
+            "year": 2017,
+            "image": "images/projects/laser-audio.jpg",
+            "shortDescription": "A system to send and control music over a laser, featuring audio transmission and volume control via modulated laser light.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Project Details",
+                    "icon": "link",
+                    "url": "projects/laser-audio.html"
+                }
+            ]
+        },
+        {
+            "id": "piano-staircase",
+            "name": "Stairpeggio (Piano Staircase)",
+            "category": "electronics",
+            "year": 2014,
+            "image": "images/projects/piano-staircase.jpg",
+            "shortDescription": "An electro-mechanical piano staircase using real glockenspiel keys to produce sound when users step on each stair.",
+            "links": [
+                {
+                    "type": "video",
+                    "label": "YouTube Demo",
+                    "icon": "youtube",
+                    "url": "https://youtu.be/oa6rItm0OgQ"
+                },
+                {
+                    "type": "detail",
+                    "label": "Project Details",
+                    "icon": "link",
+                    "url": "projects/piano-staircase.html"
+                }
+            ]
+        }
+    ]
+}

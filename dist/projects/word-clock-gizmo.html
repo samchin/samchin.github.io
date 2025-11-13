@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GIZMO Word Clock for Tulip Interfaces - An interactive demo combining smart work instructions, device integrations, IoT connectivity and analytics">
+  <meta name="author" content="Sam Chin">
+  <title>GIZMO Word Clock - Sam Chin</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png" />
+
+  <!-- Custom CSS -->
+  <link href="../custom.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="../index.html">
+        <img src="../assets/images/favicon/favicon.svg" alt="Sam Chin" width="32" height="32" class="d-inline-block align-text-top me-2">
+        Sam Chin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html#talks">Talks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Content -->
+  <main style="padding-top: 80px;">
+    <article class="container py-5">
+      <!-- Back Link -->
+      <div class="mb-4">
+        <a href="../index.html#projects" class="text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          Back to Projects
+        </a>
+      </div>
+
+      <!-- Project Header -->
+      <header class="mb-5">
+        <h1 class="display-4 fw-bold mb-3">GIZMO WORD CLOCK for Tulip Interfaces</h1>
+        <p class="lead text-muted">An interactive demo combining smart work instructions, device integrations, IoT connectivity and analytics | 2019</p>
+      </header>
+
+      <!-- Hero Images -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <img src="../assets/images/projects/word-clock-gizmo/gizmo_blue_pink.png"
+               alt="GIZMO Word Clock - Angie Lin for Tulip Interfaces"
+               class="img-fluid rounded shadow">
+          <p class="text-center text-muted mt-2"><em>Angie Lin for Tulip Interfaces</em></p>
+        </div>
+        <div class="col-md-6">
+          <img src="../assets/images/projects/word-clock-gizmo/image_from_ios.jpg"
+               alt="GIZMO Word Clock assembly - Angie Lin for Tulip Interfaces"
+               class="img-fluid rounded shadow">
+          <p class="text-center text-muted mt-2"><em>Angie Lin for Tulip Interfaces</em></p>
+        </div>
+      </div>
+
+      <!-- Project Description -->
+      <div class="row mb-5">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="project-description">
+            <div class="text-center mb-5">
+              <img src="../assets/images/projects/word-clock-gizmo/output3.gif"
+                   alt="GIZMO Word Clock animation"
+                   class="img-fluid rounded shadow"
+                   style="max-width: 500px;">
+            </div>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">WHy?</h3>
+            <p>I work as a hardware engineer at Tulip - a SaaS Manufacturing Platform. Often, it is difficult to explain what SaaS Manufacturing Platform is. We created this word clock as a way to interactively demonstrate multiple different facets of Tulip - smart work instructions, device integrations, IoT connectivity and analytics in one demo.</p>
+
+            <p>A potential customer runs through this demo and assembles a word clock as a factory operator and gets to see Tulip product and gets to keep the final word clock as a gift.  This was an exercise in engineering, design, and manufacturing- we wanted an aesthetic object that cost less than $10 for everything at 1k quantities. This meant - 10$ for all electrical components, custom mechanical parts, a power supply and a box. I</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">HOW?</h3>
+            <p>I first tried to define the fundamental elements of a Word Clock.</p>
+
+            <p><strong>The Fundamental Parts of a Word Clock:</strong></p>
+            <p>1. A face plate with letter cut-outs for each five-minute interval of the day</p>
+            <p>2. A diffuser for the LEDs so that the light has an even distribution. Without a diffuser, people would likely be able to see the LEDs through each letter.</p>
+            <p>3. A 3D honeycomb grid to prevent light leakage from each of the LEDs. Without this, if you lit up a single LED, the light would bleed into the other letters.</p>
+            <p>4. Electronics - 64 LEDs at least for an 8x8 clock and a microcontroller</p>
+            <p>5. An accurate way to keep time even when the microcontroller is not powered</p>
+            <p>6. The code that will make the microcontroller function as a word clock.</p>
+            <p>7. A case or alternative way to hold the face plate, diffuser, honeycomb and electronics together.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Mechanical Design:</h3>
+            <p>Most word clocks use a laser cut piece of metal or wood as a face plate to block the light. In searching through word clock designs, I came across some design that used a bank printed circuit board (PCB) as both the face-plate and the diffuser of light. The silk-screen and copper had been added in the negative of the letters and with a thin enough PCB, the light was able to shine through as a diffuser.</p>
+
+            <p>This solved three of our problems:  In designing a face plate, we got two of the other components for free:</p>
+            <p>1, We had a face plate that we could make with the traditional PCB fabrication process. We did not need to use laser cutting or injection moulding to create the face plates.</p>
+            <p>2. We didn't need to add a diffuser since the PCB acted as a diffuser and a face plate</p>
+            <p>3. We didn't need to add a case because we could mechanically attach the back plate with header pins to the face plate.</p>
+            <p>With most of the mechanical resolved - we needed one more thing: the honeycomb. I had Justin help create a quick design in Onshape which we printed on the Form2. We found that printing directly onto the build plate created the least amount of distortion. We were iteratively able to decide on the tolerances and create a final design to send to Protolabs for injection moulding.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Electronics & Firmware:</h3>
+            <p>For the electrical design and firmware - I forked a different design that used an Atmega328 (the same chip as an Arduino Uno) and a pre-made LED array. We were able use most of the forked code (with some minor updates to refresh-rate and letter placement). I updated the schematic to an ISP header and 64 LEDs and 8 resistors.  I decided to continue to do the layout in Eagle, instead of Altium, so the design would be more open-source friendly.</p>
+
+            <p>I added an additional feature: a Real Time Clock (RTC) and battery module that would keep the time even when the device was not powered. Often when your microwave or stove loses electrical power, the clock will be reset. This is because it doesn't have an RTC with a battery. These little modules came with a battery and solved a bunch of design problems with respect to batteries. We program these clocks to the current time using Tulip and a serial protocol (i2c) that we connect directly to our Gateway.</p>
+
+            <p>Since we had decided to forgo a case, I decided that we should not put any electrical components on the back.This was partly a design decision for safety (we didn't want people accidentally touching the back and shorting two things) and partly and aesthetic choice. This meant everything had to fit on the board - including the ATMega. With the tolerances we chose, the ATMega328P was able to fit perfectly into a single cell of the honeycomb. I was able to place each LED in the center of the remaining 63 cells of the honey comb.</p>
+
+            <p>If you want a deeper look into the electronics and firmware, take a look at the repo which contains programming instructions and the design files: <strong><a href="https://github.com/tulip/gizmo" target="_blank">https://github.com/tulip/gizmo</a></strong></p>
+
+            <p>With all of the seven requisite parts working, we were able to finalize the design for the complete word clock.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Images -->
+      <div class="row g-4 mb-5">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="mb-4">
+            <img src="../assets/images/projects/word-clock-gizmo/schematic_rtc.png"
+                 alt="Schematic of microcontroller and the RTC"
+                 class="img-fluid rounded shadow">
+            <p class="text-center text-muted mt-2">Schematic of microcontroller and the RTC.</p>
+          </div>
+
+          <div class="mb-4">
+            <img src="../assets/images/projects/word-clock-gizmo/schematic_leds.png"
+                 alt="Schematic of the multiplexed LEDs and current limiting resistors"
+                 class="img-fluid rounded shadow">
+            <p class="text-center text-muted mt-2">Schematic of the multiplexed LEDs and current limiting resistors</p>
+          </div>
+
+          <div class="mb-4">
+            <img src="../assets/images/projects/word-clock-gizmo/mechanical_elements.png"
+                 alt="Mechanical elements: Header and the power connector"
+                 class="img-fluid rounded shadow">
+            <p class="text-center text-muted mt-2">Mechanical elements: Header and the power connector</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mass Production Section -->
+      <div class="row mb-5">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="project-description">
+            <h3 class="h4 fw-bold mt-5 mb-3">Mass Production</h3>
+            <p>In school or as an engineer this is where the process ends - you've made the design and it looks good. For me, finalizing the design was only half of the process - we still needed to productize. This meant finding someone to make sourcing enough components for 500 Word Clocks - this meant 500 ATMega328s 31500 LEDs, and 4000 resistors as well as many other components.</p>
+
+            <p>Since we work with Contract Manufacturers for our main hardware products (Light Kit and Gateway), we were able to use these relationships during the prototyping and mass production phase. For more complicated mechanical projects, this is where productizing hardware fails - finding a manufacturer to create quality parts is difficult. Luckily because of our established relationships and the maturity of electronics assembly in China, we were able to navigate mass production with relative ease.  Sourcing the components was harder since we were very price sensitive.</p>
+
+            <p>We didn't want to use our typical process and have our contract manufacturer to purchase parts on our behalf. We also didn't want to use American distributors like Digikey or Mouser because they are high-priced and require import into China  Since the BOM was small and most of the components were commodity, I did the sourcing myself. We leveraged a Chinese distributor, LCSC, for most of our parts. The parts are dirt cheap and if you pay for the fast shipping, they arrive in about the same time as Digikey or Mouser. For our key components: the LEDs and the microcontroller we stuck with American distributors.</p>
+
+            <p>A version of this ran on the <a href="https://tulip.co/blog/manufacturing-apps/word-clock-demo/" target="_blank">Tulip blog</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="https://github.com/tulip/gizmo" class="btn btn-primary" target="_blank">
+              View on GitHub
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right ms-1" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+              </svg>
+            </a>
+            <a href="https://tulip.co/blog/manufacturing-apps/word-clock-demo/" class="btn btn-outline-primary" target="_blank">
+              Tulip Blog Post
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right ms-1" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="text-muted mb-0">&copy; 2024 Sam Chin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,397 @@
+// scss/custom.scss
+
+// 1. Include functions first
+@import "bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$body-color: #2c3e50;
+$body-bg: #ffffff;
+$primary: #2c3e50;
+$secondary: #95a5a6;
+$link-color: #3498db;
+$link-hover-color: #2980b9;
+
+// Spacing
+$spacer: 1rem;
+
+// 3. Include required Bootstrap stylesheets
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/utilities";
+
+// 4. Include the components you need
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/helpers";
+
+// 5. Include utilities API last
+@import "bootstrap/scss/utilities/api";
+
+// 6. Custom styles
+// =================
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-sans-serif;
+  color: $body-color;
+  line-height: 1.7;
+}
+
+// Navbar
+.navbar {
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+
+  .navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: $body-color;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+
+    &:hover, &.active {
+      color: $link-color;
+    }
+  }
+}
+
+// Section spacing
+section {
+  padding: 5rem 0;
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+// Hero/About Section
+.hero-about-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.profile-photo-wrapper {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.profile-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.social-links {
+  .btn {
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+.bio-content {
+  p {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: $body-color;
+  }
+}
+
+.research-interests {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+      content: "\2192";
+      position: absolute;
+      left: 0;
+      color: $link-color;
+      font-weight: bold;
+    }
+  }
+}
+
+// Scroll indicator
+.scroll-indicator {
+  .scroll-arrow {
+    animation: bounce 2s infinite;
+    display: inline-block;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+// Projects Section
+.projects-section {
+  background-color: #ffffff;
+}
+
+.filter-buttons {
+  .btn-filter {
+    margin: 0.25rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    background: #ffffff;
+    color: $body-color;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $link-color;
+      color: $link-color;
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: $primary;
+      color: #ffffff;
+      border-color: $primary;
+    }
+  }
+}
+
+.project-card {
+  .card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .card-img-top {
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: $primary;
+    }
+
+    .card-text {
+      color: #6c757d;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Project links with icons (inspired by plopes.org)
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: $link-color;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0;
+
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: underline;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+  }
+
+  .link-separator {
+    color: #dee2e6;
+    font-weight: 300;
+  }
+}
+
+// Fade in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Talks Section
+.talks-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+
+  .card {
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .badge {
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}
+
+// Contact Section
+.contact-section {
+  background-color: #ffffff;
+  padding: 4rem 0;
+
+  .contact-links {
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+
+  a {
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $link-color !important;
+    }
+  }
+}
+
+// Buttons
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &-outline-primary {
+    &:hover {
+      background-color: $link-color;
+      border-color: $link-color;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 991px) {
+  .hero-about-section {
+    padding-top: 5rem;
+  }
+
+  .profile-photo-wrapper {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  h1.display-4 {
+    font-size: 2rem;
+  }
+
+  .filter-buttons {
+    .btn-filter {
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+}
