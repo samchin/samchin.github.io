@@ -5,7 +5,7 @@
             "name": "Rock Lamp",
             "category": "art",
             "year": 2025,
-            "image": "images/projects/cards/rock-lamp.jpg",
+            "image": "images/projects/cards/rocklamp.gif",
             "shortDescription": "Sculptural lighting piece combining natural forms with integrated illumination.",
             "links": [
                 {
@@ -49,7 +49,7 @@
             "name": "Cable Cat",
             "category": "electronics",
             "year": 2025,
-            "image": "images/projects/cards/cable-cat.jpg",
+            "image": "images/projects/cards/cablecat.png",
             "shortDescription": "A versatile multi-protocol cable for hardware development integrating UART, SPI, and I2C protocols.",
             "links": [
                 {
@@ -166,11 +166,12 @@
         },
         {
             "id": "living-knitwork-electronics",
-            "name": "Living Knitwork Electronics",
+            "name": "Living Knitwork Pavillion Electronics",
             "category": "electronics",
             "year": 2023,
             "image": "images/projects/cards/living-knitwork-electronics.jpg",
             "shortDescription": "Interactive textile architecture with capacitive sensing creating responsive lighting and audio experiences.",
+            "hidden": true,
             "links": [
                 {
                     "type": "detail",
