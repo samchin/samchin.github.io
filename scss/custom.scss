@@ -236,6 +236,8 @@ section {
 
     .card-body {
       padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
     }
 
     .card-title {
@@ -248,6 +250,7 @@ section {
       color: #6c757d;
       font-size: 0.95rem;
       line-height: 1.6;
+      flex-grow: 1;
     }
   }
 }
@@ -258,6 +261,7 @@ section {
   flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
+  margin-top: auto;
 
   a {
     display: inline-flex;

@@ -10,9 +10,15 @@
             "links": [
                 {
                     "type": "paper",
-                    "label": "PLoS One 2025",
+                    "label": "PLoS 2025",
                     "icon": "paper",
                     "url": "https://pubmed.ncbi.nlm.nih.gov/40934291/"
+                },
+                {
+                    "type": "data",
+                    "label": "Data",
+                    "icon": "database",
+                    "url": "https://datadryad.org/dataset/doi:10.5061/dryad.3bk3j9kz0"
                 }
             ]
         },
@@ -45,12 +51,18 @@
                     "label": "UIST 2024",
                     "icon": "paper",
                     "url": "https://dl.acm.org/doi/10.1145/3746058.3758993"
+                },
+                {
+                    "type": "github",
+                    "label": "GitHub",
+                    "icon": "github",
+                    "url": "https://github.com/samchin/sound2haptic"
                 }
             ]
         },
         {
             "id": "hfes-visual-haptic",
-            "name": "Head-Mounted Visual-Haptic Displays",
+            "name": "Haptics for Flight Attitude Recovery",
             "category": "perceptual-augmentation",
             "year": 2022,
             "image": "images/projects/hfes-visual-haptic.jpg",
@@ -90,7 +102,7 @@
             "links": [
                 {
                     "type": "paper",
-                    "label": "CHI 2025 Extended Abstracts",
+                    "label": "CHI 2025",
                     "icon": "paper",
                     "url": "https://dl.acm.org/doi/abs/10.1145/3706599.3720267"
                 }
@@ -102,8 +114,31 @@
             "category": "art",
             "year": 2025,
             "image": "images/projects/rock-lamp.jpg",
-            "shortDescription": "[Add description for Rock Lamp]",
-            "links": []
+            "shortDescription": "Sculptural lighting piece combining natural forms with integrated illumination.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/rock-lamp.html"
+                }
+            ]
+        },
+        {
+            "id": "cable-cat",
+            "name": "Cable Cat",
+            "category": "art",
+            "year": 2025,
+            "image": "images/projects/cable-cat.jpg",
+            "shortDescription": "A playful cable management solution.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/cable-cat.html"
+                }
+            ]
         },
         {
             "id": "inflated-appetite",
@@ -115,13 +150,13 @@
             "links": [
                 {
                     "type": "external",
-                    "label": "MIT Media Lab",
+                    "label": "Course Overview",
                     "icon": "link",
                     "url": "https://tangible.media.mit.edu/project/inflated-appetite/"
                 },
                 {
                     "type": "detail",
-                    "label": "Project Details",
+                    "label": "Details",
                     "icon": "link",
                     "url": "projects/inflated-appetite.html"
                 }
@@ -137,7 +172,7 @@
             "links": [
                 {
                     "type": "detail",
-                    "label": "Project Details",
+                    "label": "Details",
                     "icon": "link",
                     "url": "projects/tulip-hardware.html"
                 }
@@ -165,20 +200,11 @@
                 },
                 {
                     "type": "detail",
-                    "label": "Project Details",
+                    "label": "Details",
                     "icon": "link",
                     "url": "projects/word-clock-gizmo.html"
                 }
             ]
-        },
-        {
-            "id": "how-to-make",
-            "name": "How to Make",
-            "category": "electronics",
-            "year": 2018,
-            "image": "images/projects/how-to-make.jpg",
-            "shortDescription": "[Add description for How to Make]",
-            "links": []
         },
         {
             "id": "laser-audio",
@@ -190,7 +216,7 @@
             "links": [
                 {
                     "type": "detail",
-                    "label": "Project Details",
+                    "label": "Details",
                     "icon": "link",
                     "url": "projects/laser-audio.html"
                 }
@@ -212,7 +238,7 @@
                 },
                 {
                     "type": "detail",
-                    "label": "Project Details",
+                    "label": "Details",
                     "icon": "link",
                     "url": "projects/piano-staircase.html"
                 }
