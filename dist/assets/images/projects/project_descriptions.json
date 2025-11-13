@@ -1,11 +1,191 @@
 {
     "projects": [
         {
+            "id": "rock-lamp",
+            "name": "Rock Lamp",
+            "category": "art",
+            "year": 2025,
+            "image": "images/projects/cards/rock-lamp.jpg",
+            "shortDescription": "Sculptural lighting piece combining natural forms with integrated illumination.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/rock-lamp.html"
+                }
+            ]
+        },
+        {
+            "id": "swarm-teleoperation",
+            "name": "Multisensory Swarm Teleoperation",
+            "category": "perceptual-augmentation",
+            "year": 2025,
+            "image": "images/projects/cards/SwarME Teaser.png",
+            "shortDescription": "A haptic jacket and spatial audio system for teleoperating aerial drone swarms, translating swarm state into intuitive tactile and auditory feedback.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "Forthcoming 2026",
+                    "icon": "paper",
+                    "url": ""
+                },
+                {
+                    "type": "external",
+                    "label": "PDF",
+                    "icon": "link",
+                    "url": "projects/swarm-teleoperation/HRI2026 SwarME.pdf"
+                },
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/swarm-teleoperation.html"
+                }
+            ]
+        },
+        {
+            "id": "cable-cat",
+            "name": "Cable Cat",
+            "category": "electronics",
+            "year": 2025,
+            "image": "images/projects/cards/cable-cat.jpg",
+            "shortDescription": "A versatile multi-protocol cable for hardware development integrating UART, SPI, and I2C protocols.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/cable-cat.html"
+                }
+            ]
+        },
+        {
+            "id": "haptic-hearing",
+            "name": "HapticHearing",
+            "category": "perceptual-augmentation",
+            "year": 2024,
+            "image": "images/projects/cards/haptichearing.png",
+            "shortDescription": "A wearable multi-actuator haptic system that complements residual hearing with personalized tactile feedback for speech perception in hearing loss.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "ASSETS 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3663547.3759754"
+                },
+                {
+                    "type": "external",
+                    "label": "Poster",
+                    "icon": "link",
+                    "url": "projects/haptic-hearing/poster.pdf",
+                    "hidden": true
+                }
+            ]
+        },
+        {
+            "id": "haptic-hearing-toolkit",
+            "name": "Haptic Hearing Toolkit",
+            "category": "perceptual-augmentation",
+            "year": 2024,
+            "image": "images/projects/cards/toolkit.png",
+            "shortDescription": "An open-source toolkit for researchers to build haptic feedback systems for auditory augmentation.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "UIST 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3746058.3758993"
+                },
+                {
+                    "type": "github",
+                    "label": "GitHub",
+                    "icon": "github",
+                    "url": "https://github.com/samchin/sound2haptic"
+                },
+                {
+                    "type": "external",
+                    "label": "Poster",
+                    "icon": "link",
+                    "url": "projects/haptic-hearing-toolkit/poster.pdf",
+                    "hidden": true
+                }
+            ]
+        },
+        {
+            "id": "purrfect-pitch",
+            "name": "Purrfect Pitch",
+            "category": "perceptual-augmentation",
+            "year": 2023,
+            "image": "images/projects/cards/purrfect-pitch.jpg",
+            "shortDescription": "A wearable haptic device and learning interface for musical ear training that helps novice learners identify pitch intervals more accurately through multisensory feedback.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "Augmented Humans 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3745900.3746079"
+                },
+                {
+                    "type": "external",
+                    "label": "More Info",
+                    "hidden": true,
+                    "icon": "link",
+                    "url": "https://www.media.mit.edu/projects/purrfectpitch/overview/"
+                }
+            ]
+        },
+        {
+            "id": "conductive-ceramics",
+            "name": "Conductive Ceramics",
+            "category": "art",
+            "year": 2023,
+            "image": "images/projects/cards/conductive-ceramics.png",
+            "shortDescription": "A method for integrating conductive traces into ceramic objects using silver-based glaze compatible with traditional firing processes.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/conductive-ceramics.html"
+                },
+                {
+                    "type": "paper",
+                    "label": "CHI 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/abs/10.1145/3706599.3720267"
+                },
+                {
+                    "type": "external",
+                    "label": "Poster",
+                    "icon": "link",
+                    "url": "projects/conductive-ceramics/poster.pdf",
+                    "hidden": true
+                }
+            ]
+        },
+        {
+            "id": "living-knitwork-electronics",
+            "name": "Living Knitwork Electronics",
+            "category": "electronics",
+            "year": 2023,
+            "image": "images/projects/cards/living-knitwork-electronics.jpg",
+            "shortDescription": "Interactive textile architecture with capacitive sensing creating responsive lighting and audio experiences.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/living-knitwork-electronics.html"
+                }
+            ]
+        },
+        {
             "id": "soundspindle",
             "name": "SoundSpindle",
             "category": "perceptual-augmentation",
-            "year": 2025,
-            "image": "images/projects/soundspindle.jpg",
+            "year": 2023,
+            "image": "images/projects/cards/soundspindle.jpg",
             "shortDescription": "A system exploring EEG sonification to improve sleep staging performance for novice practitioners through auditory representation of brainwaves.",
             "links": [
                 {
@@ -23,49 +203,11 @@
             ]
         },
         {
-            "id": "haptic-hearing",
-            "name": "HapticHearing",
-            "category": "perceptual-augmentation",
-            "year": 2024,
-            "image": "images/projects/haptic-hearing.jpg",
-            "shortDescription": "A wearable multi-actuator haptic system that complements residual hearing with personalized tactile feedback for speech perception in hearing loss.",
-            "links": [
-                {
-                    "type": "paper",
-                    "label": "ASSETS 2024",
-                    "icon": "paper",
-                    "url": "https://dl.acm.org/doi/10.1145/3663547.3759754"
-                }
-            ]
-        },
-        {
-            "id": "haptic-hearing-toolkit",
-            "name": "Haptic Hearing Toolkit",
-            "category": "perceptual-augmentation",
-            "year": 2024,
-            "image": "images/projects/haptic-hearing-toolkit.jpg",
-            "shortDescription": "An open-source toolkit for researchers to build haptic feedback systems for auditory augmentation.",
-            "links": [
-                {
-                    "type": "paper",
-                    "label": "UIST 2024",
-                    "icon": "paper",
-                    "url": "https://dl.acm.org/doi/10.1145/3746058.3758993"
-                },
-                {
-                    "type": "github",
-                    "label": "GitHub",
-                    "icon": "github",
-                    "url": "https://github.com/samchin/sound2haptic"
-                }
-            ]
-        },
-        {
             "id": "hfes-visual-haptic",
             "name": "Haptics for Flight Attitude Recovery",
             "category": "perceptual-augmentation",
             "year": 2022,
-            "image": "images/projects/hfes-visual-haptic.jpg",
+            "image": "images/projects/cards/hfes-visual-haptic.png",
             "shortDescription": "Evaluating head-mounted displays for recovery from unusual flight attitudes under normal and visually-degraded conditions.",
             "links": [
                 {
@@ -73,92 +215,13 @@
                     "label": "HFES 2024",
                     "icon": "paper",
                     "url": "https://doi.org/10.1177/10711813241262981"
-                }
-            ]
-        },
-        {
-            "id": "purrfect-pitch",
-            "name": "Purrfect Pitch",
-            "category": "perceptual-augmentation",
-            "year": 2023,
-            "image": "images/projects/purrfect-pitch.jpg",
-            "shortDescription": "A wearable haptic device and learning interface for musical ear training that helps novice learners identify pitch intervals more accurately through multisensory feedback.",
-            "links": [
-                {
-                    "type": "paper",
-                    "label": "Augmented Humans 2025",
-                    "icon": "paper",
-                    "url": "https://dl.acm.org/doi/10.1145/3745900.3746079"
-                }
-            ]
-        },
-        {
-            "id": "conductive-ceramics",
-            "name": "Conductive Ceramics",
-            "category": "art",
-            "year": 2023,
-            "image": "images/projects/conductive-ceramics.jpg",
-            "shortDescription": "A method for integrating conductive traces into ceramic objects using silver-based glaze compatible with traditional firing processes.",
-            "links": [
-                {
-                    "type": "paper",
-                    "label": "CHI 2025",
-                    "icon": "paper",
-                    "url": "https://dl.acm.org/doi/abs/10.1145/3706599.3720267"
-                }
-            ]
-        },
-        {
-            "id": "rock-lamp",
-            "name": "Rock Lamp",
-            "category": "art",
-            "year": 2025,
-            "image": "images/projects/rock-lamp.jpg",
-            "shortDescription": "Sculptural lighting piece combining natural forms with integrated illumination.",
-            "links": [
-                {
-                    "type": "detail",
-                    "label": "Details",
-                    "icon": "link",
-                    "url": "projects/rock-lamp.html"
-                }
-            ]
-        },
-        {
-            "id": "cable-cat",
-            "name": "Cable Cat",
-            "category": "electronics",
-            "year": 2025,
-            "image": "images/projects/cable-cat.jpg",
-            "shortDescription": "A versatile multi-protocol cable for hardware development integrating UART, SPI, and I2C protocols.",
-            "links": [
-                {
-                    "type": "detail",
-                    "label": "Details",
-                    "icon": "link",
-                    "url": "projects/cable-cat.html"
-                }
-            ]
-        },
-        {
-            "id": "inflated-appetite",
-            "name": "Inflated Appetite",
-            "category": "art",
-            "year": 2016,
-            "image": "images/projects/inflated-appetite.jpg",
-            "shortDescription": "Explorations in food interaction design through inflated foods and flavored air captured in sugar bubbles.",
-            "links": [
-                {
-                    "type": "external",
-                    "label": "Course Overview",
-                    "icon": "link",
-                    "url": "https://tangible.media.mit.edu/project/inflated-appetite/"
                 },
                 {
-                    "type": "detail",
-                    "label": "Details",
+                    "type": "external",
+                    "label": "Poster",
                     "icon": "link",
-                    "url": "projects/inflated-appetite.html"
+                    "url": "projects/hfes-visual-haptic/poster.pdf",
+                    "hidden": true
                 }
             ]
         },
@@ -167,7 +230,7 @@
             "name": "Tulip Edge Device",
             "category": "electronics",
             "year": 2020,
-            "image": "images/projects/tulip-hardware.jpg",
+            "image": "images/projects/cards/tulip.webp",
             "shortDescription": "Second generation gateway for Tulip's manufacturing platform, integrating analog, digital, and communications interfaces.",
             "links": [
                 {
@@ -183,7 +246,7 @@
             "name": "Gizmo Word Clock",
             "category": "electronics",
             "year": 2019,
-            "image": "images/projects/word-clock-gizmo.jpg",
+            "image": "images/projects/cards/word-clock.gif",
             "shortDescription": "Interactive demo for Tulip combining smart work instructions, device integrations, IoT connectivity and analytics.",
             "links": [
                 {
@@ -211,7 +274,7 @@
             "name": "Laser Audio System",
             "category": "electronics",
             "year": 2017,
-            "image": "images/projects/laser-audio.jpg",
+            "image": "images/projects/cards/laser-audio.jpg",
             "shortDescription": "A system to send and control music over a laser, featuring audio transmission and volume control via modulated laser light.",
             "links": [
                 {
@@ -223,11 +286,33 @@
             ]
         },
         {
+            "id": "inflated-appetite",
+            "name": "Inflated Appetite",
+            "category": "art",
+            "year": 2016,
+            "image": "images/projects/cards/inflated-appetite.jpg",
+            "shortDescription": "Explorations in food interaction design through inflated foods and flavored air captured in sugar bubbles.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "Course Overview",
+                    "icon": "link",
+                    "url": "https://tangible.media.mit.edu/project/inflated-appetite/"
+                },
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/inflated-appetite.html"
+                }
+            ]
+        },
+        {
             "id": "piano-staircase",
             "name": "Stairpeggio (Piano Staircase)",
             "category": "electronics",
             "year": 2014,
-            "image": "images/projects/piano-staircase.jpg",
+            "image": "images/projects/cards/piano-staircase.jpg",
             "shortDescription": "An electro-mechanical piano staircase using real glockenspiel keys to produce sound when users step on each stair.",
             "links": [
                 {

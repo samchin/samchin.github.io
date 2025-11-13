@@ -49,7 +49,7 @@
             <a class="nav-link" href="#projects">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#talks">Workshops & Events</a>
+            <a class="nav-link" href="#talks">Talks & Workshops</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
@@ -74,13 +74,13 @@
 
           <!-- Social Links -->
           <div class="social-links d-flex justify-content-center gap-3 mb-3">
-            <a href="mailto:your.email@example.com" class="btn btn-outline-dark btn-sm" aria-label="Email">
+            <a href="#" class="btn btn-outline-dark btn-sm" aria-label="Email" data-bs-toggle="modal"
+              data-bs-target="#emailModal">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope"
                 viewBox="0 0 16 16">
                 <path
                   d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
               </svg>
-              Email
             </a>
             <a href="https://github.com/samchin" class="btn btn-outline-dark btn-sm" aria-label="GitHub"
               target="_blank">
@@ -89,7 +89,6 @@
                 <path
                   d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8" />
               </svg>
-              GitHub
             </a>
             <a href="https://www.linkedin.com/in/sm-chn/" class="btn btn-outline-dark btn-sm" aria-label="LinkedIn"
               target="_blank">
@@ -98,7 +97,6 @@
                 <path
                   d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
               </svg>
-              LinkedIn
             </a>
           </div>
         </div>
@@ -169,7 +167,7 @@
         <!-- 2025 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="art">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/rock-lamp.jpg" class="card-img-top" alt="Rock Lamp">
+            <img src="assets/images/projects/cards/rock-lamp.jpg" class="card-img-top" alt="Rock Lamp">
             <div class="card-body">
               <h3 class="card-title h5">Rock Lamp</h3>
               <p class="card-text">Sculptural lighting piece combining natural forms with integrated illumination.</p>
@@ -189,9 +187,32 @@
           </div>
         </div>
 
+        <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/cards/SwarME Teaser.png" class="card-img-top"
+              alt="Multisensory Swarm Teleoperation">
+            <div class="card-body">
+              <h3 class="card-title h5">Multisensory Swarm Teleoperation</h3>
+              <p class="card-text">A haptic jacket and spatial audio system for teleoperating aerial drone swarms,
+                translating swarm state into intuitive tactile and auditory feedback.</p>
+              <div class="mt-3 project-links">
+                <a href="assets/images/projects/swarm-teleoperation/HRI2026 SwarME.pdf" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  PDF
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/cable-cat.jpg" class="card-img-top" alt="Cable Cat">
+            <img src="assets/images/projects/cards/cable-cat.jpg" class="card-img-top" alt="Cable Cat">
             <div class="card-body">
               <h3 class="card-title h5">Cable Cat</h3>
               <p class="card-text">A versatile multi-protocol cable for hardware development integrating UART, SPI, and
@@ -215,7 +236,7 @@
         <!-- 2024 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/haptichearing.jpg" class="card-img-top" alt="HapticHearing">
+            <img src="assets/images/projects/cards/haptichearing.png" class="card-img-top" alt="HapticHearing">
             <div class="card-body">
               <h3 class="card-title h5">HapticHearing</h3>
               <p class="card-text">A wearable multi-actuator haptic system that complements residual hearing with
@@ -228,7 +249,7 @@
                       d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
                     <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
                   </svg>
-                  ASSETS 2024
+                  ASSETS 2025
                 </a>
               </div>
             </div>
@@ -237,7 +258,7 @@
 
         <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/sound2haptic.jpg" class="card-img-top" alt="Haptic Hearing Toolkit">
+            <img src="assets/images/projects/cards/toolkit.png" class="card-img-top" alt="Haptic Hearing Toolkit">
             <div class="card-body">
               <h3 class="card-title h5">Haptic Hearing Toolkit</h3>
               <p class="card-text">An open-source toolkit for researchers to build haptic feedback systems for auditory
@@ -250,7 +271,7 @@
                       d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
                     <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
                   </svg>
-                  UIST 2024
+                  UIST 2025
                 </a>
                 <span class="link-separator">|</span>
                 <a href="https://github.com/samchin/sound2haptic" target="_blank">
@@ -269,7 +290,7 @@
         <!-- 2023 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/purrfect-pitch.jpg" class="card-img-top" alt="Purrfect Pitch">
+            <img src="assets/images/projects/cards/purrfect-pitch.jpg" class="card-img-top" alt="Purrfect Pitch">
             <div class="card-body">
               <h3 class="card-title h5">Purrfect Pitch</h3>
               <p class="card-text">A wearable haptic device and learning interface for musical ear training that helps
@@ -284,6 +305,75 @@
                   </svg>
                   Augmented Humans 2025
                 </a>
+                <span class="link-separator">|</span>
+                <a href="https://www.media.mit.edu/projects/purrfectpitch/overview/" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  More Info
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 project-card" data-category="art">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/cards/conductive-ceramics.png" class="card-img-top"
+              alt="Conductive Ceramics">
+            <div class="card-body">
+              <h3 class="card-title h5">Conductive Ceramics</h3>
+              <p class="card-text">A method for integrating conductive traces into ceramic objects using silver-based
+                glaze compatible with traditional firing processes.</p>
+              <div class="mt-3 project-links">
+                <a href="projects/conductive-ceramics.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Details
+                </a>
+                <span class="link-separator">|</span>
+                <a href="https://dl.acm.org/doi/abs/10.1145/3706599.3720267" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                  </svg>
+                  CHI 2025
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
+          <div class="card h-100 shadow-sm">
+            <img src="assets/images/projects/cards/living-knitwork-electronics.jpg" class="card-img-top"
+              alt="Living Knitwork Electronics">
+            <div class="card-body">
+              <h3 class="card-title h5">Living Knitwork Electronics</h3>
+              <p class="card-text">Interactive textile architecture with capacitive sensing creating responsive lighting
+                and audio experiences.</p>
+              <div class="mt-3 project-links">
+                <a href="projects/living-knitwork-electronics.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                    <path
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                  </svg>
+                  Details
+                </a>
               </div>
             </div>
           </div>
@@ -291,7 +381,7 @@
 
         <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/soundspindle.jpg" class="card-img-top" alt="SoundSpindle">
+            <img src="assets/images/projects/cards/soundspindle.jpg" class="card-img-top" alt="SoundSpindle">
             <div class="card-body">
               <h3 class="card-title h5">SoundSpindle</h3>
               <p class="card-text">A system exploring EEG sonification to improve sleep staging performance for novice
@@ -320,32 +410,11 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 project-card" data-category="art">
-          <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/conductive-ceramics.jpg" class="card-img-top" alt="Conductive Ceramics">
-            <div class="card-body">
-              <h3 class="card-title h5">Conductive Ceramics</h3>
-              <p class="card-text">A method for integrating conductive traces into ceramic objects using silver-based
-                glaze compatible with traditional firing processes.</p>
-              <div class="mt-3 project-links">
-                <a href="https://dl.acm.org/doi/abs/10.1145/3706599.3720267" target="_blank">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16"
-                    fill="currentColor">
-                    <path
-                      d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
-                    <path d="M4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4.5 10.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
-                  </svg>
-                  CHI 2025
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- 2022 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="perceptual">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/hfes.jpg" class="card-img-top" alt="Haptics for Flight Attitude Recovery">
+            <img src="assets/images/projects/cards/hfes-visual-haptic.png" class="card-img-top"
+              alt="Haptics for Flight Attitude Recovery">
             <div class="card-body">
               <h3 class="card-title h5">Haptics for Flight Attitude Recovery</h3>
               <p class="card-text">Evaluating head-mounted displays for recovery from unusual flight attitudes under
@@ -368,7 +437,7 @@
         <!-- 2020 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/tulip.jpg" class="card-img-top" alt="Tulip Hardware">
+            <img src="assets/images/projects/cards/tulip.webp" class="card-img-top" alt="Tulip Hardware">
             <div class="card-body">
               <h3 class="card-title h5">Tulip Edge Device</h3>
               <p class="card-text">Second generation gateway for Tulip's manufacturing platform, integrating analog,
@@ -392,7 +461,7 @@
         <!-- 2019 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/word-clock.gif" class="card-img-top" alt="Word Clock Gizmo">
+            <img src="assets/images/projects/cards/word-clock.gif" class="card-img-top" alt="Word Clock Gizmo">
             <div class="card-body">
               <h3 class="card-title h5">Gizmo Word Clock</h3>
               <p class="card-text">Interactive demo for Tulip combining smart work instructions, device integrations,
@@ -436,7 +505,7 @@
         <!-- 2017 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/laser-audio/image-asset.jpg" class="card-img-top" alt="Laser Audio System">
+            <img src="assets/images/projects/cards/laser-audio.jpg" class="card-img-top" alt="Laser Audio System">
             <div class="card-body">
               <h3 class="card-title h5">Laser Audio System</h3>
               <p class="card-text">A system to send and control music over a laser, featuring audio transmission and
@@ -460,8 +529,7 @@
         <!-- 2016 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="art">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/inflated-appetite/Inflated Appetite.jpg" class="card-img-top"
-              alt="Inflated Appetite">
+            <img src="assets/images/projects/cards/inflated-appetite.jpg" class="card-img-top" alt="Inflated Appetite">
             <div class="card-body">
               <h3 class="card-title h5">Inflated Appetite</h3>
               <p class="card-text">Explorations in food interaction design through inflated foods and flavored air
@@ -496,7 +564,7 @@
         <!-- 2014 Projects -->
         <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
           <div class="card h-100 shadow-sm">
-            <img src="assets/images/projects/piano-staircase.jpg" class="card-img-top"
+            <img src="assets/images/projects/cards/piano-staircase.jpg" class="card-img-top"
               alt="Stairpeggio (Piano Staircase)">
             <div class="card-body">
               <h3 class="card-title h5">Stairpeggio (Piano Staircase)</h3>
@@ -531,10 +599,10 @@
     </div>
   </section>
 
-  <!-- Workshops & Events Section -->
+  <!-- Talks & Workshops Section -->
   <section id="talks" class="talks-section">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Workshops & Events</h2>
+      <h2 class="section-title text-center mb-5">Talks & Workshops</h2>
 
       <div class="row g-4">
         <div class="col-md-6">
@@ -640,24 +708,26 @@
       <p class="lead mb-4">Interested in collaboration or want to learn more about my work?</p>
 
       <div class="contact-links d-flex justify-content-center gap-3 mb-4">
-        <a href="mailto:your.email@example.com" class="btn btn-dark">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope me-2"
+        <a href="#" class="btn btn-outline-dark btn-sm" aria-label="Email" data-bs-toggle="modal"
+          data-bs-target="#emailModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope"
             viewBox="0 0 16 16">
             <path
               d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
           </svg>
-          Email Me
+          Email
         </a>
-        <a href="https://github.com/samchin" class="btn btn-outline-dark" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github me-2"
+        <a href="https://github.com/samchin" class="btn btn-outline-dark btn-sm" aria-label="GitHub" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
             viewBox="0 0 16 16">
             <path
               d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8" />
           </svg>
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/sm-chn/" class="btn btn-outline-dark" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin me-2"
+        <a href="https://www.linkedin.com/in/sm-chn/" class="btn btn-outline-dark btn-sm" aria-label="LinkedIn"
+          target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
             viewBox="0 0 16 16">
             <path
               d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
@@ -681,6 +751,21 @@
       </div>
     </div>
   </footer>
+
+  <!-- Email Modal -->
+  <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="emailModalLabel">Email Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/images/email/email.png" alt="chins@mit.edu" class="img-fluid" style="max-height: 100px;">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Bootstrap JS -->
   <script src="js/bootstrap.bundle.min.js"></script>
