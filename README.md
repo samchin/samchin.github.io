@@ -107,9 +107,17 @@ The site uses Inter font by default. To change:
 
 ## Deployment
 
-The entire `dist/` folder is ready to deploy to any static hosting service:
+The site is automatically deployed to GitHub Pages using GitHub Actions.
 
-- **GitHub Pages**: Push the `dist/` folder contents to your `gh-pages` branch
+### GitHub Pages (Current Setup)
+
+- **Automatic deployment**: The site automatically deploys from the `dist/` folder whenever you push to the `master` branch
+- **Workflow**: Located at `.github/workflows/deploy.yml`
+- **Site URL**: https://samchin.github.io/
+- **Setup**: GitHub Pages is configured to use GitHub Actions (Settings → Pages → Source: GitHub Actions)
+
+### Other Hosting Options
+
 - **Netlify**: Drag and drop the `dist/` folder
 - **Vercel**: Deploy the `dist/` folder
 - **Any web host**: Upload the `dist/` folder contents via FTP
