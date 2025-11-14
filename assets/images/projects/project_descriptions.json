@@ -78,7 +78,7 @@
                     "type": "external",
                     "label": "Poster",
                     "icon": "link",
-                    "url": "projects/haptic-hearing/poster.pdf",
+                    "url": "assets/images/projects/posters/haptic-hearing-poster.pdf",
                     "hidden": true
                 }
             ]
@@ -107,7 +107,7 @@
                     "type": "external",
                     "label": "Poster",
                     "icon": "link",
-                    "url": "projects/haptic-hearing-toolkit/poster.pdf",
+                    "url": "assets/images/projects/posters/haptic-hearing-toolkit-poster.pdf",
                     "hidden": true
                 }
             ]
@@ -159,7 +159,7 @@
                     "type": "external",
                     "label": "Poster",
                     "icon": "link",
-                    "url": "projects/conductive-ceramics/poster.pdf",
+                    "url": "assets/images/projects/posters/conductive-ceramics-poster.pdf",
                     "hidden": true
                 }
             ]
@@ -221,7 +221,7 @@
                     "type": "external",
                     "label": "Poster",
                     "icon": "link",
-                    "url": "projects/hfes-visual-haptic/poster.pdf",
+                    "url": "assets/images/projects/posters/hfes-visual-haptic-poster.pdf",
                     "hidden": true
                 }
             ]
