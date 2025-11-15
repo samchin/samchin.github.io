@@ -215,10 +215,16 @@
             "shortDescription": "A system exploring EEG sonification to improve sleep staging performance for novice practitioners through auditory representation of brainwaves.",
             "links": [
                 {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/soundspindle.html"
+                },
+                {
                     "type": "paper",
                     "label": "PLoS 2025",
                     "icon": "paper",
-                    "url": "https://pubmed.ncbi.nlm.nih.gov/40934291/"
+                    "url": "https://doi.org/10.1371/journal.pone.0329711"
                 },
                 {
                     "type": "data",

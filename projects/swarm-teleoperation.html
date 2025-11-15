@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Augmenting First-Person Swarm Teleoperation with Multisensory Feedback - A haptic jacket and spatial audio system for teleoperating aerial drone swarms">
+  <meta name="author" content="Sam Chin">
+  <title>Multisensory Swarm Teleoperation - Sam Chin</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
+  <!-- Bootstrap CSS -->
+  <link href="/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/custom.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/index.html">
+        <img src="/assets/images/logo.svg" alt="Sam Chin" width="32" height="32" class="d-inline-block align-text-top me-2">
+        sam chin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#talks">Talks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Content -->
+  <main style="padding-top: 80px;">
+    <article class="container py-5">
+      <!-- Back Link -->
+      <div class="mb-4">
+        <a href="/index.html#projects" class="text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          Back to Projects
+        </a>
+      </div>
+
+      <!-- Project Header -->
+      <header class="mb-5">
+        <h1 class="display-4 fw-bold mb-3">Augmenting First-Person Swarm Teleoperation with Multisensory Feedback</h1>
+        <p class="lead text-muted">A haptic jacket and spatial audio system for teleoperating aerial drone swarms, translating swarm state into intuitive tactile and auditory feedback | HRI 2026</p>
+      </header>
+
+      <!-- Hero Images -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-12">
+          <img src="/assets/images/projects/cards/SwarME Teaser.png"
+               alt="Multisensory Swarm Teleoperation"
+               class="img-fluid rounded shadow">
+        </div>
+      </div>
+
+      <!-- Project Description -->
+      <div class="row mb-5">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="project-description">
+            <h3 class="h4 fw-bold mt-5 mb-3">Project Overview</h3>
+            <p>This research explores how multisensory feedback—combining haptic and spatial audio cues—can improve human teleoperation of aerial drone swarms. While top-down views naturally convey swarm state information, they're impractical for real-world deployment and create single points of failure. First-person views preserve the distributed nature of swarms but severely limit operator awareness of swarm dynamics. We developed a wearable haptic system and spatial audio interface to bridge this gap, translating complex swarm-state information into intuitive tactile and auditory patterns.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">The Challenge</h3>
+            <p>Effective swarm teleoperation requires operators to maintain situational awareness of multiple distributed agents simultaneously—a fundamental mismatch with human perception, which relies on a singular perspective. When controlling swarms from a first-person viewpoint, operators lose visibility of drones outside their immediate camera feed, making it difficult to detect fragmentation, anticipate collisions, or understand overall swarm cohesion.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Technical Approach</h3>
+            <p>We built our system around the Olfati-Saber flocking algorithm, extracting meaningful metrics about swarm state: connectivity (cohesion and risk of splitting), inter-agent distance, drone isolation, predicted trajectories, and obstacle forces. These swarm-level behaviors were mapped to a custom haptic jacket with 32 vibrotactile actuators distributed across the torso, waist, and arms, complemented by spatial audio.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Haptic and Audio Mapping Strategy</h3>
+            <p>The mapping design exploits distinct body regions to communicate different types of information:</p>
+            <ul>
+              <li><strong>Arms (20 LRAs):</strong> Convey disconnection through vibrations that propagate from shoulder to hand, mimicking the sensation of something separating from the swarm.</li>
+              <li><strong>Torso (4 VCAs):</strong> Signal drone crashes with strong vibrations, providing immediate collision feedback.</li>
+              <li><strong>Waist (8 VCAs):</strong> Communicate obstacle forces directionally, allowing operators to "feel" environmental constraints.</li>
+              <li><strong>Spatial Audio:</strong> Isolated drones emit sound from their location in 3D space. Swarm spread changes are accompanied by shifting noise frequencies. Collisions trigger distinct alerts.</li>
+            </ul>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Experimental Validation</h3>
+            <p>We conducted a study with 40 participants navigating a simulated 20-drone swarm through a complex obstacle course. Participants experienced two viewpoints (top-down and first-person) and two feedback conditions (visual-only versus multisensory), completing both basic navigation and object-collection tasks.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Key Findings</h3>
+            <p>Top-down views achieved superior performance overall, but multisensory feedback significantly enhanced first-person teleoperation, particularly in cognitively demanding tasks:</p>
+            <ul>
+              <li><strong>Crashes reduced by 49%</strong> in first-person collectible tasks (from 2.58 to 1.32 per flight)</li>
+              <li><strong>Isolation time decreased by 54%</strong> (from 10.08s to 4.67s)</li>
+              <li><strong>Completion time improved by 14%</strong> (from 177.5s to 152.6s)</li>
+              <li><strong>Mental workload reduced by 26%</strong> according to NASA-TLX assessments</li>
+            </ul>
+            <p>The effect was most pronounced when visual resources were saturated—precisely when operators needed additional sensory channels most. Top-down perspectives showed minimal gains from haptics, likely because they already provided comprehensive spatial awareness.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Design Implications</h3>
+            <p>This work demonstrates that sensory offloading through haptic and audio channels can effectively reduce cognitive burden when visual attention is saturated. Distributing different types of information across distinct body regions enables rapid discrimination without extensive training. While top-down views remain superior, multisensory feedback narrows the performance gap substantially, making first-person control viable for scenarios where top-down views aren't feasible—such as search and rescue, infrastructure inspection, or GPS-denied environments.</p>
+
+            <div class="mt-5 pt-4 border-top">
+              <p class="mb-3">For more information, please <a href="/assets/images/projects/swarm-teleoperation/HRI2026 SwarME.pdf" target="_blank" class="text-decoration-none">see the PDF</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="text-muted mb-0">&copy; 2025 Sam Chin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
