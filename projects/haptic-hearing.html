@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HapticHearing: A Haptic Feedback System for Complementing Speech Perception - A wearable multi-actuator haptic system for speech augmentation">
+  <meta name="author" content="Sam Chin">
+  <title>HapticHearing - Sam Chin</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
+  <!-- Bootstrap CSS -->
+  <link href="/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/custom.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/index.html">
+        <img src="/assets/images/logo.svg" alt="Sam Chin" width="32" height="32" class="d-inline-block align-text-top me-2">
+        sam chin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#talks">Talks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Content -->
+  <main style="padding-top: 80px;">
+    <article class="container py-5">
+      <!-- Back Link -->
+      <div class="mb-4">
+        <a href="/index.html#projects" class="text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          Back to Projects
+        </a>
+      </div>
+
+      <!-- Project Header -->
+      <header class="mb-5">
+        <h1 class="display-4 fw-bold mb-3">HapticHearing: A Haptic Feedback System for Complementing Speech Perception</h1>
+        <p class="lead text-muted">A wearable multi-actuator haptic system that complements residual hearing with personalized tactile feedback for speech perception | ASSETS 2025</p>
+      </header>
+
+      <!-- Hero Images -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-12">
+          <img src="/assets/images/projects/cards/haptichearing.png"
+               alt="HapticHearing"
+               class="img-fluid rounded shadow">
+        </div>
+      </div>
+
+      <!-- Project Description -->
+      <div class="row mb-5">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="project-description">
+            <h3 class="h4 fw-bold mt-5 mb-3">Project Overview</h3>
+            <p>HapticHearing explores haptic feedback as a complementary channel for speech perception, particularly in scenarios where auditory information alone may be insufficient. The system translates phonemic information into spatiotemporal vibrotactile patterns, providing an additional sensory modality for understanding spoken language. This approach targets applications beyond traditional hearing aids and auditory amplification, investigating how touch can augment rather than replace auditory processing.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">System Architecture</h3>
+            <p>The HapticHearing pipeline processes speech in real-time through three main stages:</p>
+            <ul>
+              <li><strong>Energy-based Feature Extraction:</strong> Audio input is analyzed to extract relevant acoustic features, with emphasis on speech-specific characteristics like formant structure and temporal envelope information.</li>
+              <li><strong>Vowel Embedding:</strong> Phonemic content is mapped into a reduced dimensional space, identifying key distinctions between speech sounds that can be effectively communicated through touch.</li>
+              <li><strong>Haptics Customization Stage:</strong> The phonemic representation is translated into spatiotemporal vibrotactile patterns using an "audiogram + QuickSIN" approach, potentially allowing personalization based on individual hearing profiles.</li>
+            </ul>
+            <p>The system connects through a custom USB haptic driver to wearable devices, enabling real-time rendering with minimal latency.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Hardware Development</h3>
+            <p>We developed multi-actuator haptic devices in three wearable form factors to explore optimal body locations for speech-related feedback:</p>
+            <ul>
+              <li><strong>Bracelet (A):</strong> Wrist-worn configuration providing spatial patterns across the forearm</li>
+              <li><strong>Necklace (B):</strong> Collar-mounted design targeting the neck and upper chest area</li>
+              <li><strong>Over-ear (C):</strong> Temporal bone placement leveraging proximity to the auditory system</li>
+            </ul>
+            <p>Each form factor uses the same underlying electronics and signal processing pipeline, allowing direct comparison of effectiveness across wearing locations. The devices integrate custom PCB designs with multiple vibrotactile actuators arranged to provide spatially distinct tactile cues.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Psychophysical Validation</h3>
+            <p>We conducted a psychophysical study with 9 participants to validate device performance across the three form factors. The evaluation measured two key metrics:</p>
+            <ul>
+              <li><strong>Vibration Detection Thresholds:</strong> Determining the minimum perceptible vibration intensity for each actuator location across device types</li>
+              <li><strong>Spatial Localization Accuracy:</strong> Assessing users' ability to identify which actuator is active and distinguish between adjacent actuators by motor position</li>
+            </ul>
+            <p>Results showed variation in both detection thresholds and localization accuracy across device types, with the bracelet configuration generally showing the highest accuracy. These findings inform optimal actuator placement and signal intensity calibration for speech-related haptic rendering.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Technical Contributions</h3>
+            <p>HapticHearing makes three key contributions to haptic speech augmentation:</p>
+            <ul>
+              <li><strong>Multi-form-factor hardware platform:</strong> Systematic comparison of wearable configurations for speech-related haptic feedback</li>
+              <li><strong>Real-time processing pipeline:</strong> End-to-end system for translating phonemic content into haptic patterns with minimal latency</li>
+              <li><strong>Psychophysical validation:</strong> Empirical data on detection thresholds and spatial resolution across body locations</li>
+            </ul>
+            <p>The system demonstrates that speech information can be effectively rendered through touch, though significant questions remain about optimal encoding strategies and application contexts.</p>
+
+            <div class="mt-5 pt-4 border-top">
+              <p class="mb-3">For more information, please <a href="https://dl.acm.org/doi/10.1145/3663547.3759754" target="_blank" class="text-decoration-none">read the paper</a> or <a href="/assets/images/projects/posters/haptic-hearing-poster.pdf" target="_blank" class="text-decoration-none">see the poster</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="text-muted mb-0">&copy; 2025 Sam Chin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

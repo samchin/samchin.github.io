@@ -103,17 +103,16 @@
             "shortDescription": "A wearable multi-actuator haptic system that complements residual hearing with personalized tactile feedback for speech perception in hearing loss.",
             "links": [
                 {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/haptic-hearing.html"
+                },
+                {
                     "type": "paper",
                     "label": "ASSETS 2025",
                     "icon": "paper",
                     "url": "https://dl.acm.org/doi/10.1145/3663547.3759754"
-                },
-                {
-                    "type": "external",
-                    "label": "Poster",
-                    "icon": "link",
-                    "url": "assets/images/projects/posters/haptic-hearing-poster.pdf",
-                    "hidden": true
                 }
             ]
         },
@@ -126,6 +125,12 @@
             "shortDescription": "An open-source toolkit for researchers to build haptic feedback systems for auditory augmentation.",
             "links": [
                 {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/haptic-hearing-toolkit.html"
+                },
+                {
                     "type": "paper",
                     "label": "UIST 2025",
                     "icon": "paper",
@@ -136,13 +141,6 @@
                     "label": "GitHub",
                     "icon": "github",
                     "url": "https://github.com/samchin/sound2haptic"
-                },
-                {
-                    "type": "external",
-                    "label": "Poster",
-                    "icon": "link",
-                    "url": "assets/images/projects/posters/haptic-hearing-toolkit-poster.pdf",
-                    "hidden": true
                 }
             ]
         },
@@ -188,13 +186,6 @@
                     "label": "CHI 2025",
                     "icon": "paper",
                     "url": "https://dl.acm.org/doi/abs/10.1145/3706599.3720267"
-                },
-                {
-                    "type": "external",
-                    "label": "Poster",
-                    "icon": "link",
-                    "url": "assets/images/projects/posters/conductive-ceramics-poster.pdf",
-                    "hidden": true
                 }
             ]
         },
@@ -246,17 +237,16 @@
             "shortDescription": "Evaluating head-mounted displays for recovery from unusual flight attitudes under normal and visually-degraded conditions.",
             "links": [
                 {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/hfes-visual-haptic.html"
+                },
+                {
                     "type": "paper",
                     "label": "HFES 2024",
                     "icon": "paper",
                     "url": "https://doi.org/10.1177/10711813241262981"
-                },
-                {
-                    "type": "external",
-                    "label": "Poster",
-                    "icon": "link",
-                    "url": "assets/images/projects/posters/hfes-visual-haptic-poster.pdf",
-                    "hidden": true
                 }
             ]
         },

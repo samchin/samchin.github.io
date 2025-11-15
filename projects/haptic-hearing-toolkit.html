@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sound2Haptic: A Toolkit for Multichannel Haptics Across Multiple Form Factors - An open-source toolkit for researchers to build haptic feedback systems">
+  <meta name="author" content="Sam Chin">
+  <title>Sound2Haptic Toolkit - Sam Chin</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
+  <!-- Bootstrap CSS -->
+  <link href="/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/custom.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/index.html">
+        <img src="/assets/images/logo.svg" alt="Sam Chin" width="32" height="32" class="d-inline-block align-text-top me-2">
+        sam chin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#talks">Talks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Content -->
+  <main style="padding-top: 80px;">
+    <article class="container py-5">
+      <!-- Back Link -->
+      <div class="mb-4">
+        <a href="/index.html#projects" class="text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          Back to Projects
+        </a>
+      </div>
+
+      <!-- Project Header -->
+      <header class="mb-5">
+        <h1 class="display-4 fw-bold mb-3">Sound2Haptic: A Toolkit for Multichannel Haptics Across Multiple Form Factors</h1>
+        <p class="lead text-muted">An open-source toolkit for researchers to build haptic feedback systems for auditory augmentation | UIST 2024</p>
+      </header>
+
+      <!-- Hero Images -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-12">
+          <img src="/assets/images/projects/cards/toolkit.png"
+               alt="Sound2Haptic Toolkit"
+               class="img-fluid rounded shadow">
+        </div>
+      </div>
+
+      <!-- Project Description -->
+      <div class="row mb-5">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="project-description">
+            <h3 class="h4 fw-bold mt-5 mb-3">Project Overview</h3>
+            <p>Sound2Haptic is a toolkit that addresses two fundamental challenges in haptic prototyping: the complexity of external hardware and the difficulty of creating customizable form factors. The system combines an 8-channel audio-based haptic driver with a parametric fabrication workflow, enabling researchers and designers to rapidly prototype wearable haptic devices across different body locations and configurations.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Technical Architecture</h3>
+            <p>The toolkit consists of three main components:</p>
+            <ul>
+              <li><strong>Hardware Platform:</strong> A plug-and-play device integrating an 8-channel sound card and amplifiers in a single unit. The system connects via USB to phones, laptops, or XR headsets, eliminating the need for complex external audio interfaces or separate amplification circuits.</li>
+              <li><strong>Fabrication System:</strong> A novel approach to passive vibration isolation using actuators suspended with woven thread inside 3D-printed frames. This method provides mechanical decoupling between actuators while maintaining a compact, lightweight form factor suitable for wearable applications.</li>
+              <li><strong>Parametric Design Tool:</strong> A Grasshopper-based interface that allows users to define actuator layouts through simple parameters (number of actuators, spacing, arrangement) and automatically generates 3D-printable geometry. This enables rapid iteration on device configurations without manual CAD work.</li>
+            </ul>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Fabrication Workflow</h3>
+            <p>Creating a haptic device follows a streamlined seven-step process:</p>
+            <ol>
+              <li>Adjust sliders in Grasshopper to control array parameters</li>
+              <li>Export 3D-printable geometry from Rhino</li>
+              <li>3D-print the actuator array frame and inner actuator rings</li>
+              <li>Attach inner rings to the frame using the weaving process</li>
+              <li>Solder LRA actuators to wires connected to the PCB</li>
+              <li>Press-fit actuators into the inner rings</li>
+              <li>Connect the device to a phone, laptop, or XR headset via USB</li>
+            </ol>
+            <p>This workflow enables fabrication of custom haptic devices in hours rather than weeks, significantly accelerating the prototyping cycle.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Psychophysical Evaluation</h3>
+            <p>We conducted evaluations comparing device performance across different form factors and body locations. The studies examined average threshold detection levels across device types and measured accuracy by motor position, providing validation of the fabrication approach and informing optimal actuator placement strategies.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Example Applications</h3>
+            <p>The toolkit has been used to create haptic devices in multiple configurations:</p>
+            <ul>
+              <li>Wrist-worn arrays for spatial navigation cues</li>
+              <li>Fingertip devices for texture simulation</li>
+              <li>Torso-mounted systems for directional guidance</li>
+              <li>Head-mounted interfaces for immersive experiences</li>
+            </ul>
+            <p>Each demonstrates the flexibility of the parametric design system and the effectiveness of the passive vibration isolation approach across different mechanical constraints and wearing conditions.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Design Contributions</h3>
+            <p>Sound2Haptic makes three key contributions to haptic prototyping:</p>
+            <ul>
+              <li><strong>Unified hardware platform:</strong> Eliminates the need for separate sound cards, amplifiers, and custom electronics</li>
+              <li><strong>Scalable fabrication method:</strong> Thread-based suspension provides vibration isolation without bulky mechanisms</li>
+              <li><strong>Parametric design workflow:</strong> Enables non-experts to create custom haptic devices through high-level parameters rather than detailed CAD modeling</li>
+            </ul>
+            <p>This combination significantly lowers the barrier to entry for haptic research and interaction design, enabling broader exploration of tactile feedback across applications from sensory augmentation to virtual reality.</p>
+
+            <p class="mt-5"><em>This work was demonstrated at UIST 2024.</em></p>
+
+            <div class="mt-5 pt-4 border-top">
+              <p class="mb-3">For more information, please <a href="https://dl.acm.org/doi/10.1145/3746058.3758993" target="_blank" class="text-decoration-none">read the paper</a> or <a href="/assets/images/projects/posters/haptic-hearing-toolkit-poster.pdf" target="_blank" class="text-decoration-none">see the poster</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="text-muted mb-0">&copy; 2025 Sam Chin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
