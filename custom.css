@@ -105,6 +105,10 @@ section {
 }
 
 @media (min-width: 992px) {
+  .hero-about-section {
+    padding-top: 8rem;
+  }
+
   .bio-content {
     margin-left: 3rem;
   }
