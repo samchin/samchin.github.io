@@ -4,7 +4,7 @@
             "id": "neon",
             "name": "Neon",
             "category": "art",
-            "year": 2024,
+            "year": 2025,
             "image": "assets/images/projects/cards/neon.png",
             "shortDescription": "Neon art project exploring light and form.",
             "hidden": true,
@@ -14,6 +14,23 @@
                     "label": "Details",
                     "icon": "link",
                     "url": "projects/neon.html"
+                }
+            ]
+        },
+        {
+            "id": "totem-led-neon",
+            "name": "Power Electronics (6.131) Totem LED Neon",
+            "category": "electronics, art",
+            "year": 2025,
+            "image": "assets/images/projects/cards/totem-led-neon.png",
+            "shortDescription": "Custom LED neon totem sculpture with power electronics control circuitry.",
+            "hidden": true,
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/totem-led-neon.html"
                 }
             ]
         },
@@ -327,7 +344,7 @@
         },
         {
             "id": "piano-staircase",
-            "name": "Stairpeggio (Piano Staircase)",
+            "name": "Stairpeggio",
             "category": "electronics",
             "year": 2014,
             "image": "assets/images/projects/cards/piano-staircase.jpg",
