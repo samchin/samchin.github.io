@@ -382,7 +382,7 @@ section {
 /* Responsive adjustments */
 @media (max-width: 991px) {
   .hero-about-section {
-    padding-top: 5rem;
+    padding-top: 7rem;
   }
 
   .profile-photo-wrapper {
