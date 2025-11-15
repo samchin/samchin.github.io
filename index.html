@@ -33,7 +33,7 @@
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
         <img src="assets/images/logo.svg" alt="Sam Chin" width="48" height="48" class="me-2">
-        Sam Chin
+        sam chin
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
             <img src="assets/images/profile-photo.jpg" alt="Sam Chin"
               class="profile-photo img-fluid rounded-circle shadow">
           </div>
-          <h1 class="display-4 fw-bold mt-4 mb-2">Sam Chin</h1>
+          <h1 class="display-4 fw-medium mt-4 mb-2">sam chin</h1>
 
           <!-- Social Links -->
           <div class="social-links d-flex justify-content-center gap-3 mb-3">
@@ -102,7 +102,6 @@
         <!-- Right Side: Bio -->
         <div class="col-lg-8">
           <div class="bio-content">
-            <h2 class="h3 fw-bold mb-4">About</h2>
             <p class="lead">
               I'm a PhD student at the MIT Media Lab exploring how technology can expand human perception and create new
               ways of experiencing the world.
@@ -152,8 +151,8 @@
       <!-- Filter Buttons -->
       <div class="filter-buttons text-center mb-5">
         <button class="btn btn-filter active" data-filter="all">All</button>
-        <button class="btn btn-filter" data-filter="electronics">Electronics</button>
         <button class="btn btn-filter" data-filter="perceptual">Perceptual Augmentation</button>
+        <button class="btn btn-filter" data-filter="electronics">Electronics</button>
         <button class="btn btn-filter" data-filter="art">Art</button>
       </div>
 
@@ -420,7 +419,7 @@
         </div>
 
         <!-- 2019 Projects -->
-        <div class="col-md-6 col-lg-4 project-card" data-category="electronics">
+        <div class="col-md-6 col-lg-4 project-card" data-category="art, electronics">
           <div class="card h-100 shadow-sm">
             <img src="assets/images/projects/cards/word-clock.gif" class="card-img-top" alt="Word Clock Gizmo">
             <div class="card-body">
@@ -445,7 +444,7 @@
                     <path
                       d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
                   </svg>
-                  GitHub Repository
+                  GitHub
                 </a>
                 <span class="link-separator">|</span>
                 <a href="https://tulip.co/blog/manufacturing-apps/word-clock-demo/" target="_blank">
@@ -791,7 +790,8 @@
 
         // Filter projects
         projectCards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          const categories = card.getAttribute('data-category').split(',').map(c => c.trim());
+          if (filter === 'all' || categories.includes(filter)) {
             card.style.display = 'block';
             // Fade in animation
             card.style.animation = 'fadeIn 0.5s';
@@ -801,6 +801,7 @@
         });
       });
     });
+
 
     // Add fade-in animation on scroll (optional)
     const observerOptions = {

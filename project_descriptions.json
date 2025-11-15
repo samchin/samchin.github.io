@@ -1,6 +1,23 @@
 {
     "projects": [
         {
+            "id": "neon",
+            "name": "Neon",
+            "category": "art",
+            "year": 2024,
+            "image": "assets/images/projects/cards/neon.png",
+            "shortDescription": "Neon art project exploring light and form.",
+            "hidden": true,
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/neon.html"
+                }
+            ]
+        },
+        {
             "id": "rock-lamp",
             "name": "Rock Lamp",
             "category": "art",
@@ -167,7 +184,7 @@
         {
             "id": "living-knitwork-electronics",
             "name": "Living Knitwork Pavillion Electronics",
-            "category": "electronics",
+            "category": "art, electronics",
             "year": 2023,
             "image": "assets/images/projects/cards/living-knitwork-electronics.jpg",
             "shortDescription": "Interactive textile architecture with capacitive sensing creating responsive lighting and audio experiences.",
@@ -245,14 +262,14 @@
         {
             "id": "word-clock-gizmo",
             "name": "Gizmo Word Clock",
-            "category": "electronics",
+            "category": "art, electronics",
             "year": 2019,
             "image": "assets/images/projects/cards/word-clock.gif",
             "shortDescription": "Interactive demo for Tulip combining smart work instructions, device integrations, IoT connectivity and analytics.",
             "links": [
                 {
                     "type": "github",
-                    "label": "GitHub Repository",
+                    "label": "GitHub",
                     "icon": "github",
                     "url": "https://github.com/tulip/gizmo"
                 },

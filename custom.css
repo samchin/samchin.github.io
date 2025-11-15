@@ -119,6 +119,16 @@ section {
   margin-bottom: 1.5rem;
 }
 
+.bio-content a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.bio-content a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
 .bio-content .lead {
   font-size: 1.25rem;
   font-weight: 400;
@@ -358,9 +368,15 @@ section {
   transition: all 0.3s ease;
 }
 
+.btn-outline-primary {
+  color: var(--link-color);
+  border-color: var(--link-color);
+}
+
 .btn-outline-primary:hover {
   background-color: var(--link-color);
   border-color: var(--link-color);
+  color: #ffffff;
 }
 
 /* Responsive adjustments */
