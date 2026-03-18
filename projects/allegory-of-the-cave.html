@@ -82,7 +82,7 @@
       <!-- Hero Media -->
       <div class="row g-4 mb-5">
         <div class="col-12">
-          <video src="/assets/images/projects/allegory-of-the-cave/cave%20FINAL.mov" controls class="img-fluid rounded shadow w-100">
+          <video src="/assets/images/projects/allegory-of-the-cave/cave-FINAL-compressed.mp4" controls autoplay muted playsinline class="img-fluid rounded shadow w-100">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -99,8 +99,24 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="project-description">
             <p class="text-muted mb-4"><strong>Collaborators:</strong> Skye Gao, Leonie Dong, Cathy Fang, Alejandro Lopez-Rodriguez</p>
-            <p>In Plato's Allegory of the Cave, prisoners chained to a wall perceive only shadows—and mistake them for reality. Hiroya Endo's "The Diligent Shadow" imagines a character confined entirely to this flat, projected world. We extend this concept: a shadow man, controlled by an LLM, exists in 2D and perceives only silhouettes. His singular goal is to turn off the light that defines his existence.</p>
-            <p>Users place objects in his path; he kicks them away. The cycle repeats endlessly. The piece is a meditation on AI as cave-dweller—processing patterns without grasping the higher-dimensional reality that casts them. And like Sisyphus, the shadow man persists in a task he can never truly complete.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Overview</h3>
+            <p>In Plato's Allegory of the Cave, prisoners chained to a wall perceive only shadows—and mistake them for reality. We extend this concept in our piece <em>Plato's [Al]legory of the Cave</em>, an interactive installation featuring an LLM-controlled character who exists only as a shadow. The piece begins dark. A physical light switch invites interaction; flipping it on illuminates the stage and awakens the shadow man. His singular goal is to turn off the light that defines his existence. Humans place objects in his path—blocks, frames, and stairs—to obstruct him. He kicks, pushes, sometimes gives up, then begins again. The cycle repeats as he discovers changes to his world that he cannot comprehend.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Concept</h3>
+            <p>In Plato's Allegory of the Cave, prisoners are chained facing a wall, seeing only shadows cast by objects behind them. They mistake these shadows for reality, never comprehending the three-dimensional world that produces them. The shadow man is such a prisoner: confined to 2D, he perceives silhouettes but never their source.</p>
+            <p>This mirrors the perceptual limits of AI. An LLM cannot see—it reads descriptions of sight. It processes language about the world without directly accessing the world itself. The shadow man embodies this gap. Both are confined to representations.</p>
+            <p>The piece is a meditation on AI as cave-dweller—processing patterns without grasping the higher-dimensional reality that casts them.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Software</h3>
+            <p>The interface is written in JavaScript and is web-based. A camera captures the projected shadow and the camera feed is thresholded by color such that the shadow is separated from the background. The figure's shadow is cancelled out.</p>
+            <p>The world view is converted into ASCII and sent to an LLM, where the shadows, the figure, the ground, and the light switch are represented by different symbols (such as "#", "P", "G", "S"). The LLM is prompted with the scene information and the available movements the figure can make (such as walk, jump, climb, and kick). The goal is for the figure to turn off the light switch. However, the figure is bound by the game-world physics (done by Matter.js), and cannot move through shadows and can stand on top of shadows. For example, the figure is able to kick away obstacles.</p>
+            <p>The obstacles in the real world are controlled via serial port connection with a microcontroller; details are described in the Hardware section.</p>
+
+            <h3 class="h4 fw-bold mt-5 mb-3">Hardware</h3>
+            <p>The light switch is connected to a solenoid and can sense when it is turned on or off. This is how the piece turns on—it invites people to interact with it.</p>
+            <p>The obstacles have magnets embedded inside and are lightweight. When the figure decides to kick an object, a command is sent to a connected ESP32 XIAO which controls an electromagnet. There is a Darlington pair, flyback diode, and bleed resistor to protect the GPIO of the microcontroller. When the electromagnet turns on, it creates a magnetic field which interacts with a magnet embedded in the blocks, causing the blocks to move.</p>
+            <p>The different movements of the blocks are controlled by the relative weight of each of the blocks and the placement of the magnets.</p>
           </div>
         </div>
       </div>
