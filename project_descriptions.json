@@ -79,6 +79,22 @@
             ]
         },
         {
+            "id": "allegory-of-the-cave",
+            "name": "[AI]legory of the Cave",
+            "category": "art",
+            "year": 2025,
+            "image": "assets/images/projects/cards/allegory-of-the-cave.jpg",
+            "shortDescription": "An interactive installation extending Plato's Allegory: an LLM-controlled shadow dweller exists in 2D, perceiving only silhouettes. His goal is to turn off the light that defines him. A meditation on AI as cave-dweller.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/allegory-of-the-cave.html"
+                }
+            ]
+        },
+        {
             "id": "cable-cat",
             "name": "Cable Cat",
             "category": "electronics",
