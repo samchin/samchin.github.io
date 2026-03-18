@@ -1,0 +1,417 @@
+{
+    "projects": [
+        {
+            "id": "neon",
+            "name": "Neon",
+            "category": "art",
+            "year": 2025,
+            "image": "assets/images/projects/cards/neon.png",
+            "shortDescription": "Neon art project exploring light and form.",
+            "hidden": true,
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/neon.html"
+                }
+            ]
+        },
+        {
+            "id": "totem-led-neon",
+            "name": "Power Electronics (6.131) Totem LED Neon",
+            "category": "electronics, art",
+            "year": 2025,
+            "image": "assets/images/projects/cards/totem-led-neon.png",
+            "shortDescription": "Custom LED neon totem sculpture with power electronics control circuitry.",
+            "hidden": true,
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/totem-led-neon.html"
+                }
+            ]
+        },
+        {
+            "id": "rock-lamp",
+            "name": "Rock Lamp",
+            "category": "art",
+            "year": 2025,
+            "image": "assets/images/projects/cards/rocklamp.gif",
+            "shortDescription": "Sculptural lighting piece combining natural forms with integrated illumination.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/rock-lamp.html"
+                }
+            ]
+        },
+        {
+            "id": "swarm-teleoperation",
+            "name": "Multisensory Swarm Teleoperation",
+            "category": "perceptual-augmentation",
+            "year": 2025,
+            "image": "assets/images/projects/cards/SwarME Teaser.png",
+            "shortDescription": "A haptic jacket and spatial audio system for teleoperating aerial drone swarms, translating swarm state into intuitive tactile and auditory feedback.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "Forthcoming 2026",
+                    "icon": "paper",
+                    "url": ""
+                },
+                {
+                    "type": "external",
+                    "label": "PDF",
+                    "icon": "link",
+                    "url": "assets/images/projects/swarm-teleoperation/HRI2026 SwarME.pdf"
+                },
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/swarm-teleoperation.html"
+                }
+            ]
+        },
+        {
+            "id": "cable-cat",
+            "name": "Cable Cat",
+            "category": "electronics",
+            "year": 2025,
+            "image": "assets/images/projects/cards/cablecat.png",
+            "shortDescription": "A versatile multi-protocol cable for hardware development integrating UART, SPI, and I2C protocols.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/cable-cat.html"
+                }
+            ]
+        },
+        {
+            "id": "haptic-hearing",
+            "name": "HapticHearing",
+            "category": "perceptual-augmentation",
+            "year": 2024,
+            "image": "assets/images/projects/cards/haptichearing.png",
+            "shortDescription": "A wearable multi-actuator haptic system that complements residual hearing with personalized tactile feedback for speech perception in hearing loss.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/haptic-hearing.html"
+                },
+                {
+                    "type": "paper",
+                    "label": "ASSETS 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3663547.3759754"
+                }
+            ]
+        },
+        {
+            "id": "haptic-hearing-toolkit",
+            "name": "Haptic Hearing Toolkit",
+            "category": "perceptual-augmentation",
+            "year": 2024,
+            "image": "assets/images/projects/cards/toolkit.png",
+            "shortDescription": "An open-source toolkit for researchers to build haptic feedback systems for auditory augmentation.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/haptic-hearing-toolkit.html"
+                },
+                {
+                    "type": "paper",
+                    "label": "UIST 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3746058.3758993"
+                },
+                {
+                    "type": "github",
+                    "label": "GitHub",
+                    "icon": "github",
+                    "url": "https://github.com/samchin/sound2haptic"
+                }
+            ]
+        },
+        {
+            "id": "purrfect-pitch",
+            "name": "Purrfect Pitch",
+            "category": "perceptual-augmentation",
+            "year": 2023,
+            "image": "assets/images/projects/cards/purrfect-pitch.jpg",
+            "shortDescription": "A wearable haptic device and learning interface for musical ear training that helps novice learners identify pitch intervals more accurately through multisensory feedback.",
+            "links": [
+                {
+                    "type": "paper",
+                    "label": "Augmented Humans 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/10.1145/3745900.3746079"
+                },
+                {
+                    "type": "external",
+                    "label": "More Info",
+                    "hidden": true,
+                    "icon": "link",
+                    "url": "https://www.media.mit.edu/projects/purrfectpitch/overview/"
+                }
+            ]
+        },
+        {
+            "id": "conductive-ceramics",
+            "name": "Conductive Ceramics",
+            "category": "art",
+            "year": 2023,
+            "image": "assets/images/projects/cards/conductive-ceramics.png",
+            "shortDescription": "A method for integrating conductive traces into ceramic objects using silver-based glaze compatible with traditional firing processes.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/conductive-ceramics.html"
+                },
+                {
+                    "type": "paper",
+                    "label": "CHI 2025",
+                    "icon": "paper",
+                    "url": "https://dl.acm.org/doi/abs/10.1145/3706599.3720267"
+                }
+            ]
+        },
+        {
+            "id": "living-knitwork-electronics",
+            "name": "Living Knitwork Pavillion Electronics",
+            "category": "art, electronics",
+            "year": 2023,
+            "image": "assets/images/projects/cards/living-knitwork-electronics.jpg",
+            "shortDescription": "Interactive textile architecture with capacitive sensing creating responsive lighting and audio experiences.",
+            "hidden": true,
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/living-knitwork-electronics.html"
+                }
+            ]
+        },
+        {
+            "id": "soundspindle",
+            "name": "SoundSpindle",
+            "category": "perceptual-augmentation",
+            "year": 2023,
+            "image": "assets/images/projects/cards/soundspindle.jpg",
+            "shortDescription": "A system exploring EEG sonification to improve sleep staging performance for novice practitioners through auditory representation of brainwaves.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/soundspindle.html"
+                },
+                {
+                    "type": "paper",
+                    "label": "PLoS 2025",
+                    "icon": "paper",
+                    "url": "https://doi.org/10.1371/journal.pone.0329711"
+                },
+                {
+                    "type": "data",
+                    "label": "Data",
+                    "icon": "database",
+                    "url": "https://datadryad.org/dataset/doi:10.5061/dryad.3bk3j9kz0"
+                }
+            ]
+        },
+        {
+            "id": "hfes-visual-haptic",
+            "name": "Haptics for Flight Attitude Recovery",
+            "category": "perceptual-augmentation",
+            "year": 2022,
+            "image": "assets/images/projects/cards/hfes-visual-haptic.png",
+            "shortDescription": "Evaluating head-mounted displays for recovery from unusual flight attitudes under normal and visually-degraded conditions.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/hfes-visual-haptic.html"
+                },
+                {
+                    "type": "paper",
+                    "label": "HFES 2024",
+                    "icon": "paper",
+                    "url": "https://doi.org/10.1177/10711813241262981"
+                }
+            ]
+        },
+        {
+            "id": "tulip-hardware",
+            "name": "Tulip Edge Device",
+            "category": "electronics",
+            "year": 2020,
+            "image": "assets/images/projects/cards/tulip.webp",
+            "shortDescription": "Second generation gateway for Tulip's manufacturing platform, integrating analog, digital, and communications interfaces.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/tulip-hardware.html"
+                }
+            ]
+        },
+        {
+            "id": "word-clock-gizmo",
+            "name": "Gizmo Word Clock",
+            "category": "art, electronics",
+            "year": 2019,
+            "image": "assets/images/projects/cards/word-clock.gif",
+            "shortDescription": "Interactive demo for Tulip combining smart work instructions, device integrations, IoT connectivity and analytics.",
+            "links": [
+                {
+                    "type": "github",
+                    "label": "GitHub",
+                    "icon": "github",
+                    "url": "https://github.com/tulip/gizmo"
+                },
+                {
+                    "type": "blog",
+                    "label": "Tulip Blog",
+                    "icon": "link",
+                    "url": "https://tulip.co/blog/manufacturing-apps/word-clock-demo/"
+                },
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/word-clock-gizmo.html"
+                }
+            ]
+        },
+        {
+            "id": "laser-audio",
+            "name": "Laser Audio System",
+            "category": "electronics",
+            "year": 2017,
+            "image": "assets/images/projects/cards/laser-audio.jpg",
+            "shortDescription": "A system to send and control music over a laser, featuring audio transmission and volume control via modulated laser light.",
+            "links": [
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/laser-audio.html"
+                }
+            ]
+        },
+        {
+            "id": "inflated-appetite",
+            "name": "Inflated Appetite",
+            "category": "art",
+            "year": 2016,
+            "image": "assets/images/projects/cards/inflated-appetite.jpg",
+            "shortDescription": "Explorations in food interaction design through inflated foods and flavored air captured in sugar bubbles.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "Course Overview",
+                    "icon": "link",
+                    "url": "https://tangible.media.mit.edu/project/inflated-appetite/"
+                },
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/inflated-appetite.html"
+                }
+            ]
+        },
+        {
+            "id": "piano-staircase",
+            "name": "Stairpeggio (Piano Staircase)",
+            "category": "electronics",
+            "year": 2014,
+            "image": "assets/images/projects/cards/piano-staircase.jpg",
+            "shortDescription": "An electro-mechanical piano staircase using real glockenspiel keys to produce sound when users step on each stair.",
+            "links": [
+                {
+                    "type": "video",
+                    "label": "YouTube Demo",
+                    "icon": "youtube",
+                    "url": "https://youtu.be/oa6rItm0OgQ"
+                },
+                {
+                    "type": "detail",
+                    "label": "Details",
+                    "icon": "link",
+                    "url": "projects/piano-staircase.html"
+                }
+            ]
+        }
+    ],
+    "talks": [
+        {
+            "id": "everyday-augmentation-workshop",
+            "name": "Everyday Augmentation Workshop (UIST'25)",
+            "date": "2025",
+            "role": "Organizer",
+            "description": "A workshop exploring how augmentation technologies can be seamlessly integrated into everyday life, focusing on practical applications and user-centered design approaches.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "Visit Workshop Site",
+                    "icon": "link",
+                    "url": "https://everyday-augmentation.github.io/"
+                }
+            ]
+        },
+        {
+            "id": "speech-in-noise-workshop-2025",
+            "name": "Speech in Noise Workshop 2025",
+            "date": "2025",
+            "role": "Invited Speaker",
+            "description": "A primer on building wearable vibrotactile devices for improved speech in noise perception",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "View Programme",
+                    "icon": "link",
+                    "url": "https://2025.speech-in-noise.eu/?p=programme"
+                }
+            ]
+        },
+        {
+            "id": "mit-media-lab-smart-living-lab",
+            "name": "MIT Media Lab x Smart Living Lab",
+            "date": "2024",
+            "role": "Organizer",
+            "description": "A MISTI-funded workshop on sensing, interactions, and augmentation bringing together students and researchers from MIT Media Lab, University of Fribourg, and EPFL.",
+            "links": [
+                {
+                    "type": "external",
+                    "label": "Workshop Recap",
+                    "icon": "link",
+                    "url": "https://www.media.mit.edu/posts/mit-media-lab-x-smart-living-lab/"
+                },
+                {
+                    "type": "external",
+                    "label": "Event Link",
+                    "icon": "link",
+                    "url": "https://events.human-ist.ch/swisti_2024"
+                }
+            ]
+        }
+    ]
+}
