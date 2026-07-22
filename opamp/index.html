@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Op-Amp Designer</title>
+<style>
+  :root{
+    --bg:#eef2f7; --card:#ffffff; --ink:#1e293b; --muted:#64748b;
+    --accent:#2563eb; --accent-soft:#dbeafe; --line:#e2e8f0;
+    --wire:#334155; --good:#059669; --warn:#d97706; --bad:#dc2626;
+    --mono:'SF Mono',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45}
+  header{background:var(--card);border-bottom:1px solid var(--line);padding:14px 24px;
+    display:flex;align-items:baseline;gap:14px}
+  header h1{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  header .sub{color:var(--muted);font-size:13px}
+  main{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;flex-direction:column;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .card h2{font-size:15px;font-weight:700;margin-bottom:4px}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+    background:var(--accent);color:#fff;border-radius:99px;font-size:12.5px;font-weight:800;margin-right:8px;vertical-align:-4px}
+  .desc{color:var(--muted);font-size:13.5px}
+  .controls{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-top:10px}
+  .field{display:flex;flex-direction:column;gap:3px}
+  .field label{font-size:12px;font-weight:600;color:var(--muted)}
+  .field input,.field select{padding:6px 8px;border:1px solid var(--line);border-radius:8px;
+    font-family:var(--mono);font-size:13.5px;color:var(--ink);background:#fff}
+  .field input:focus,.field select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;vertical-align:middle}
+  .seg button{padding:6px 14px;border:0;background:#fff;cursor:pointer;font-weight:700;font-size:13px;color:var(--muted)}
+  .seg button.on{background:var(--accent);color:#fff}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:9px;
+    padding:8px 16px;font-weight:700;font-size:13.5px;cursor:pointer}
+  .btn:hover{filter:brightness(1.08)}
+  .schem-wrap{display:flex;justify-content:center;padding:6px 0}
+  svg.schem{max-width:100%;height:auto}
+  svg.schem .wire{stroke:var(--wire);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  svg.schem .body{stroke:var(--wire);stroke-width:2;fill:#f8fafc}
+  svg.schem .dot{fill:var(--wire)}
+  svg.schem text{font-family:-apple-system,'Segoe UI',sans-serif}
+  svg.schem .pin{font-size:15px;font-weight:700;fill:var(--wire)}
+  svg.schem .cname{font-size:13px;font-weight:700;fill:var(--accent)}
+  svg.schem .cval{font-size:12px;font-family:var(--mono);fill:var(--muted)}
+  svg.schem .tname{font-size:13px;font-weight:700;fill:var(--ink)}
+  svg.schem .vlab{font-size:11px;font-family:var(--mono);fill:var(--muted)}
+  svg.schem .zero{fill:var(--good)}
+  svg.schem g.openpart{opacity:.32}
+  svg.schem g.openpart .wire{stroke-dasharray:5 4}
+  svg.schem g.editable{cursor:pointer}
+  svg.schem g.editable:hover .cname{fill:#1d4ed8;text-decoration:underline}
+  svg.schem g.editable:hover .tname{fill:var(--accent)}
+  svg.schem g.editable:hover .cval,svg.schem g.editable:hover .vlab{fill:var(--ink)}
+  .rows{margin-top:10px;border-top:1px solid var(--line)}
+  .rrow{display:flex;justify-content:space-between;gap:12px;padding:7px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .rrow .k{color:var(--muted)}
+  .rrow .v{font-family:var(--mono);font-weight:600;text-align:right}
+  table.design{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px}
+  table.design th{text-align:right;color:var(--muted);font-weight:600;font-size:12px;
+    padding:6px 8px;border-bottom:2px solid var(--line)}
+  table.design th:first-child,table.design td:first-child{text-align:left}
+  table.design td{padding:7px 8px;border-bottom:1px solid var(--line);font-family:var(--mono);text-align:right}
+  tr.applyrow{cursor:pointer}
+  tr.applyrow:hover td{background:var(--accent-soft)}
+  tr.current td{background:#f0f9ff;font-weight:700}
+  table.spec{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px}
+  table.spec th{text-align:left;color:var(--muted);font-weight:600;font-size:12px;padding:6px 8px;border-bottom:2px solid var(--line)}
+  table.spec td{padding:7px 8px;border-bottom:1px solid var(--line)}
+  table.spec td.v{font-family:var(--mono);font-weight:600}
+  .err-good{color:var(--good)} .err-ok{color:var(--warn)} .err-bad{color:var(--bad)}
+  .pill{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:99px;
+    padding:1px 9px;font-size:11.5px;font-weight:700;vertical-align:middle}
+  .note{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+  .warn-note{color:var(--warn);font-weight:600}
+  .bad-note{color:var(--bad);font-weight:600}
+  .hint{font-size:12px;color:var(--muted);margin-top:4px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}}
+  .subhead{font-size:13px;font-weight:700;margin-top:12px}
+  .scope-toggle{float:right;font-size:12.5px;font-weight:700;color:var(--accent);background:none;border:0;cursor:pointer}
+  .sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px 20px;margin:12px 0 4px}
+  .slider label{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:3px}
+  .slider label b{color:var(--ink);font-family:var(--mono)}
+  .slider input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+  .slider.disabled{opacity:.4;pointer-events:none}
+  .plots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  @media(max-width:820px){.plots{grid-template-columns:1fr}}
+  .plotbox h3{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:2px;text-align:center}
+  svg.plot{width:100%;height:auto;background:#fcfdfe;border:1px solid var(--line);border-radius:8px}
+  svg.plot .axis{stroke:#94a3b8;stroke-width:1}
+  svg.plot .grid{stroke:#eef2f7;stroke-width:1}
+  svg.plot .rail{fill:#fee2e2;opacity:.55}
+  svg.plot .xfer{stroke:var(--accent);stroke-width:2.5;fill:none}
+  svg.plot .inwave{stroke:#94a3b8;stroke-width:1.8;fill:none}
+  svg.plot .outwave{stroke:var(--accent);stroke-width:2.2;fill:none}
+  svg.plot .oppt{fill:var(--warn);stroke:#fff;stroke-width:1.5}
+  svg.plot .reflect{stroke:#cbd5e1;stroke-width:1;stroke-dasharray:3 3}
+  svg.plot .movedot{fill:var(--bad)}
+  svg.plot text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+  svg.plot text.al{font-family:-apple-system,sans-serif;font-size:11px;font-weight:700;fill:var(--ink)}
+  /* LaTeX-style math */
+  .mblock{border-left:3px solid var(--accent-soft);padding:1px 0 1px 14px;margin:15px 0}
+  .mtitle{font-size:13.5px;font-weight:700}
+  .mcite{font-size:11.5px;color:var(--muted);font-style:italic;margin:1px 0 5px}
+  .math{font-family:'Latin Modern Roman',Cambria,Georgia,'Times New Roman',serif;
+    font-size:17px;color:var(--ink);padding:4px 0;overflow-x:auto;overflow-y:hidden;white-space:nowrap}
+  .mv{font-style:italic;font-family:Cambria,Georgia,serif}
+  .ms{font-size:.64em;font-style:italic;vertical-align:-.28em;margin-left:.4px}
+  .mn{font-style:normal}
+  .mo{margin:0 .32em;font-style:normal;color:#64748b}
+  .mfrac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 .22em}
+  .mtop{padding:0 .45em 1px;border-bottom:1.4px solid #475569;line-height:1.45}
+  .mbot{padding:1px .45em 0;line-height:1.45}
+  .mp{font-style:normal;color:#475569}
+  .mres{background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:1px 8px;font-weight:700;font-style:normal;color:#1d4ed8}
+  .mnote{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+  .mlegend{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:12.5px;color:var(--muted);
+    background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:10px 14px;margin-top:8px}
+  .mlegend b{color:var(--ink);font-family:Cambria,Georgia,serif;font-style:italic;font-weight:600}
+  .mwhead{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:16px 0 2px;border-top:1px solid var(--line);padding-top:14px}
+  #math-amp .mblock{margin:12px 0 2px}
+  .dbg-row{display:grid;grid-template-columns:auto 1.4fr 1.5fr 1.4fr;gap:10px;align-items:center;padding:8px 4px;border-bottom:1px solid var(--line);font-size:13px}
+  .dbg-head{font-weight:700;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--line)}
+  .dbg-name{font-weight:600}
+  .dbg-ref{font-size:11.5px;color:var(--muted)}
+  .dbg-val{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .chip{display:inline-block;padding:1px 10px;border-radius:99px;font-size:11.5px;font-weight:700}
+  .chip.pass{background:#dcfce7;color:#166534}
+  .chip.fail{background:#fee2e2;color:#991b1b}
+  .chip.note{background:#fef9c3;color:#854d0e}
+  .dbg-summary{font-size:13px;font-weight:700;margin:10px 0 2px}
+  .dbg-row.click{cursor:pointer;transition:background .1s}
+  .dbg-row.click:hover{background:var(--accent-soft)}
+  .dbg-row .loadhint{font-size:11px;color:var(--accent);font-weight:700;opacity:0}
+  .dbg-row.click:hover .loadhint{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <h1>Op-Amp Designer</h1>
+  <span class="sub">one cell, superposition first — then layer the bias &amp; coupling on top (MAS.836)</span>
+</header>
+<main>
+  <div class="card">
+    <h2><span class="stepnum">1</span>Amplifier</h2>
+    <div class="controls" id="topo-controls"></div>
+    <div id="math-amp"></div>
+    <div class="schem-wrap" id="schem"></div>
+    <div id="behavior-out"></div>
+  </div>
+  <div class="card">
+    <h2><span class="stepnum">2</span>Add bias &amp; coupling <span class="pill">ranges &rarr; components</span></h2>
+    <div class="desc">Say what swing you have and what swing you want; the designer computes the gain, the bias point, and the parts — then writes them into the circuit above, where the superposition solver verifies them.</div>
+    <div class="controls" id="bias-controls"></div>
+    <div id="bias-out"></div>
+    <div id="math-bias"></div>
+    <div class="grid2" id="alt-out"></div>
+    <div id="notes-out"></div>
+  </div>
+  <div class="card">
+    <h2><span class="stepnum">3</span>Scope <span class="pill">signal in → signal out</span>
+      <button class="scope-toggle" id="scope-toggle">open ↓</button></h2>
+    <div class="desc">Put a sine on the input and watch it ride through the transfer line. The operating point is the <b>fulcrum</b> — the line pivots about it as you drag R₁/R₂; the bias network sets where the fulcrum sits. Anything past the rails clips.</div>
+    <div id="scope-body" style="display:none">
+      <div class="sliders" id="scope-sliders"></div>
+      <div class="plots">
+        <div class="plotbox"><h3>Transfer — V<sub>out</sub> vs V<sub>in</sub></h3><div id="xfer-plot"></div></div>
+        <div class="plotbox"><h3>Waveforms vs time · <span style="color:#94a3b8">V<sub>in</sub></span> / <span style="color:#2563eb">V<sub>out</sub></span></h3><div id="time-plot"></div></div>
+      </div>
+      <div id="scope-note"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Worksheet coverage <span class="pill">every circuit in the handout</span>
+      <button class="scope-toggle" id="dbg-run">re-run</button></h2>
+    <div class="desc">Each row runs the handout's design for that circuit, then reads the achieved gain and output range straight off the superposition solver — proving the whole worksheet is buildable here. <b>Click any row to load that circuit into the designer above.</b></div>
+    <div id="dbg-out"></div>
+  </div>
+</main>
+
+<script>
+'use strict';
+
+/* ================= E-series & helpers ================= */
+const ESERIES = {
+  E12:[1.0,1.2,1.5,1.8,2.2,2.7,3.3,3.9,4.7,5.6,6.8,8.2],
+  E24:[1.0,1.1,1.2,1.3,1.5,1.6,1.8,2.0,2.2,2.4,2.7,3.0,3.3,3.6,3.9,4.3,4.7,5.1,5.6,6.2,6.8,7.5,8.2,9.1],
+  E96:[1.00,1.02,1.05,1.07,1.10,1.13,1.15,1.18,1.21,1.24,1.27,1.30,1.33,1.37,1.40,1.43,1.47,1.50,
+       1.54,1.58,1.62,1.65,1.69,1.74,1.78,1.82,1.87,1.91,1.96,2.00,2.05,2.10,2.15,2.21,2.26,2.32,
+       2.37,2.43,2.49,2.55,2.61,2.67,2.74,2.80,2.87,2.94,3.01,3.09,3.16,3.24,3.32,3.40,3.48,3.57,
+       3.65,3.74,3.83,3.92,4.02,4.12,4.22,4.32,4.42,4.53,4.64,4.75,4.87,4.99,5.11,5.23,5.36,5.49,
+       5.62,5.76,5.90,6.04,6.19,6.34,6.49,6.65,6.81,6.98,7.15,7.32,7.50,7.68,7.87,8.06,8.25,8.45,
+       8.66,8.87,9.09,9.31,9.53,9.76]
+};
+const seriesCache={};
+function seriesValues(name){
+  if(seriesCache[name]) return seriesCache[name];
+  const out=[];
+  for(let e=2;e<=6;e++) for(const b of ESERIES[name]){
+    const v=b*Math.pow(10,e);
+    if(v>=100&&v<=1e6+1) out.push(Math.round(v*100)/100);
+  }
+  out.push(1e6);
+  const uniq=[...new Set(out)].sort((a,b)=>a-b);
+  seriesCache[name]=uniq; return uniq;
+}
+function snapTo(v,arr){
+  let lo=0,hi=arr.length-1;
+  while(hi-lo>1){const m=(lo+hi)>>1; if(arr[m]<v)lo=m;else hi=m;}
+  return (Math.abs(arr[lo]-v)<=Math.abs(arr[hi]-v))?arr[lo]:arr[hi];
+}
+function mantKey(v){const m=v/Math.pow(10,Math.floor(Math.log10(v)));return Math.round(m*1000);}
+function bestPairs(ratio,seriesName,topN){
+  if(!(ratio>0)||!isFinite(ratio)) return [];
+  const vals=seriesValues(seriesName), lo=vals[0], hi=vals[vals.length-1];
+  const seen=new Map();
+  for(const rb of vals){
+    const ideal=ratio*rb;
+    if(ideal<lo||ideal>hi) continue;
+    const ra=snapTo(ideal,vals);
+    const ach=ra/rb, err=Math.abs(ach-ratio)/ratio;
+    const key=mantKey(ra)+'/'+mantKey(rb);
+    const score=Math.abs(Math.log10(rb/10000));
+    const prev=seen.get(key);
+    if(!prev||score<prev.score) seen.set(key,{ra,rb,ach,err,score});
+  }
+  return [...seen.values()].sort((a,b)=>a.err-b.err||a.score-b.score).slice(0,topN||4);
+}
+function parseR(s){
+  if(typeof s!=='string') return NaN;
+  const m=s.trim().match(/^([\d]*\.?[\d]+)\s*(meg|[kKmM])?\s*(?:Ω|ohm|ohms|R)?$/i);
+  if(!m) return NaN;
+  let v=parseFloat(m[1]); const suf=(m[2]||'');
+  if(suf.toLowerCase()==='k') v*=1e3;
+  else if(suf.toLowerCase()==='meg'||suf==='M'||suf==='m') v*=1e6;
+  return v>=0?v:NaN;
+}
+function parseC(s){
+  if(typeof s!=='string') return NaN;
+  const m=s.trim().match(/^([\d]*\.?[\d]+)\s*(p|n|u|µ)?\s*F?$/i);
+  if(!m) return NaN;
+  const mult={p:1e-12,n:1e-9,u:1e-6,'µ':1e-6}[(m[2]||'').toLowerCase()]??1;
+  return parseFloat(m[1])*mult;
+}
+function sig(x,n){ if(x===0)return '0'; return parseFloat(x.toPrecision(n||4)).toString(); }
+function fmtR(v){
+  if(v===0) return '0 Ω';
+  if(!isFinite(v)||v<0) return '∞';
+  if(v>=1e6) return sig(v/1e6)+' MΩ';
+  if(v>=1e3) return sig(v/1e3)+' kΩ';
+  return sig(v)+' Ω';
+}
+function fmtV(v){
+  if(!isFinite(v)) return '—';
+  if(Math.abs(v)<1e-9) v=0;
+  if(Math.abs(v)>=1000) return sig(v/1000)+' kV';
+  if(Math.abs(v)<0.1&&v!==0) return sig(v*1000)+' mV';
+  return sig(v)+' V';
+}
+function fmtC(F){
+  if(!isFinite(F)||F<=0) return '—';
+  if(F>=1e-6) return sig(F*1e6)+' µF';
+  if(F>=1e-9) return sig(F*1e9)+' nF';
+  return sig(F*1e12)+' pF';
+}
+function fmtHz(f){
+  if(!isFinite(f)) return '—';
+  if(f>=1e6) return sig(f/1e6)+' MHz';
+  if(f>=1e3) return sig(f/1e3)+' kHz';
+  return sig(f)+' Hz';
+}
+function fmtG(g){ return isFinite(g)?sig(g,5):'—'; }
+function errCls(e){ return e<0.005?'err-good':(e<0.02?'err-ok':'err-bad'); }
+function fmtErr(e){ const p=e*100; return (p<0.0005?'exact':sig(p,3)+' %'); }
+function par(a,b){ return (a>0&&b>0)?a*b/(a+b):NaN; }
+function capSnapUp(F){
+  if(!(F>0)) return NaN;
+  const exp=Math.floor(Math.log10(F)), m=F/Math.pow(10,exp);
+  for(const b of ESERIES.E12) if(b>=m-1e-9) return b*Math.pow(10,exp);
+  return 10*Math.pow(10,exp);
+}
+function rToStr(v){ return v>=1e6?sig(v/1e6)+'M':(v>=1e3?sig(v/1e3)+'k':sig(v)); }
+function cToStr(F){ return F>=1e-6?sig(F*1e6)+'u':(F>=1e-9?sig(F*1e9)+'n':sig(F*1e12)+'p'); }
+
+/* ================= SVG helpers ================= */
+const subT=t=>`<tspan font-size="9.5" baseline-shift="-18%">${t}</tspan>`;
+function resistorPath(x1,y1,x2,y2){
+  const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
+  const ux=dx/len,uy=dy/len,px=-uy,py=ux;
+  const body=Math.min(40,len*0.6), lead=(len-body)/2, seg=body/6, amp=6;
+  let d=`M ${x1} ${y1} L ${sig(x1+ux*lead)} ${sig(y1+uy*lead)}`;
+  for(let i=0;i<6;i++){
+    const t=lead+seg*(i+0.5), s=(i%2?-1:1);
+    d+=` L ${sig(x1+ux*t+px*amp*s)} ${sig(y1+uy*t+py*amp*s)}`;
+  }
+  d+=` L ${sig(x1+ux*(lead+body))} ${sig(y1+uy*(lead+body))} L ${x2} ${y2}`;
+  return d;
+}
+const S={
+  wire:(...pts)=>`<polyline class="wire" points="${pts.map(p=>p.join(',')).join(' ')}"/>`,
+  dot:(x,y)=>`<circle class="dot" cx="${x}" cy="${y}" r="3.2"/>`,
+  res(x1,y1,x2,y2,name,val,side){
+    const mx=(x1+x2)/2,my=(y1+y2)/2;
+    const valCls=val==='0 Ω'?'cval zero':'cval';
+    let lbl='';
+    if(y1===y2){
+      if(side==='inline'||side==='inline-below'){
+        const ly=side==='inline'?my-12:my+22;
+        lbl=`<text class="cname" x="${mx}" y="${ly}" text-anchor="middle">${name}${val?`&#160;&#160;<tspan class="${valCls}">${val}</tspan>`:''}</text>`;
+      }else{
+        const ny=side==='below'?my+22:my-14;
+        lbl=`<text class="cname" x="${mx}" y="${ny}" text-anchor="middle">${name}</text>`+
+            (val?`<text class="${valCls}" x="${mx}" y="${side==='below'?my+36:my+24}" text-anchor="middle">${val}</text>`:'');
+      }
+    }else{
+      const nx=side==='left'?x1-14:x1+14, anch=side==='left'?'end':'start';
+      lbl=`<text class="cname" x="${nx}" y="${my-2}" text-anchor="${anch}">${name}</text>`+
+          (val?`<text class="${valCls}" x="${nx}" y="${my+13}" text-anchor="${anch}">${val}</text>`:'');
+    }
+    return `<path class="wire" d="${resistorPath(x1,y1,x2,y2)}"/>`+lbl;
+  },
+  cap(x1,y1,x2,y2,name,val,side){
+    const mx=(x1+x2)/2,my=(y1+y2)/2;
+    let plates,lbl;
+    if(y1===y2){
+      plates=`<line class="wire" x1="${mx-4}" y1="${my-11}" x2="${mx-4}" y2="${my+11}"/>`+
+             `<line class="wire" x1="${mx+4}" y1="${my-11}" x2="${mx+4}" y2="${my+11}"/>`+
+             S.wire([x1,y1],[mx-4,y1])+S.wire([mx+4,y2],[x2,y2]);
+      const ly=side==='inline-below'?my+26:my-16;
+      lbl=`<text class="cname" x="${mx}" y="${ly}" text-anchor="middle">${name}${val?`&#160;&#160;<tspan class="cval">${val}</tspan>`:''}</text>`;
+    }else{
+      plates=`<line class="wire" x1="${mx-11}" y1="${my-4}" x2="${mx+11}" y2="${my-4}"/>`+
+             `<line class="wire" x1="${mx-11}" y1="${my+4}" x2="${mx+11}" y2="${my+4}"/>`+
+             S.wire([x1,y1],[x1,my-4])+S.wire([x2,my+4],[x2,y2]);
+      const nx=side==='left'?x1-15:x1+15, anch=side==='left'?'end':'start';
+      lbl=`<text class="cname" x="${nx}" y="${my-2}" text-anchor="${anch}">${name}</text>`+
+          (val?`<text class="cval" x="${nx}" y="${my+13}" text-anchor="${anch}">${val}</text>`:'');
+    }
+    return plates+lbl;
+  },
+  gnd(x,y){
+    return S.wire([x,y],[x,y+8])+
+      `<line class="wire" x1="${x-10}" y1="${y+8}" x2="${x+10}" y2="${y+8}"/>`+
+      `<line class="wire" x1="${x-6}" y1="${y+13}" x2="${x+6}" y2="${y+13}"/>`+
+      `<line class="wire" x1="${x-2}" y1="${y+18}" x2="${x+2}" y2="${y+18}"/>`;
+  },
+  term(x,y,name,anchor){
+    const a=anchor||'end', tx=a==='end'?x-8:x+8;
+    return `<circle cx="${x}" cy="${y}" r="3.5" fill="#fff" stroke="var(--wire)" stroke-width="2"/>`+
+      `<text class="tname" x="${tx}" y="${y+5}" text-anchor="${a}">${name}</text>`;
+  },
+  opamp(x,y,s,flip){
+    s=s||1;
+    const h=32*s,w=64*s,o=16*s;
+    const top=flip?'+':'−', bot=flip?'−':'+';
+    return `<polygon class="body" points="${x},${y-h} ${x},${y+h} ${x+w},${y}"/>`+
+      `<text class="pin" x="${x+7*s}" y="${y-o+5*s}">${top}</text>`+
+      `<text class="pin" x="${x+7*s}" y="${y+o+6*s}">${bot}</text>`;
+  }
+};
+function ed(k,inner,hx,hy,hw,hh){
+  return `<g class="editable" data-k="${k}">${inner}<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" fill="transparent" stroke="none"/></g>`;
+}
+function edg(k,inner){ return `<g class="editable" data-k="${k}">${inner}</g>`; }
+
+/* ================= state ================= */
+const CFGS=[['inverting','Inverting'],['noninverting','Non-inverting'],['differential','Differential']];
+/* display names: internal keys keep their letters, labels use the handout's numbering */
+const DISP={RA:'R₁',RF:'R₂',RD:'R₃',RG:'R₄',R5:'R₅',R6:'R₆',VA:'V₁',VD:'V₃',VG:'V₄',V5:'V₅',V6:'V₆',CA:'C₁',CD:'C₃',C4:'C₄'};
+const CFG_DESC={
+  inverting:'Signal into the − side through R₁; the + node is what you bias. Gain = −R₂/R₁.',
+  noninverting:'Signal straight into the + node through R₃; R₁/R₂ set the gain 1 + R₂/R₁, and biasing means replacing R₁\'s ground with V<sub>b</sub>.',
+  differential:'Both legs populated: gain (R₂/R₁)·(V₃−V₁) with R₃ = R₁ and R₄ = R₂ matched; the bias replaces R₄\'s ground.'
+};
+function presetCell(cfg){
+  const base={R5:Infinity,V5:0,R6:Infinity,V6:0,C4:null};
+  if(cfg==='inverting')    return {...base,RA:1e4,VA:0.5,CA:null,RF:1e5,RD:Infinity,VD:0,CD:null,RG:0,VG:0};
+  if(cfg==='noninverting') return {...base,RA:1e4,VA:0,CA:null,RF:9e4,RD:0,VD:0.5,CD:null,RG:Infinity,VG:0};
+  return {...base,RA:1e4,VA:1.0,CA:null,RF:1e5,RD:1e4,VD:1.2,CD:null,RG:1e5,VG:0};
+}
+const state={
+  cfg:'inverting', ac:true, series:'E24',
+  t:{vi1:'0',vi2:'1',vo1:'0',vo2:'5',vs:'5',fc:'20'},
+  g:{gain:'10',r1:'10k'},
+  cell:presetCell('inverting')
+};
+function el(id){return document.getElementById(id);}
+
+/* ================= superposition solver =================
+   mode 'dc'  : caps are OPEN  -> operating point
+   mode 'mid' : caps are SHORT -> signal gains                */
+function solve(mode){
+  const n=state.cell, w=[];
+  const aA=isFinite(n.RA)&&(mode==='mid'||!n.CA);
+  const a5=isFinite(n.R5);
+  const aD=isFinite(n.RD)&&(mode==='mid'||!n.CD);
+  const a6=isFinite(n.R6);
+  const aG=isFinite(n.RG);
+  /* + node: branches R₃(V₃), R₆(V₆), R₄(V₄); C₄ AC-grounds it at midband */
+  let cD=0,c6=0,cG=0;
+  if(mode==='mid'&&n.C4){
+    /* decoupling cap shorts the + node for signals */
+  }else{
+    const zeros=[aD&&n.RD===0?'D':null,a6&&n.R6===0?'6':null,aG&&n.RG===0?'G':null].filter(Boolean);
+    if(zeros.length>1) w.push('Two 0 Ω branches on the + node short their sources together.');
+    if(zeros[0]==='D') cD=1;
+    else if(zeros[0]==='6') c6=1;
+    else if(zeros[0]==='G') cG=1;
+    else{
+      const gD=aD&&n.RD>0?1/n.RD:0, g6=a6&&n.R6>0?1/n.R6:0, gG=aG&&n.RG>0?1/n.RG:0, gs=gD+g6+gG;
+      if(gs>0){ cD=gD/gs; c6=g6/gs; cG=gG/gs; }
+      else w.push('The + node is floating'+(mode==='dc'&&n.CD?' at DC (the input cap blocks it)':'')+' — connect R₃, R₆ or R₄.');
+    }
+  }
+  const vplus=cD*n.VD+c6*n.V6+cG*n.VG;
+  /* − node: branches R₁(V₁), R₅(V₅); R₂ feedback */
+  let k=1,cA=0,c5=0,bad=false;
+  if((aA&&n.RA===0)||(a5&&n.R5===0)){ w.push('A 0 Ω resistor into the virtual node → infinite gain.'); bad=true; }
+  if(n.RF===0){ k=1; }
+  else if(!isFinite(n.RF)){ w.push('No feedback (R₂ open) — the output saturates.'); bad=true; }
+  else{
+    const gA=aA&&n.RA>0?1/n.RA:0, g5=a5&&n.R5>0?1/n.R5:0;
+    k=1+n.RF*(gA+g5);
+    cA=gA?-n.RF/n.RA:0;
+    c5=g5?-n.RF/n.R5:0;
+  }
+  const coeffs={VA:cA,V5:c5,VD:k*cD,V6:k*c6,VG:k*cG};
+  const vout=bad?NaN:k*vplus+cA*(aA?n.VA:0)+c5*(a5?n.V5:0);
+  return {vplus,coeffs,vout,warns:w,bad};
+}
+function cutoffs(){
+  const n=state.cell, list=[];
+  if(n.CA&&isFinite(n.RA)&&n.RA>0) list.push(['C₁',1/(2*Math.PI*n.RA*n.CA),'hp']);
+  if(n.CD&&isFinite(n.RD)){
+    const others=[n.R6,n.RG].filter(r=>isFinite(r)&&r>0);
+    if(others.length){
+      let g=0; for(const r of others) g+=1/r;
+      const rEff=n.RD+1/g;
+      list.push(['C₃',1/(2*Math.PI*rEff*n.CD),'hp']);
+    }
+  }
+  if(n.C4){
+    const paths=[n.RD,n.R6,n.RG].filter(r=>isFinite(r)&&r>0);
+    if(paths.length){
+      let g=0; for(const r of paths) g+=1/r;
+      list.push(['C₄',1/(2*Math.PI*(1/g)*n.C4),'dec']);
+    }
+  }
+  return list;
+}
+
+/* ================= cell schematic ================= */
+function drawCell(){
+  const n=state.cell;
+  const busX=175, ax=250, ay=110, pinM=94, pinP=126;
+  let o='';
+  o+=S.opamp(ax,ay,1,false);
+  o+=S.wire([314,ay],[430,ay])+S.term(430,ay,'V'+subT('out'),'start');
+  /* leg builder: term -> [cap] -> R -> node */
+  const leg=(y,rk,vk,ck,side)=>{
+    const open=!isFinite(n[rk]);
+    const hasCap=!!n[ck];
+    let s=`<g class="${open?'openpart':''}">`;
+    s+=edg(vk,
+      S.term(28,y,DISP[vk],'end')+
+      `<text class="vlab" x="20" y="${y+18}" text-anchor="end">${open?'n/c':fmtV(n[vk])}</text>`+
+      `<circle cx="22" cy="${y}" r="20" fill="transparent" stroke="none"/>`);
+    if(hasCap){
+      s+=ed(ck,S.cap(32,y,76,y,DISP[ck],fmtC(n[ck]),side),34,y-28,42,56)+
+         ed(rk,S.res(80,y,160,y,DISP[rk],open?'0 Ω':fmtR(n[rk]),side==='inline'?'inline':'inline-below'),80,y-28,80,56);
+    }else{
+      s+=ed(rk,S.res(32,y,160,y,DISP[rk],open?'0 Ω':fmtR(n[rk]),side),34,y-28,126,56);
+    }
+    s+=S.wire([160,y],[busX,y])+`</g>`;
+    return s;
+  };
+  /* − node rows: R₅ (bias leg) above, R₁ (signal) on the pin row */
+  o+=leg(52,'R5','V5',null,'inline');
+  o+=leg(pinM,'RA','VA','CA','inline');
+  {
+    const seg=S.wire([busX,52],[busX,pinM])+S.dot(busX,pinM);
+    o+=(isFinite(n.R5)?seg:`<g class="openpart">${seg}</g>`)+S.wire([busX,pinM],[ax,pinM]);
+  }
+  /* + node rows: R₃ (signal) on the pin row, R₆ (bias top) below */
+  o+=leg(pinP,'RD','VD','CD','inline-below');
+  o+=leg(168,'R6','V6',null,'inline-below');
+  {
+    const seg=S.wire([busX,pinP],[busX,168])+S.dot(busX,pinP);
+    o+=(isFinite(n.R6)?seg:`<g class="openpart">${seg}</g>`)+S.wire([busX,pinP],[ax,pinP]);
+  }
+  /* RF */
+  {
+    const open=!isFinite(n.RF);
+    o+=`<g class="${open?'openpart':''}">`+
+       S.wire([200,pinM],[200,14])+
+       ed('RF',S.res(200,14,340,14,DISP.RF,open?'∞':fmtR(n.RF),'inline'),210,-12,130,44)+
+       S.wire([340,14],[340,ay])+
+       `</g>`+S.dot(200,pinM)+S.dot(340,ay);
+  }
+  /* RG down from + node to V₄ (ground when 0) — left branch, label upper-left */
+  {
+    const open=!isFinite(n.RG);
+    const rv=open?'∞':fmtR(n.RG), vcls=rv==='0 Ω'?'cval zero':'cval';
+    o+=`<g class="${open?'openpart':''}">`+
+       S.wire([204,pinP],[204,134])+
+       ed('RG',
+         S.res(204,134,204,178,'','','left')+
+         `<text class="cname" x="190" y="147" text-anchor="end">${DISP.RG}</text>`+
+         `<text class="${vcls}" x="190" y="160" text-anchor="end">${rv}</text>`,
+         150,132,54,50)+
+       (n.VG===0
+         ? edg('VG',S.gnd(204,184)+`<circle cx="204" cy="196" r="18" fill="transparent" stroke="none"/>`)+S.wire([204,178],[204,184])
+         : S.wire([204,178],[204,190])+edg('VG',
+             S.term(204,194,'V'+subT('b'),'start')+
+             `<text class="vlab" x="220" y="210" text-anchor="start">${fmtV(n.VG)}</text>`+
+             `<circle cx="210" cy="198" r="20" fill="transparent" stroke="none"/>`))+
+       `</g>`+S.dot(204,pinP);
+  }
+  /* C₄ decoupling from + node to ground — right branch, label lower-right, clear of op-amp */
+  {
+    const has=!!n.C4;
+    o+=`<g class="${has?'':'openpart'}">`+
+       S.wire([240,pinP],[240,138])+
+       ed('C4',
+         S.cap(240,138,240,176,'','','right')+
+         `<text class="cname" x="253" y="161" text-anchor="start">${DISP.C4}</text>`+
+         (has?`<text class="cval" x="253" y="175" text-anchor="start">${fmtC(n.C4)}</text>`:''),
+         226,138,60,44)+
+       S.gnd(240,182)+
+       `</g>`+(has?S.dot(240,pinP):`<g class="openpart">${S.dot(240,pinP)}</g>`);
+  }
+  return `<svg class="schem" viewBox="-30 -14 500 262" width="500" height="262" xmlns="http://www.w3.org/2000/svg">${o}</svg>`;
+}
+
+/* ================= step 1 rendering ================= */
+function applyGain(){
+  const gv=parseFloat((state.g.gain??'').toString().trim());
+  const r1=parseR((state.g.r1??'').toString());
+  if(!isFinite(gv)||!(r1>0)) return;
+  let ratio;
+  if(state.cfg==='inverting') ratio=Math.abs(gv);
+  else if(state.cfg==='noninverting'){ if(gv<1) return; ratio=gv-1; }
+  else ratio=Math.abs(gv);
+  const n=state.cell;
+  n.RA=r1;
+  n.RF=ratio===0?0:snapTo(ratio*r1,seriesValues(state.series));
+  if(state.cfg==='differential'){ n.RD=n.RA; n.RG=n.RF; }
+  if(n.CA&&n.RA>0){ const T=computeTargets(); if(!T.err&&state.ac) n.CA=capSnapUp(1/(2*Math.PI*n.RA*T.v.fc)); }
+  if(state.cfg==='differential'&&n.CD) n.CD=n.CA;
+  renderAll();
+}
+function renderTopo(){
+  const gainLabel=state.cfg==='inverting'?'|Gain|':(state.cfg==='noninverting'?'Gain (≥1)':'Diff. gain');
+  el('topo-controls').innerHTML=
+    `<div class="field"><label>Topology</label>
+      <span class="seg">${CFGS.map(([id,nm])=>`<button data-cfg="${id}" class="${id===state.cfg?'on':''}">${nm}</button>`).join('')}</span></div>`+
+    `<div class="field"><label>${gainLabel}</label><input id="g-gain" value="${state.g.gain}" spellcheck="false" style="width:64px"></div>`+
+    `<div class="field"><label>R₁ (input)</label><input id="g-r1" value="${state.g.r1}" spellcheck="false" style="width:70px"></div>`+
+    `<div class="field"><label>&nbsp;</label><span class="hint" style="margin:0">→ sets R₂${state.cfg==='differential'?' (and matched R₃/R₄)':''} from the ${'series'in state?state.series:'E24'} series</span></div>`;
+  el('topo-controls').querySelectorAll('[data-cfg]').forEach(b=>b.onclick=()=>{
+    state.cfg=b.dataset.cfg;
+    state.cell=presetCell(state.cfg);
+    state.g={gain:'10',r1:'10k'};
+    scope.amp=null;
+    renderTopo(); renderBiasControls(); renderAll();
+  });
+  el('g-gain').addEventListener('input',e=>{ state.g.gain=e.target.value; applyGain(); });
+  el('g-r1').addEventListener('input',e=>{ state.g.r1=e.target.value; applyGain(); });
+}
+function renderBehavior(){
+  const dc=solve('dc'), mid=solve('mid');
+  /* only structural warnings here — the numbers live in the equation and the scope */
+  const allWarns=[...new Set([...dc.warns,...mid.warns])];
+  el('behavior-out').innerHTML=allWarns.map(w=>`<div class="note warn-note">${w}</div>`).join('');
+  renderMathAmp();
+}
+
+/* ================= step 2: targets & bias ================= */
+function computeTargets(){
+  const v={};
+  for(const k of ['vi1','vi2','vo1','vo2','vs','fc']){
+    v[k]=parseFloat((state.t[k]??'').toString().trim());
+    if(isNaN(v[k])&&!(k==='fc'&&!state.ac)) return {err:'Enter valid numbers in all the fields.'};
+  }
+  const inSw=v.vi2-v.vi1, outSw=v.vo2-v.vo1;
+  if(!(inSw>0)) return {err:'Input range needs max &gt; min.'};
+  if(!(outSw>0)) return {err:'Output range needs max &gt; min.'};
+  if(!(v.vs>0)) return {err:'Supply V<sub>S</sub> must be positive.'};
+  if(state.ac&&!(v.fc>0)) return {err:'Cut-off frequency must be positive.'};
+  const Gm=outSw/inSw, viC=(v.vi1+v.vi2)/2, voC=(v.vo1+v.vo2)/2;
+  const warns=[];
+  let ratio, vb, dir, follower=false;
+  if(state.cfg==='inverting'){
+    ratio=Gm;
+    vb=state.ac?voC:(v.vo2+Gm*v.vi1)/(1+Gm);
+    dir=`${fmtV(v.vi1)} → ${fmtV(v.vo2)}, ${fmtV(v.vi2)} → ${fmtV(v.vo1)} (inverted)`;
+  }else if(state.cfg==='noninverting'){
+    if(Gm<1-1e-12) return {err:'Output swing &lt; input swing — a non-inverting amp can\'t attenuate. Use inverting, or divide the input first.'};
+    ratio=Gm-1;
+    if(Math.abs(Gm-1)<1e-12){
+      follower=true;
+      if(state.ac) vb=voC;
+      else if(Math.abs(voC-viC)<1e-9) vb=null;
+      else return {err:'G = 1 with a DC offset can\'t be done DC-coupled non-inverting (V<sub>b</sub>/(1−G) blows up). Use differential, or AC-couple.'};
+    }else vb=state.ac?voC:(v.vo1-Gm*v.vi1)/(1-Gm);
+    dir=`${fmtV(v.vi1)} → ${fmtV(v.vo1)}, ${fmtV(v.vi2)} → ${fmtV(v.vo2)}`;
+  }else{
+    ratio=Gm;
+    vb=state.ac?voC:voC-Gm*viC;
+    dir=`ΔV in (V₃−V₁): ${fmtV(v.vi1)} → ${fmtV(v.vo1)}, ${fmtV(v.vi2)} → ${fmtV(v.vo2)}`;
+  }
+  if(v.vo1<0||v.vo2>v.vs) warns.push(`Target output range leaves 0 – ${fmtV(v.vs)} — unreachable on a single supply.`);
+  if(vb!==null&&vb<-1e-9){
+    if(state.cfg==='noninverting'&&!state.ac)
+      warns.push('V<sub>b</sub> is negative — the handout\'s DC non-inverting trap (G·V<sub>i</sub> &lt; V<sub>o</sub>). Switch to differential with V₁ grounded.');
+    else warns.push('V<sub>b</sub> is negative — needs a negative supply.');
+  }
+  if(vb!==null&&vb>v.vs+1e-9) warns.push('V<sub>b</sub> exceeds V<sub>S</sub>.');
+  return {v,Gm,ratio,vb,viC,voC,dir,warns,follower};
+}
+function suggestParts(T){
+  const p={};
+  if(!T.follower&&T.ratio>0){
+    const g=bestPairs(T.ratio,state.series,1)[0];
+    if(g){ p.R1=g.rb; p.R2=g.ra; }
+  }
+  if(T.follower) p.R2=0;
+  if(T.vb!==null&&T.vb>1e-9&&T.vb<T.v.vs-1e-9){
+    const d=bestPairs((T.v.vs-T.vb)/T.vb,state.series,1)[0];
+    if(d){ p.R3=d.ra; p.R4=d.rb; p.vbAch=T.v.vs*d.rb/(d.ra+d.rb); }
+  }else if(T.vb!==null) p.vbAch=Math.max(0,Math.min(T.vb,T.v.vs));
+  /* constrained split-resistor pairs: parallel value fixed by the gain resistor being split */
+  if(T.vb!==null&&T.vb>1e-9&&T.vb<T.v.vs-1e-9){
+    const vals=seriesValues(state.series), vs=T.v.vs, vb=T.vb;
+    const mkSplit=Rpar=>{
+      if(!(Rpar>0)) return null;
+      const topI=Rpar*vs/vb, botI=Rpar*vs/(vs-vb);
+      const top=snapTo(topI,vals), bot=snapTo(botI,vals);
+      return {topI,botI,top,bot,vbAch:vs*bot/(top+bot),parAch:par(top,bot)};
+    };
+    if(state.cfg==='noninverting'&&!state.ac&&p.R1) p.split=mkSplit(p.R1);
+    if(state.cfg==='differential'&&p.R2) p.split=mkSplit(p.R2);
+  }
+  return p;
+}
+function applyBias(){
+  const T=computeTargets();
+  if(T.err){ renderBias(); return; }
+  const p=suggestParts(T), n=state.cell, ac=state.ac, fc=T.v.fc;
+  const vb=p.vbAch??0;
+  /* start from a clean slate for the bias slots */
+  n.R5=Infinity; n.V5=0; n.R6=Infinity; n.V6=0; n.C4=null;
+  if(state.cfg==='inverting'){
+    if(p.R1){ n.RA=p.R1; n.RF=p.R2; }
+    n.VA=ac?0:T.viC;
+    n.CA=ac&&p.R1?capSnapUp(1/(2*Math.PI*p.R1*fc)):null;
+    n.CD=null; n.RD=Infinity; n.VD=0;      // + input slot stays free — bias lives on R₆/R₄
+    if(p.R3){
+      n.R6=p.R3; n.V6=T.v.vs; n.RG=p.R4; n.VG=0;
+      n.C4=ac?capSnapUp(1/(2*Math.PI*par(p.R3,p.R4)*(fc/10))):null;   // divider decoupling (p.5/p.6 fig)
+    }
+    else { n.RG=0; n.VG=0; }
+  }else if(state.cfg==='noninverting'){
+    if(T.follower){ n.RF=0; n.RA=Infinity; n.CA=null; }
+    else if(p.R1){ n.RA=p.R1; n.RF=p.R2; }
+    n.RD=0; n.VD=ac?0:T.viC;
+    if(ac){
+      /* split-resistor at the + node (p.7): R₆ to Vs, R₄ to gnd, C₃ input */
+      if(p.R3){ n.R6=p.R3; n.V6=T.v.vs; n.RG=p.R4; n.VG=0; }
+      else { n.R6=Infinity; n.RG=vb===0?0:Infinity; n.VG=0; }
+      const rEff=p.R3?par(p.R3,p.R4):1e5;
+      n.CD=capSnapUp(1/(2*Math.PI*rEff*fc));
+      if(!T.follower&&p.R1){ n.CA=capSnapUp(1/(2*Math.PI*p.R1*fc)); n.VA=0; }
+      else n.CA=null;
+    }else{
+      n.CD=null; n.CA=null;
+      n.RG=Infinity; n.VG=0;
+      if(T.follower){ n.VA=0; }
+      else if(p.split){ /* split R₁ (p.6): R₅ to Vs, R₁ to gnd, R₁∥R₅ = gain resistor */
+        n.RA=p.split.bot; n.VA=0;
+        n.R5=p.split.top; n.V5=T.v.vs;
+      }else n.VA=vb;   // vb = 0 → plain ground
+    }
+  }else{ /* differential */
+    if(p.R1){ n.RA=p.R1; n.RF=p.R2; n.RD=p.R1; }
+    if(p.split){ /* split R₄ (p.8): R₆ to Vs, R₄ to gnd, R₄∥R₆ = R₂ */
+      n.R6=p.split.top; n.V6=T.v.vs;
+      n.RG=p.split.bot; n.VG=0;
+    }else{ n.RG=p.R2||n.RG; n.VG=vb; }
+    if(ac){
+      n.VA=0; n.VD=0;
+      n.CA=p.R1?capSnapUp(1/(2*Math.PI*p.R1*fc)):null;
+      n.CD=n.CA;
+    }else{
+      n.VA=0; n.VD=T.viC; n.CA=null; n.CD=null;
+    }
+  }
+  renderAll();
+}
+
+/* achieved-vs-target from the CELL (superposition) */
+function achievedFromCell(T){
+  const dc=solve('dc'), mid=solve('mid'), n=state.cell;
+  const sig=state.cfg==='inverting'?'VA':'VD';
+  const g=mid.coeffs[sig];
+  const op=dc.vout;
+  const f=vi=>{
+    if(!isFinite(g)||!isFinite(op)) return NaN;
+    if(state.ac) return op+g*(vi-T.viC);
+    return op+dc.coeffs[sig]*(vi-n[sig==='VA'?'VA':'VD']);
+  };
+  const o1=f(T.v.vi1), o2=f(T.v.vi2);
+  const hps=cutoffs().filter(c=>c[2]==='hp').map(c=>c[1]);
+  return {g,op,outLo:Math.min(o1,o2),outHi:Math.max(o1,o2),fc:hps.length?Math.max(...hps):null};
+}
+
+/* ================= step 2 rendering ================= */
+function fieldHTML(k,label,val,w){
+  return `<div class="field"><label>${label}</label>
+    <input data-k="${k}" value="${val??''}" spellcheck="false" style="width:${w||70}px"></div>`;
+}
+function rangeField(k1,k2,label){
+  return `<div class="field"><label>${label}</label><div style="display:flex;gap:5px;align-items:center">
+    <input data-k="${k1}" value="${state.t[k1]??''}" spellcheck="false" style="width:56px">
+    <span class="hint" style="margin:0">to</span>
+    <input data-k="${k2}" value="${state.t[k2]??''}" spellcheck="false" style="width:56px"></div></div>`;
+}
+function renderBiasControls(){
+  el('bias-controls').innerHTML=
+    `<div class="field"><label>Coupling</label>
+      <span class="seg"><button id="seg-dc" class="${state.ac?'':'on'}">DC</button><button id="seg-ac" class="${state.ac?'on':''}">AC</button></span></div>`+
+    rangeField('vi1','vi2',(state.cfg==='differential'?'ΔV<sub>in</sub>':'V<sub>in</sub>')+' range (V)')+
+    rangeField('vo1','vo2','V<sub>out</sub> range (V)')+
+    fieldHTML('vs','V<sub>S</sub> (V)',state.t.vs,60)+
+    (state.ac?fieldHTML('fc','f<sub>c</sub> (Hz)',state.t.fc,60):'')+
+    `<div class="field"><label>Series</label>
+      <select id="series-sel">${['E12','E24','E96'].map(s=>`<option${s===state.series?' selected':''}>${s}</option>`).join('')}</select></div>`+
+    `<button class="btn" id="apply-btn">Apply to circuit ↑</button>`;
+  el('seg-dc').onclick=()=>{state.ac=false;renderBiasControls();renderBias();};
+  el('seg-ac').onclick=()=>{state.ac=true;renderBiasControls();renderBias();};
+  el('series-sel').onchange=e=>{state.series=e.target.value;renderBias();};
+  el('apply-btn').onclick=applyBias;
+  el('bias-controls').querySelectorAll('input[data-k]').forEach(inp=>{
+    inp.addEventListener('input',()=>{state.t[inp.dataset.k]=inp.value;renderBias();});
+  });
+}
+function renderBias(){
+  const T=computeTargets();
+  if(T.err){
+    el('bias-out').innerHTML=`<div class="note warn-note">${T.err}</div>`;
+    el('alt-out').innerHTML=''; el('notes-out').innerHTML='';
+    return;
+  }
+  const A=achievedFromCell(T);
+  const gTarget=state.cfg==='inverting'?-T.Gm:T.Gm;
+  const gErr=isFinite(A.g)?Math.abs(Math.abs(A.g)-T.Gm)/T.Gm:1;
+  const rows=[['Signal gain',fmtG(gTarget),fmtG(A.g),gErr]];
+  if(state.ac){
+    const opErr=isFinite(A.op)&&Math.abs(T.voC)>1e-12?Math.abs(A.op-T.voC)/Math.abs(T.voC):(Math.abs((A.op||0)-T.voC)<1e-6?0:1);
+    rows.push(['Quiescent output (no signal)',fmtV(T.voC),fmtV(A.op),opErr]);
+  }
+  const span=T.v.vo2-T.v.vo1;
+  const outOk=isFinite(A.outLo)&&Math.abs(A.outLo-T.v.vo1)<0.02*span&&Math.abs(A.outHi-T.v.vo2)<0.02*span;
+  rows.push(['Output for your input range',fmtV(T.v.vo1)+' … '+fmtV(T.v.vo2),
+             isFinite(A.outLo)?fmtV(A.outLo)+' … '+fmtV(A.outHi):'—',outOk?0:0.03]);
+  if(state.ac) rows.push(['Cut-off f<sub>c</sub>',fmtHz(T.v.fc),A.fc?fmtHz(A.fc):'— (apply to add caps)',A.fc&&A.fc<=T.v.fc*1.02?0:0.03]);
+  const clip=isFinite(A.outLo)&&(A.outLo<-1e-6||A.outHi>T.v.vs+1e-6);
+  el('bias-out').innerHTML=
+    `<div class="hint">Mapping: <b>${T.dir}</b></div>`+
+    `<table class="spec"><thead><tr><th>Spec</th><th>Target</th><th>Achieved (from circuit above)</th></tr></thead><tbody>`+
+    rows.map(([nm,t,a,e])=>`<tr><td>${nm}</td><td class="v">${t}</td><td class="v ${errCls(e)}">${a}</td></tr>`).join('')+
+    `</tbody></table>`+
+    T.warns.map(w=>`<div class="note warn-note">${w}</div>`).join('')+
+    (clip?`<div class="note warn-note">Achieved output leaves the rails — it will clip.</div>`:'');
+  /* alternatives */
+  let alt='';
+  if(!T.follower&&T.ratio>0){
+    const pairs=bestPairs(T.ratio,state.series);
+    alt+=`<div><div class="subhead">Gain resistors R₁ / R₂ (${state.series}) — click to apply</div>
+      <table class="design"><thead><tr><th>R₁</th><th>R₂</th><th>Gain</th><th>Error</th></tr></thead><tbody>`+
+      pairs.map(p=>{
+        const g=state.cfg==='noninverting'?1+p.ach:p.ach;
+        const e=Math.abs(g-(state.cfg==='noninverting'?T.Gm:T.ratio))/(state.cfg==='noninverting'?T.Gm:T.ratio);
+        const cur=state.cell.RA===p.rb&&state.cell.RF===p.ra;
+        return `<tr class="applyrow${cur?' current':''}" data-r1="${p.rb}" data-r2="${p.ra}">
+          <td>${fmtR(p.rb)}</td><td>${fmtR(p.ra)}</td><td>${(state.cfg==='inverting'?'−':'')+fmtG(g)}</td><td class="${errCls(e)}">${fmtErr(e)}</td></tr>`;
+      }).join('')+`</tbody></table></div>`;
+  }else if(T.follower){
+    alt+=`<div><div class="subhead">Gain resistors</div><div class="note">G = 1 → follower: R₂ = 0 Ω wire, R₁ disconnected.</div></div>`;
+  }
+  const splitMode=(state.cfg==='noninverting'&&!state.ac)||state.cfg==='differential';
+  if(T.vb!==null&&T.vb>1e-9&&T.vb<T.v.vs-1e-9){
+    if(splitMode){
+      const sp=suggestParts(T).split;
+      if(sp){
+        const legTop=state.cfg==='differential'?'R₆':'R₅';
+        const legBot=state.cfg==='differential'?'R₄':'R₁';
+        const parTarget=state.cfg==='differential'?'R₂':'the gain R₁';
+        alt+=`<div><div class="subhead">Split-resistor bias → V<sub>b</sub> = ${fmtV(T.vb)}, ${legTop}∥${legBot} = ${parTarget}</div>
+          <table class="design"><thead><tr><th></th><th>Ideal</th><th>Nearest ${state.series}</th></tr></thead><tbody>
+          <tr><td>${legTop} (to V<sub>S</sub>)</td><td>${fmtR(sp.topI)}</td><td>${fmtR(sp.top)}</td></tr>
+          <tr><td>${legBot} (to gnd)</td><td>${fmtR(sp.botI)}</td><td>${fmtR(sp.bot)}</td></tr>
+          <tr><td>V<sub>b</sub> achieved</td><td>${fmtV(T.vb)}</td><td>${fmtV(sp.vbAch)}</td></tr>
+          <tr><td>Parallel value</td><td>—</td><td>${fmtR(sp.parAch)}</td></tr>
+          </tbody></table>
+          <div class="note">Applied by the button above — snapping both halves shifts V<sub>b</sub> <i>and</i> the gain slightly; the achieved column reads the truth off the circuit.</div></div>`;
+      }
+    }else{
+      const dpairs=bestPairs((T.v.vs-T.vb)/T.vb,state.series).map(p=>({...p,vbAch:T.v.vs*p.rb/(p.ra+p.rb)}))
+        .map(p=>({...p,vErr:Math.abs(p.vbAch-T.vb)/Math.abs(T.vb)})).sort((a,b)=>a.vErr-b.vErr).slice(0,4);
+      const legs='R₆ / R₄';
+      alt+=`<div><div class="subhead">Bias divider ${legs} from V<sub>S</sub> → V<sub>b</sub> = ${fmtV(T.vb)} — click to apply</div>
+        <table class="design"><thead><tr><th>to V<sub>S</sub></th><th>to gnd</th><th>V<sub>b</sub></th><th>Error</th></tr></thead><tbody>`+
+        dpairs.map(p=>`<tr class="applyrow" data-r3="${p.ra}" data-r4="${p.rb}" data-vb="${p.vbAch}">
+            <td>${fmtR(p.ra)}</td><td>${fmtR(p.rb)}</td><td>${fmtV(p.vbAch)}</td><td class="${errCls(p.vErr)}">${fmtErr(p.vErr)}</td></tr>`).join('')+
+        `</tbody></table></div>`;
+    }
+  }else if(T.vb!==null&&Math.abs(T.vb)<1e-9){
+    alt+=`<div><div class="subhead">Bias divider</div><div class="note">V<sub>b</sub> = 0 — the bias point is ground; no divider needed.</div></div>`;
+  }
+  el('alt-out').innerHTML=alt;
+  el('alt-out').querySelectorAll('tr.applyrow').forEach(tr=>{
+    tr.onclick=()=>{
+      const d=tr.dataset, n=state.cell, fc=T.v.fc;
+      if(d.r1){
+        n.RA=+d.r1; n.RF=+d.r2;
+        if(state.cfg==='differential'){ n.RD=+d.r1; n.RG=+d.r2; }
+        if(state.ac&&n.CA) n.CA=capSnapUp(1/(2*Math.PI*n.RA*fc));
+        if(state.ac&&state.cfg==='differential'&&n.CD) n.CD=n.CA;
+      }
+      if(d.r3){
+        if(state.cfg==='inverting'){
+          n.R6=+d.r3; n.V6=T.v.vs; n.RG=+d.r4; n.VG=0;
+          if(n.C4) n.C4=capSnapUp(1/(2*Math.PI*par(+d.r3,+d.r4)*(fc/10)));
+        }else if(state.cfg==='noninverting'&&state.ac){
+          n.R6=+d.r3; n.V6=T.v.vs; n.RG=+d.r4; n.VG=0;
+          if(n.CD) n.CD=capSnapUp(1/(2*Math.PI*par(+d.r3,+d.r4)*fc));
+        }
+      }
+      renderAll();
+    };
+  });
+  /* notes */
+  const notes=[];
+  if(state.cfg==='inverting') notes.push('The divider is the actual R₆/R₄ legs (R₆ from V<sub>S</sub>, R₄ to ground), with C₄ decoupling it in AC — the superposition row "gain from V₆" is your bias math being checked. R₃/V₃ stay free as the + input slot. The + node draws no current, so the divider can be large; several inverting stages can share one.');
+  if(state.cfg==='noninverting'&&!state.ac) notes.push('Split-resistor bias (handout p.6): R₁\'s ground is replaced by the R₅ (to V<sub>S</sub>) / R₁ (to gnd) pair, whose parallel value is the gain resistor and whose ratio sets V<sub>b</sub>. Prefer a buffered divider instead? Blank R₅ and set the V₁ terminal to V<sub>b</sub>.');
+  if(state.cfg==='noninverting'&&state.ac) notes.push('Split-resistor AC bias (handout p.7): R₆ to V<sub>S</sub> and R₄ to ground bias the + node directly; C₃ high-passes the input against R₆∥R₄. No decoupling cap here — it would kill the signal.');
+  if(state.cfg==='differential') notes.push('Split-resistor bias (handout p.8): R₄\'s ground role is shared by R₆ (to V<sub>S</sub>) and R₄ (to gnd) with R₆∥R₄ = R₂. Prefer a buffered divider? Blank R₆, set R₄ = R₂ and its bottom terminal V₄ to V<sub>b</sub>. Matching R₁/R₃ and R₂/(R₆∥R₄) sets the CMRR.');
+  if(state.ac) notes.push('AC-coupled: V<sub>b</sub> is simply where the output sits with no signal. Caps snap <i>up</i> to E12 so the real cut-off lands at or below your f<sub>c</sub>. The solver treats caps as open at DC (operating point) and shorted at midband (gains).');
+  el('notes-out').innerHTML=notes.map(nn=>`<div class="note">${nn}</div>`).join('');
+  renderMathBias();
+}
+
+/* ================= click-to-edit ================= */
+const COMP_META={
+  RA:{label:'R₁ (input, − node)',type:'r'}, RF:{label:'R₂ (feedback)',type:'r'},
+  RD:{label:'R₃ (input, + node)',type:'r'}, RG:{label:'R₄ (+ node, down)',type:'r'},
+  R5:{label:'R₅ (bias leg, − node)',type:'r'}, R6:{label:'R₆ (bias leg, + node)',type:'r'},
+  CA:{label:'C₁ (coupling, R₁ leg)',type:'c'}, CD:{label:'C₃ (coupling, R₃ leg)',type:'c'},
+  C4:{label:'C₄ (bias decoupling, + node)',type:'c'},
+  VA:{label:'V₁ (volts)',type:'v'}, VD:{label:'V₃ (volts)',type:'v'},
+  V5:{label:'V₅ (volts)',type:'v'}, V6:{label:'V₆ (volts)',type:'v'},
+  VG:{label:'V₄ — R₄ bottom terminal (volts; 0 = ground)',type:'v'}
+};
+function closeEditor(){ const e=el('inline-editor'); if(e) e.remove(); }
+function openEditor(k,x,y){
+  closeEditor();
+  const meta=COMP_META[k], n=state.cell;
+  const cur=n[k];
+  let disp='';
+  if(meta.type==='r') disp=isFinite(cur)?rToStr(cur):'';
+  else if(meta.type==='c') disp=cur?cToStr(cur):'';
+  else disp=sig(cur);
+  const hint=meta.type==='r'?'10k, 4.7k, 1M · 0 = wire · blank = open':
+             meta.type==='c'?'560n, 1.8u · blank = remove cap (DC couple)':'e.g. 2.5 or 0';
+  const wrap=document.createElement('div');
+  wrap.id='inline-editor';
+  wrap.style.cssText=`position:absolute;left:${Math.max(8,x-60)}px;top:${y+12}px;z-index:50;`+
+    `background:#fff;border:1.5px solid var(--accent);border-radius:10px;`+
+    `box-shadow:0 8px 24px rgba(15,23,42,.18);padding:9px 11px;display:flex;flex-direction:column;gap:4px`;
+  wrap.innerHTML=
+    `<label style="font-size:11px;font-weight:700;color:var(--muted)">${meta.label}</label>`+
+    `<input style="width:110px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-family:var(--mono);font-size:13.5px" value="${disp}" spellcheck="false">`+
+    `<div style="font-size:10.5px;color:var(--muted)">${hint}</div>`;
+  document.body.appendChild(wrap);
+  const inp=wrap.querySelector('input');
+  inp.focus(); inp.select();
+  let done=false;
+  const tryParse=()=>{
+    const raw=inp.value.trim();
+    if(meta.type==='r'){ if(raw==='') return Infinity; const v=parseR(raw); return isNaN(v)?null:v; }
+    if(meta.type==='c'){ if(raw==='') return 0; const v=parseC(raw); return isNaN(v)||v<=0?null:v; }
+    const v=parseFloat(raw); return isNaN(v)?null:v;
+  };
+  const commit=v=>{
+    if(meta.type==='c') n[k]=v===0?null:v;
+    else n[k]=v;
+    closeEditor(); renderAll();
+  };
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){ const v=tryParse(); if(v===null){inp.style.borderColor='var(--bad)';return;} done=true; commit(v); }
+    if(e.key==='Escape'){ done=true; closeEditor(); }
+  });
+  inp.addEventListener('blur',()=>{
+    if(done) return;
+    done=true;
+    const v=tryParse();
+    if(v!==null) commit(v); else closeEditor();
+  });
+}
+el('schem').addEventListener('click',e=>{
+  const g=e.target.closest&&e.target.closest('g.editable');
+  if(!g) return;
+  e.stopPropagation();
+  openEditor(g.dataset.k,e.pageX,e.pageY);
+});
+document.addEventListener('click',e=>{
+  if(el('inline-editor')&&!e.target.closest('#inline-editor')&&!e.target.closest('g.editable')) closeEditor();
+});
+
+/* ================= worked solution (handout math) ================= */
+const MV=(s,sub)=>`<i class="mv">${s}</i>${sub!=null?`<span class="ms">${sub}</span>`:''}`;
+const MN=x=>`<span class="mn">${x}</span>`;
+const MO=o=>`<span class="mo">${o}</span>`;
+const MF=(a,b)=>`<span class="mfrac"><span class="mtop">${a}</span><span class="mbot">${b}</span></span>`;
+const MP=x=>`<span class="mp">(</span>${x}<span class="mp">)</span>`;
+const MRES=x=>`<span class="mres">${x}</span>`;
+const MEQ=(...p)=>`<div class="math">${p.join(MO('='))}</div>`;
+const num=x=>MN(sig(x,5));
+const Vi=MV('V','i'), Vo=MV('V','o'), Vb=MV('V','b'), Vsy=MV('V','S');
+const R1=MV('R','1'), R2=MV('R','2'), R3=MV('R','3'), R4=MV('R','4'), Gs=MV('G'), Csy=MV('C'), fcs=MV('f','c');
+const twopi=`${MN('2')}<i class="mv">π</i>`;
+const cfgTitle={inverting:'Inverting Amplifier',noninverting:'Non-Inverting Amplifier',differential:'Differential Amplifier'};
+
+/* woven into step 1 — the gain law, from the resistors on the schematic */
+function renderMathAmp(){
+  const host=el('math-amp'); if(!host) return;
+  const n=state.cell, g=solve('mid').coeffs[state.cfg==='inverting'?'VA':'VD'];
+  if(!isFinite(g)){ host.innerHTML=''; return; }
+  let eq;
+  if(n.RF===0){
+    eq=`<div class="math">${MN('GAIN')}${MO('=')}${MN('1')} <span class="mo">→</span> ${MRES('unity — voltage follower')}</div>`;
+  }else if(state.cfg==='inverting'){
+    eq=MEQ(MN('GAIN'), `${MO('−')}${MF(R2,R1)}`, `${MO('−')}${MF(fmtR(n.RF),fmtR(n.RA))}`, MRES(fmtG(g)));
+  }else if(state.cfg==='noninverting'){
+    eq=MEQ(MN('GAIN'), `${MN('1')}${MO('+')}${MF(R2,R1)}`, `${MN('1')}${MO('+')}${MF(fmtR(n.RF),fmtR(n.RA))}`, MRES(fmtG(g)));
+  }else{
+    eq=MEQ(MN('GAIN'), MF(R2,R1), MF(fmtR(n.RF),fmtR(n.RA)), MRES(fmtG(g)));
+  }
+  host.innerHTML=`<div class="mblock"><div class="mcite">${cfgTitle[state.cfg]} — gain law from the two resistors (MAS.836), filled in from the schematic below.</div>${eq}</div>`;
+}
+
+/* woven into step 2 — how the design (gain, bias, parts) comes from the ranges */
+function renderMathBias(){
+  const host=el('math-bias'); if(!host) return;
+  const T=computeTargets();
+  if(T.err){ host.innerHTML=''; return; }   // the spec table above already shows the error
+  const R1v=parseR(state.g.r1)||1e4;
+  const {Gm,ratio,vb,viC,voC}=T, Vs=T.v.vs, fc=T.v.fc;
+  const R2i=ratio*R1v;
+  const B=[];
+  const block=(title,cite,body,note)=>B.push(`<div class="mblock"><div class="mtitle">${title}</div><div class="mcite">${cite}</div>${body}${note?`<div class="mnote">${note}</div>`:''}</div>`);
+
+  /* 1 · required gain */
+  block('1 · Required gain from the swings','Handout — “How to Select Component Values”',
+    MEQ(Gs, MF(`${MV('ΔV','out')}`,`${MV('ΔV','in')}`),
+        MF(`${fmtV(T.v.vo2)} ${MO('−')} ${fmtV(T.v.vo1)}`,`${fmtV(T.v.vi2)} ${MO('−')} ${fmtV(T.v.vi1)}`),
+        MRES(fmtG(Gm))),
+    `Gain is the output swing you want ÷ the input swing you have — this is the gain you dial into step 1.`);
+
+  /* 2 · gain equation → R2 */
+  let gainDef, r2body;
+  if(state.cfg==='inverting'){
+    gainDef=MEQ(`${MN('GAIN')}`, `${MO('−')}${MF(R2,R1)}`, `${MO('−')}${Gs}`);
+    r2body=MEQ(R2, `${Gs}${MO('·')}${R1}`, `${num(Gm)}${MO('·')}${fmtR(R1v)}`, MRES(fmtR(R2i)));
+  }else if(state.cfg==='noninverting'){
+    gainDef=MEQ(`${MN('GAIN')}`, `${MN('1')}${MO('+')}${MF(R2,R1)}`, Gs);
+    r2body=(ratio<=0)?`<div class="math">${MN('G')}${MO('=')}${MN('1')} ${MO('→')} ${MRES('R₂ = 0 (wire), no R₁')}</div>`
+      :MEQ(R2, `${MP(`${Gs}${MO('−')}${MN('1')}`)}${MO('·')}${R1}`, `${MP(`${num(Gm)}${MO('−')}${MN('1')}`)}${MO('·')}${fmtR(R1v)}`, MRES(fmtR(R2i)));
+  }else{
+    gainDef=MEQ(`${MN('GAIN')}`, MF(R2,R1), Gs);
+    r2body=MEQ(R2, `${Gs}${MO('·')}${R1}`, `${num(Gm)}${MO('·')}${fmtR(R1v)}`, MRES(fmtR(R2i)));
+  }
+  block('2 · Feedback resistor R₂',`Handout — ${cfgTitle[state.cfg]}`, gainDef+r2body,
+    `Pick R₁ = ${fmtR(R1v)} (edit it in step 1); R₂ follows, then snap to the nearest ${state.series} value — see the table below.`);
+
+  /* 3 · bias voltage */
+  if(vb!==null){
+    if(state.ac){
+      block('3 · Bias voltage V<sub>b</sub>',`Handout — ${cfgTitle[state.cfg]} (AC Coupled)`,
+        MEQ(Vo, `${state.cfg==='inverting'?MO('−'):''}${Gs}${MO('·')}${Vi}${MO('+')}${Vb}`)+
+        MEQ(Vb, MF(`${MV('V','o,max')}${MO('+')}${MV('V','o,min')}`,MN('2')),
+            MF(`${fmtV(T.v.vo2)}${MO('+')}${fmtV(T.v.vo1)}`,MN('2')), MRES(fmtV(vb))),
+        `AC-coupled: the caps block the input’s DC, so you don’t solve for V<sub>b</sub> — you just set it to where you want the output to rest (the mid-rail here).`);
+    }else if(state.cfg==='inverting'){
+      const nu=voC+Gm*viC, de=1+Gm;
+      block('3 · Bias voltage V<sub>b</sub>',`Handout — Inverting Amplifier (DC Coupled)`,
+        MEQ(MF(`${Vi}${MO('−')}${Vb}`,R1), MF(`${Vb}${MO('−')}${Vo}`,R2))+
+        MEQ(Vo, `${MO('−')}${Gs}${MO('·')}${Vi}${MO('+')}${MP(`${MN('1')}${MO('+')}${Gs}`)}${MO('·')}${Vb}`)+
+        MEQ(Vb, MF(`${Vo}${MO('+')}${Gs}${MO('·')}${Vi}`,`${MN('1')}${MO('+')}${Gs}`),
+            MF(`${fmtV(voC)}${MO('+')}${num(Gm)}${MO('·')}${fmtV(viC)}`,`${MN('1')}${MO('+')}${num(Gm)}`),
+            MRES(fmtV(vb))),
+        `Node equation at the − input → the handout’s V<sub>o</sub> = −G·V<sub>i</sub> + (1+G)·V<sub>b</sub>. Operating point (V<sub>i</sub>, V<sub>o</sub>) = (${fmtV(viC)}, ${fmtV(voC)}), the mid-point with no signal.`);
+    }else if(state.cfg==='noninverting'){
+      block('3 · Bias voltage V<sub>b</sub>',`Handout — Non-Inverting Amplifier (DC Coupled)`,
+        MEQ(MF(`${Vi}${MO('−')}${Vb}`,R1), MF(`${Vo}${MO('−')}${Vi}`,R2))+
+        MEQ(Vo, `${Gs}${MO('·')}${Vi}${MO('+')}${MP(`${MN('1')}${MO('−')}${Gs}`)}${MO('·')}${Vb}`)+
+        MEQ(Vb, MF(`${Vo}${MO('−')}${Gs}${MO('·')}${Vi}`,`${MN('1')}${MO('−')}${Gs}`),
+            MF(`${fmtV(voC)}${MO('−')}${num(Gm)}${MO('·')}${fmtV(viC)}`,`${MN('1')}${MO('−')}${num(Gm)}`),
+            MRES(fmtV(vb))),
+        `Because G &gt; 1 the denominator (1−G) is negative — the handout warns this needs V<sub>b</sub> &lt; 0 unless G·V<sub>i</sub> &gt; V<sub>o</sub>. Operating point (${fmtV(viC)}, ${fmtV(voC)}).`);
+    }else{
+      block('3 · Bias voltage V<sub>b</sub>',`Handout — Differential Amplifier (DC Coupled)`,
+        MEQ(Vo, `${Gs}${MO('·')}${MP(`${MV('V','+')}${MO('−')}${MV('V','−')}`)}${MO('+')}${Vb}`)+
+        MEQ(Vb, `${Vo}${MO('−')}${Gs}${MO('·')}${MP(`${MV('V','+')}${MO('−')}${MV('V','−')}`)}`,
+            `${fmtV(voC)}${MO('−')}${num(Gm)}${MO('·')}${fmtV(viC)}`, MRES(fmtV(vb))),
+        `The gain doesn’t enter until here — you just need V<sub>+</sub>−V<sub>−</sub>, G and V<sub>o</sub> at the operating point (${fmtV(viC)}, ${fmtV(voC)}).`);
+    }
+  }
+
+  /* 4 · divider (only when a real Vb must be generated) */
+  if(vb!==null&&vb>1e-9&&vb<Vs-1e-9){
+    const dp=bestPairs((Vs-vb)/vb,state.series,1)[0];
+    let ex='';
+    if(dp) ex=MEQ(`${MN('V')}${MV('','bias')}`, MF(R4,`${R3}${MO('+')}${R4}`)+`${MO('·')}${Vsy}`,
+      MF(fmtR(dp.rb),`${fmtR(dp.ra)}${MO('+')}${fmtR(dp.rb)}`)+`${MO('·')}${fmtV(Vs)}`,
+      MRES(fmtV(Vs*dp.rb/(dp.ra+dp.rb))));
+    block('4 · Bias divider from V<sub>S</sub>','Handout — Voltage Divider Biasing',
+      MEQ(`${MN('V')}${MV('','bias')}`, MF(R4,`${R3}${MO('+')}${R4}`)+`${MO('·')}${Vsy}`)+
+      MEQ(MF(R4,`${R3}${MO('+')}${R4}`), MF(Vb,Vsy), MF(fmtV(vb),fmtV(Vs)), MRES(sig((vb/Vs),4)))+ex,
+      `R₃/R₄ here are the schematic’s R₆ (→V<sub>S</sub>) / R₄ (→gnd) divider legs — any pair hitting that ratio works; the table below lists the closest. `+
+      (state.ac?`In AC, add C₄ to decouple the divider (corner well below f<sub>c</sub>).`:`In DC, keep R₃/R₄ small vs. the resistors they feed, or buffer with a follower — the handout’s voltage-follower method.`));
+  }else if(vb!==null&&Math.abs(vb)<1e-9){
+    block('4 · Bias divider','Handout — Voltage Divider Biasing',
+      `<div class="math">${Vb}${MO('=')}${MRES('0 → tie to ground, no divider')}</div>`,
+      `The operating point is 0 V, so R₄ goes straight to ground.`);
+  }
+
+  /* 5 · cut-off (AC) */
+  if(state.ac){
+    const Cid=1/(2*Math.PI*R1v*fc), Csnap=capSnapUp(Cid);
+    const rlab=state.cfg==='noninverting'?R3:R1;
+    block('5 · Coupling capacitor from f<sub>c</sub>',`Handout — ${cfgTitle[state.cfg]} (AC Coupled)`,
+      MEQ(fcs, MF(MN('1'),`${twopi}${MO('·')}${rlab}${MO('·')}${Csy}`))+
+      MEQ(Csy, MF(MN('1'),`${twopi}${MO('·')}${rlab}${MO('·')}${fcs}`),
+          MF(MN('1'),`${twopi}${MO('·')}${fmtR(R1v)}${MO('·')}${fmtHz(fc)}`), MRES(fmtC(Cid))),
+      `Rearrange the high-pass corner for C. Snap <i>up</i> to the next standard value (${fmtC(Csnap)}) so the real corner sits at or below ${fmtHz(fc)}.`);
+  }
+
+  host.innerHTML=`<div class="mwhead">How these numbers come from the handout</div>`+B.join('');
+}
+
+/* ================= step 3: scope ================= */
+const scope={ open:false, amp:null, phase:0, raf:0 };
+
+function scopeParams(){
+  const dc=solve('dc'), mid=solve('mid');
+  const sig=state.cfg==='inverting'?'VA':'VD';
+  const g=mid.coeffs[sig];
+  const Vs=parseFloat(state.t.vs)||5;
+  const vi1=parseFloat(state.t.vi1), vi2=parseFloat(state.t.vi2);
+  const inCenter=isFinite(vi1)&&isFinite(vi2)?(vi1+vi2)/2:0;
+  let op;
+  if(state.ac) op=dc.vout;
+  else op=dc.vout+(dc.coeffs[sig]||0)*(inCenter-(state.cell[sig]||0));
+  const defAmp=isFinite(vi1)&&isFinite(vi2)?Math.abs(vi2-vi1)/2:0.5;
+  return {g,Vs,inCenter,op,sig,defAmp,ok:isFinite(g)&&g!==0&&isFinite(op)};
+}
+const clip=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+
+function plotFrame(W,H,pad){
+  return {W,H,pad,
+    mapX(x,x0,x1){return pad.l+(x-x0)/(x1-x0)*(W-pad.l-pad.r);},
+    mapY(y,y0,y1){return H-pad.b-(y-y0)/(y1-y0)*(H-pad.t-pad.b);}};
+}
+
+function drawXfer(P){
+  const W=330,H=250,pad={l:42,r:12,t:12,b:30};
+  const F=plotFrame(W,H,pad);
+  const amp=scope.amp;
+  const {g,Vs,inCenter,op}=P;
+  const yLo=-0.08*Vs, yHi=1.08*Vs;
+  const railVin=[inCenter+(0-op)/g, inCenter+(Vs-op)/g];
+  const cand=[inCenter-amp,inCenter+amp,railVin[0],railVin[1],inCenter];
+  let x0=Math.min(...cand), x1=Math.max(...cand);
+  if(x1-x0<1e-6){x0-=1;x1+=1;}
+  const m=(x1-x0)*0.12; x0-=m; x1+=m;
+  const X=x=>F.mapX(x,x0,x1), Y=y=>F.mapY(y,yLo,yHi);
+  let s='';
+  /* rails */
+  s+=`<rect class="rail" x="${pad.l}" y="${Y(yHi)}" width="${W-pad.l-pad.r}" height="${Y(Vs)-Y(yHi)}"/>`;
+  s+=`<rect class="rail" x="${pad.l}" y="${Y(0)}" width="${W-pad.l-pad.r}" height="${Y(yLo)-Y(0)}"/>`;
+  /* axes */
+  s+=`<line class="axis" x1="${pad.l}" y1="${Y(0)}" x2="${W-pad.r}" y2="${Y(0)}"/>`;
+  s+=`<line class="axis" x1="${X(clip(0,x0,x1))}" y1="${pad.t}" x2="${X(clip(0,x0,x1))}" y2="${H-pad.b}"/>`;
+  s+=`<text x="${W-pad.r}" y="${Y(0)+13}" text-anchor="end">V_in</text>`;
+  s+=`<text x="${pad.l-5}" y="${Y(Vs)+3}" text-anchor="end">${sig(Vs)}</text>`;
+  s+=`<text x="${pad.l-5}" y="${Y(0)+3}" text-anchor="end">0</text>`;
+  /* transfer line (clipped) */
+  const N=70; let pts=[];
+  for(let i=0;i<=N;i++){const vx=x0+(x1-x0)*i/N; const vy=clip(op+g*(vx-inCenter),0,Vs); pts.push(X(vx)+','+Y(vy));}
+  s+=`<polyline class="xfer" points="${pts.join(' ')}"/>`;
+  /* operating point (fulcrum) */
+  s+=`<circle class="oppt" cx="${X(inCenter)}" cy="${Y(clip(op,0,Vs))}" r="5"/>`;
+  s+=`<text class="al" x="${X(inCenter)+8}" y="${Y(clip(op,0,Vs))-6}" fill="#d97706">op</text>`;
+  /* moving reflection */
+  const vin=inCenter+amp*Math.sin(P.phase);
+  const voutRaw=op+g*(vin-inCenter), vout=clip(voutRaw,0,Vs);
+  const px=X(vin), py=Y(vout), px0=X(clip(0,x0,x1)), py0=Y(0);
+  s+=`<line class="reflect" x1="${px}" y1="${py0}" x2="${px}" y2="${py}"/>`;
+  s+=`<line class="reflect" x1="${px}" y1="${py}" x2="${px0}" y2="${py}"/>`;
+  s+=`<circle class="movedot" cx="${px}" cy="${py0}" r="3"/>`;
+  s+=`<circle class="movedot" cx="${px0}" cy="${py}" r="3"/>`;
+  s+=`<circle class="movedot" cx="${px}" cy="${py}" r="4"/>`;
+  return `<svg class="plot" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+}
+
+function drawTime(P){
+  const W=330,H=250,pad={l:42,r:12,t:12,b:30};
+  const F=plotFrame(W,H,pad);
+  const amp=scope.amp, {g,Vs,inCenter,op}=P;
+  const yLo=-0.08*Vs, yHi=1.08*Vs;
+  const cycles=2.2, x0=0, x1=cycles*2*Math.PI;
+  const X=t=>F.mapX(t,x0,x1), Y=y=>F.mapY(y,yLo,yHi);
+  let s='';
+  s+=`<rect class="rail" x="${pad.l}" y="${Y(yHi)}" width="${W-pad.l-pad.r}" height="${Y(Vs)-Y(yHi)}"/>`;
+  s+=`<rect class="rail" x="${pad.l}" y="${Y(0)}" width="${W-pad.l-pad.r}" height="${Y(yLo)-Y(0)}"/>`;
+  s+=`<line class="axis" x1="${pad.l}" y1="${Y(0)}" x2="${W-pad.r}" y2="${Y(0)}"/>`;
+  s+=`<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  s+=`<text x="${pad.l-5}" y="${Y(Vs)+3}" text-anchor="end">${sig(Vs)}</text>`;
+  s+=`<text x="${pad.l-5}" y="${Y(0)+3}" text-anchor="end">0</text>`;
+  s+=`<text x="${W-pad.r}" y="${Y(0)+13}" text-anchor="end">t</text>`;
+  /* baselines */
+  s+=`<line class="reflect" x1="${pad.l}" y1="${Y(clip(op,yLo,yHi))}" x2="${W-pad.r}" y2="${Y(clip(op,yLo,yHi))}"/>`;
+  const N=140; let ip=[],opl=[];
+  for(let i=0;i<=N;i++){
+    const t=x0+(x1-x0)*i/N, ph=t+P.phase;
+    const vin=inCenter+amp*Math.sin(ph);
+    const vout=clip(op+g*amp*Math.sin(ph),0,Vs);
+    ip.push(X(t)+','+Y(clip(vin,yLo,yHi)));
+    opl.push(X(t)+','+Y(vout));
+  }
+  s+=`<polyline class="inwave" points="${ip.join(' ')}"/>`;
+  s+=`<polyline class="outwave" points="${opl.join(' ')}"/>`;
+  return `<svg class="plot" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+}
+
+function drawScope(){
+  if(!scope.open) return;
+  const P=scopeParams();
+  if(!P.ok){
+    el('xfer-plot').innerHTML='';
+    el('time-plot').innerHTML='';
+    el('scope-note').innerHTML='<div class="note warn-note">No linear transfer to plot — check that R₁ and R₂ are set (finite gain).</div>';
+    return;
+  }
+  if(scope.amp===null||!isFinite(scope.amp)) scope.amp=P.defAmp||0.5;
+  P.phase=scope.phase;
+  el('xfer-plot').innerHTML=drawXfer(P);
+  el('time-plot').innerHTML=drawTime(P);
+  const swing=Math.abs(P.g)*scope.amp;
+  const outLo=clip(P.op-swing,-99,99), outHi=clip(P.op+swing,-99,99);
+  const clips=(P.op-swing<-1e-6)||(P.op+swing>P.Vs+1e-6);
+  el('scope-note').innerHTML=
+    `<div class="note">Input sine: <b>${fmtV(scope.amp)}</b> peak about ${fmtV(P.inCenter)} · gain <b>${fmtG(P.g)}</b> · operating point <b>${fmtV(P.op)}</b> · output swings ${fmtV(P.op-swing)} … ${fmtV(P.op+swing)}`+
+    (clips?` — <span class="bad-note">clipping at the rails</span>`:'')+`.</div>`+
+    (state.ac?`<div class="note">AC-coupled: the input\'s DC is blocked, so the output always centers on the operating point V<sub>b</sub> no matter where the input sits.</div>`
+             :`<div class="note">DC-coupled: shifting the input DC drags the operating point along the line — the fulcrum moves with it.</div>`);
+}
+
+function renderScopeSliders(){
+  const P=scopeParams();
+  if(scope.amp===null||!isFinite(scope.amp)) scope.amp=P.defAmp||0.5;
+  const n=state.cell, Vs=P.Vs;
+  const rPos=R=>clip(Math.log10((R||1e4)/100)/4*1000,0,1000);
+  const ampMax=P.ok?Math.max(scope.amp*1.2, (Vs/2)/Math.abs(P.g)*1.6):Vs;
+  const bc=biasCtl();
+  const sl=(id,label,val,min,max,step,disabled)=>
+    `<div class="slider${disabled?' disabled':''}"><label>${label}<b id="${id}-v">${val}</b></label>
+      <input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${id==='amp'?scope.amp:(id==='ra'?rPos(n.RA):(id==='rf'?rPos(n.RF):bc.pos))}"${disabled?' disabled':''}></div>`;
+  el('scope-sliders').innerHTML=
+    sl('amp','Input amplitude',fmtV(scope.amp),0,sig(ampMax,3),ampMax/200,false)+
+    sl('ra','R₁ (input)',fmtR(n.RA),0,1000,1,!isFinite(n.RA))+
+    sl('rf','R₂ (feedback)',fmtR(n.RF),0,1000,1,!isFinite(n.RF))+
+    sl('vb','Operating point V_b',bc.ok?fmtV(bc.get()):'— (set by bias resistors)',0,1000,1,!bc.ok);
+  const rFromPos=p=>100*Math.pow(10,p/1000*4);
+  el('amp').oninput=e=>{scope.amp=parseFloat(e.target.value); el('amp-v').textContent=fmtV(scope.amp); drawScope();};
+  el('ra').oninput=e=>{state.cell.RA=rFromPos(+e.target.value); liveUpdate();};
+  el('rf').oninput=e=>{state.cell.RF=rFromPos(+e.target.value); liveUpdate();};
+  if(bc.ok) el('vb').oninput=e=>{ bc.setPos(+e.target.value); liveUpdate(); };
+}
+function biasCtl(){
+  const n=state.cell, Vs=parseFloat(state.t.vs)||5;
+  if(isFinite(n.R6)&&n.R6>0&&isFinite(n.RG)&&n.RG>=0){
+    const get=()=>Vs*n.RG/(n.R6+n.RG);
+    const pos=clip(get()/Vs*1000,0,1000);
+    return {ok:true,get,pos,
+      setPos:p=>{let vb=clip(p/1000*Vs,0.003*Vs,0.997*Vs); n.RG=n.R6*vb/(Vs-vb);}};
+  }
+  return {ok:false,pos:0};
+}
+function liveUpdate(){
+  el('schem').innerHTML=drawCell();
+  renderBehavior();
+  renderBias();
+  drawScope();
+  /* refresh slider value read-outs without rebuilding (keep drag smooth) */
+  const n=state.cell, bc=biasCtl();
+  if(el('ra-v')) el('ra-v').textContent=fmtR(n.RA);
+  if(el('rf-v')) el('rf-v').textContent=fmtR(n.RF);
+  if(el('vb-v')) el('vb-v').textContent=bc.ok?fmtV(bc.get()):'—';
+}
+function scopeTick(){
+  if(!scope.open) return;
+  scope.phase+=0.045;
+  if(scope.phase>1e6) scope.phase=0;
+  drawScope();
+  scope.raf=requestAnimationFrame(scopeTick);
+}
+el('scope-toggle').onclick=()=>{
+  scope.open=!scope.open;
+  el('scope-body').style.display=scope.open?'':'none';
+  el('scope-toggle').textContent=scope.open?'close ↑':'open ↓';
+  if(scope.open){ renderScopeSliders(); drawScope(); cancelAnimationFrame(scope.raf); scope.raf=requestAnimationFrame(scopeTick); }
+  else cancelAnimationFrame(scope.raf);
+};
+
+/* ================= top-level render ================= */
+function renderAll(){
+  el('schem').innerHTML=drawCell();
+  renderBehavior();
+  renderBias();
+  if(scope.open){ renderScopeSliders(); drawScope(); }
+}
+/* ================= worksheet coverage (debug) ================= */
+const WORKSHEET=[
+  {name:'Inverting',cfg:'inverting',ac:false,ref:'p.5 · Inverting Amplifier (DC Coupled)',bias:'voltage divider',
+   t:{vi1:'1',vi2:'2',vo1:'0',vo2:'5',vs:'5',fc:'100'},G:-5},
+  {name:'Inverting',cfg:'inverting',ac:true,ref:'p.6 · Inverting Amplifier (AC Coupled)',bias:'divider + coupling cap',
+   t:{vi1:'-0.25',vi2:'0.25',vo1:'0',vo2:'5',vs:'5',fc:'100'},G:-10,cap:true},
+  {name:'Non-inverting',cfg:'noninverting',ac:false,ref:'p.6 · Non-Inverting (DC Coupled)',bias:'split resistor',
+   t:{vi1:'1',vi2:'2',vo1:'1',vo2:'5',vs:'5',fc:'100'},G:4},
+  {name:'Non-inverting',cfg:'noninverting',ac:true,ref:'p.7 · Non-Inverting (AC Coupled)',bias:'split resistor + cap',
+   t:{vi1:'-0.5',vi2:'0.5',vo1:'0.5',vo2:'4.5',vs:'5',fc:'100'},G:4,cap:true},
+  {name:'Differential',cfg:'differential',ac:false,ref:'p.8 · Differential (DC Coupled)',bias:'split resistor',
+   t:{vi1:'-0.5',vi2:'0.5',vo1:'0',vo2:'5',vs:'5',fc:'100'},G:5},
+  {name:'Differential',cfg:'differential',ac:true,ref:'p.8 · Differential (AC Coupled)',bias:'split resistor + caps',
+   t:{vi1:'-0.5',vi2:'0.5',vo1:'0',vo2:'5',vs:'5',fc:'100'},G:5,cap:true},
+];
+function runWorksheet(){
+  const snap={cfg:state.cfg,ac:state.ac,t:{...state.t},g:{...state.g},cell:{...state.cell},series:state.series};
+  const rows=WORKSHEET.map(c=>{
+    state.cfg=c.cfg; state.ac=c.ac; state.t={...snap.t,...c.t}; state.g={gain:'10',r1:'10k'};
+    state.series='E96'; state.cell=presetCell(c.cfg);   // tightest series → snapping error negligible
+    applyBias();
+    const T=computeTargets();
+    if(T.err) return {c,ok:false,why:'design error',g:NaN};
+    const A=achievedFromCell(T);
+    const vo1=parseFloat(c.t.vo1), vo2=parseFloat(c.t.vo2), span=Math.abs(vo2-vo1)||5;
+    const gErr=isFinite(A.g)?Math.abs(A.g-c.G)/Math.abs(c.G):1;
+    const outOk=isFinite(A.outLo)&&Math.abs(A.outLo-vo1)<0.03*span&&Math.abs(A.outHi-vo2)<0.03*span;
+    const capOk=c.cap? !!(state.cell.CA||state.cell.CD) : true;
+    const fcOk=c.cap? (!!A.fc&&A.fc<=parseFloat(c.t.fc)*1.06) : true;
+    const bad=solve('dc').bad||solve('mid').bad;
+    const ok=!bad&&gErr<0.03&&outOk&&capOk&&fcOk;
+    return {c,ok,g:A.g,gErr,outLo:A.outLo,outHi:A.outHi,fc:A.fc,capOk,fcOk};
+  });
+  Object.assign(state,snap);
+  renderTopo(); renderBiasControls(); renderAll();
+  return rows;
+}
+function renderDbg(){
+  const rows=runWorksheet();
+  const pass=rows.filter(r=>r.ok).length;
+  let h=`<div class="dbg-row dbg-head"><span>Status</span><span>Circuit</span><span>Achieved</span><span>Bias method</span></div>`;
+  h+=rows.map((r,i)=>{
+    const chip=r.ok?`<span class="chip pass">built ✓</span>`:`<span class="chip fail">FAIL</span>`;
+    const ach=isFinite(r.g)
+      ? `gain ${fmtG(r.g)} · out ${fmtV(r.outLo)}…${fmtV(r.outHi)}${r.c.cap?` · f<sub>c</sub> ${fmtHz(r.fc)}`:''}`
+      : (r.why||'—');
+    return `<div class="dbg-row click" data-idx="${i}"><span>${chip}</span>`+
+      `<span><span class="dbg-name">${r.c.name} · ${r.c.ac?'AC':'DC'}</span> <span class="loadhint">load ↑</span><br><span class="dbg-ref">${r.c.ref}</span></span>`+
+      `<span class="dbg-val">${ach}</span>`+
+      `<span class="dbg-val">${r.c.bias}</span></div>`;
+  }).join('');
+  h+=`<div class="dbg-summary">${pass}/${rows.length} handout circuits build and verify against the solver ${pass===rows.length?'✓':''}<span style="font-weight:400;color:var(--muted)"> — checked at E96 (coarser series just add a little snapping error, which the step-2 table always shows).</span></div>`;
+  h+=`<div class="note">Biasing methods covered: <b>voltage divider</b> (inverting) and <b>split resistor</b> (non-inverting, differential) are built directly. The handout's third method, <b>voltage-follower biasing</b>, is electrically the same bias point produced by a buffer op-amp — this single-op-amp tool uses the equivalent divider/split instead, so its result is identical. AC variants add the coupling/decoupling caps sized from f<sub>c</sub>.</div>`;
+  el('dbg-out').innerHTML=h;
+  el('dbg-out').querySelectorAll('.dbg-row.click').forEach(row=>{
+    row.onclick=()=>loadWorksheetCase(WORKSHEET[+row.dataset.idx]);
+  });
+}
+function loadWorksheetCase(c){
+  state.cfg=c.cfg; state.ac=c.ac;
+  state.t={...state.t,...c.t};
+  state.g={gain:String(Math.abs(c.G)), r1:'10k'};
+  state.cell=presetCell(c.cfg);
+  scope.amp=null;
+  renderTopo(); renderBiasControls(); applyBias();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+el('dbg-run').onclick=renderDbg;
+
+renderTopo();
+renderBiasControls();
+renderAll();
+renderDbg();
+</script>
+</body>
+</html>
